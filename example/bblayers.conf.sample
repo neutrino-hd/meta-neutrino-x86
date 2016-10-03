@@ -1,0 +1,23 @@
+# LAYER_CONF_VERSION is increased each time build/conf/bblayers.conf
+# changes incompatibly
+
+POKY_BBLAYERS_CONF_VERSION = "2"
+YOCTO_BASEDIR ?= "##COREBASE##"
+BBPATH = "${TOPDIR}"
+BBFILES ?= ""
+BBLAYERS ?= " \
+  ##COREBASE##/meta \
+  ##COREBASE##/meta-poky \
+  ##COREBASE##/meta-yocto-bsp \
+  ##COREBASE##/meta-neutrino \
+"
+
+BBLAYERS_NON_REMOVABLE ?= " \
+  ##COREBASE##/meta \
+  ##COREBASE##/meta-yocto \
+  ##COREBASE##/meta-yocto-bsp \
+"
+
+BBFILES += "${TOPDIR}/recipes/images/custom/*.bb"
+BBFILES += "${TOPDIR}/recipes/images/*.bb"
+
