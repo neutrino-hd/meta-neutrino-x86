@@ -17,4 +17,3 @@ SRC_URI[sha256sum] = "f8d412fbe7385e63fa4f02976d3ecae9a87a3936806f20e82ea67f351c
 
 inherit autotools pkgconfig
 
-CPPFLAGS = "-D_GLIBCXX_USE_CXX11_ABI=0"

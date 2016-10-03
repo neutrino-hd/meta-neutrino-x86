@@ -4,17 +4,14 @@ N_CFLAGS = "-Wall -Wextra -Wshadow -g -O2 -fno-strict-aliasing -rdynamic -DENABL
 
 N_CXXFLAGS = "${N_CFLAGS}"
 
-N_LDFLAGS += "-Wl,-rpath-link,${STAGING_DIR_HOST}/usr/lib -lcurl -lssl -lcrypto -ldl"
-
-N_CPPFLAGS = "-DDYNAMIC_LUAPOSIX -D__KERNEL_STRICT_NAMES "
-N_CPPFLAGS_append_coolstream-hd2 = "-DFB_HW_ACCELERATION -mcpu=cortex-a9 -mfpu=vfpv3-d16 -mfloat-abi=hard" 
+N_LDFLAGS += "-Wl,--hash-style=gnu -Wl,-rpath-link,${STAGING_DIR_HOST}/usr/lib -lcurl -ldl"
+N_CPPFLAGS = "-DDYNAMIC_LUAPOSIX -D__KERNEL_STRICT_NAMES -D__STDC_CONSTANT_MACROS"
 
 
 CPPFLAGS = "${N_CPPFLAGS}"
 
 EXTRA_OECONF = " \
 	--enable-maintainer-mode \
-	--enable-pip \
 	--enable-silent-rules \
 	--enable-mdev \
 	--enable-upnp \
@@ -22,13 +19,8 @@ EXTRA_OECONF = " \
 	--enable-giflib \
 	--enable-flac \
 	--enable-ffmpegdec \
-	--with-boxtype=coolstream \
+	--with-boxtype=generic \
+	--with-stb-hal-includes=${STAGING_INCDIR}/libstb-hal \
+	--with-target=native \
 "
 
-EXTRA_OECONF_append_coolstream-hd1 = " \
-	--with-boxmodel=nevis \
-"
-
-EXTRA_OECONF_append_coolstream-hd2 = " \
-	--with-boxmodel=apollo \
-"

@@ -1,6 +1,10 @@
 # waf is a build system which is used by samba related project.
 # Obtain details from https://wiki.samba.org/index.php/Waf
 # 
+
+# avoids build breaks when using no-static-libs.inc
+DISABLE_STATIC = ""
+
 inherit qemu pythonnative
 
 DEPENDS += "qemu-native libxslt-native docbook-xsl-stylesheets-native python"

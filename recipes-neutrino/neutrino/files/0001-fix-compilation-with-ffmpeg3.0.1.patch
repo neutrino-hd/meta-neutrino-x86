@@ -1,0 +1,59 @@
+From d85e8a215103a8f5ba7550ef940d706a4bf06105 Mon Sep 17 00:00:00 2001
+From: j00zek <zdzislaw22@windowslive.com>
+Date: Tue, 26 Apr 2016 18:31:32 +0200
+Subject: [PATCH] fix compilation with ffmpeg3.0.1
+
+---
+ src/driver/record.cpp   | 10 +++++++++-
+ src/driver/streamts.cpp |  2 +-
+ 2 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/src/driver/record.cpp b/src/driver/record.cpp
+index bf830c2..7a762e9 100644
+--- a/src/driver/record.cpp
++++ b/src/driver/record.cpp
+@@ -2220,11 +2220,15 @@ void CStreamRec::run()
+ 			continue;
+ 
+ 		AVCodecContext *codec = ifcx->streams[pkt.stream_index]->codec;
+-		if (bsfc && codec->codec_id == CODEC_ID_H264) {
++		if (bsfc && codec->codec_id == AV_CODEC_ID_H264) {
+ 			AVPacket newpkt = pkt;
+ 
+ 			if (av_bitstream_filter_filter(bsfc, codec, NULL, &newpkt.data, &newpkt.size, pkt.data, pkt.size, pkt.flags & AV_PKT_FLAG_KEY) >= 0) {
++#if (LIBAVFORMAT_VERSION_MAJOR == 57 && LIBAVFORMAT_VERSION_MINOR == 25)
++				av_packet_unref(&pkt);
++#else
+ 				av_free_packet(&pkt);
++#endif
+ 				newpkt.buf = av_buffer_create(newpkt.data, newpkt.size, av_buffer_default_free, NULL, 0);
+ 				pkt = newpkt;
+ 			}
+@@ -2233,7 +2237,11 @@ void CStreamRec::run()
+ 		pkt.dts = av_rescale_q(pkt.dts, ifcx->streams[pkt.stream_index]->time_base, ofcx->streams[pkt.stream_index]->time_base);
+ 
+ 		av_write_frame(ofcx, &pkt);
++#if (LIBAVFORMAT_VERSION_MAJOR == 57 && LIBAVFORMAT_VERSION_MINOR == 25)
++		av_packet_unref(&pkt);
++#else
+ 		av_free_packet(&pkt);
++#endif
+ 
+ 		if (pkt.stream_index == stream_index) {
+ 			total += (double) 1000 * pkt.duration * av_q2d(ifcx->streams[stream_index]->time_base);
+diff --git a/src/driver/streamts.cpp b/src/driver/streamts.cpp
+index 3a809d9..6292b10 100644
+--- a/src/driver/streamts.cpp
++++ b/src/driver/streamts.cpp
+@@ -929,7 +929,7 @@ void CStreamStream::run()
+ 			continue;
+ 
+ 		AVCodecContext *codec = ifcx->streams[pkt.stream_index]->codec;
+-		if (bsfc && codec->codec_id == CODEC_ID_H264 ) {
++		if (bsfc && codec->codec_id == AV_CODEC_ID_H264 ) {
+ 			AVPacket newpkt = pkt;
+ 
+ 			if (av_bitstream_filter_filter(bsfc, codec, NULL, &newpkt.data, &newpkt.size, pkt.data, pkt.size, pkt.flags & AV_PKT_FLAG_KEY) >= 0) {
+-- 
+2.1.4
+

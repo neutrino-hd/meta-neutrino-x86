@@ -12,7 +12,7 @@ PV = "${SRCPV}"
 PR = "1"
 
 SRC_URI = " \
-    git://git.ffmpeg.org/rtmpdump \
+    git://github.com/BurntSushi/rtmpdump-ksv.git \
 "
 
 S = "${WORKDIR}/git"

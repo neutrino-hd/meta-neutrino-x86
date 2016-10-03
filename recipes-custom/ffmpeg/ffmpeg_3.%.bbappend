@@ -3,7 +3,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 DEPENDS_append += "libroxml rtmpdump openssl virtual/libiconv"
 
 SRC_URI_append += " \
-		   file://0001-Revert-lavc-Switch-bitrate-to-64bit-unless-compatibi.patch \
+		   file://0001-Revert-lavc-Switch-bitrate-to-64bit-unless-compatibi.patch;apply=no \
 		   file://0002-add-HDS-ro_new.patch \
 "
 
@@ -106,7 +106,7 @@ EXTRA_OECONF_append = " \
 	--disable-devices \
 	--enable-swresample \
 	--disable-postproc \
-	--disable-swscale \
+	--enable-swscale \
 	--enable-nonfree \
 "
 

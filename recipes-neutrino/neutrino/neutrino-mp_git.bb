@@ -5,7 +5,7 @@ SECTION = "libs"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${WORKDIR}/COPYING.GPL;md5=751419260aa954499f7abaabaa882bbe"
 
-inherit autotools pkgconfig update-rc.d
+inherit autotools pkgconfig
 
 DEPENDS += " \
 	curl \
@@ -37,9 +37,8 @@ SRCREV = "${AUTOREV}"
 PV = "${SRCPV}"
 PR = "3"
 
-SRC_URI = " \
-	git://github.com/neutrino-mp/neutrino-mp.git;protocol=git \
-	file://neutrino.init \
+SRC_URI = "git://git.slknet.de/test-cst-next.git;protocol=http \
+	file://0001-fix-for-gcc-6.x.patch \
 	file://timezone.xml \
 	file://custom-poweroff.init \
 	file://COPYING.GPL \
@@ -48,6 +47,7 @@ SRC_URI = " \
 	file://hardware_caps.h \
 	file://pre-wlan0.sh \
 	file://post-wlan0.sh \
+	file://0001-fix-compilation-with-ffmpeg3.0.1.patch \
 "
 
 
@@ -56,10 +56,6 @@ SRC_URI_append_libc-glibc = "file://0006-Makefile.am-we-don-t-need-liconv-for-gl
 
 S = "${WORKDIR}/git"
 
-INITSCRIPT_PACKAGES   = "${PN}"
-INITSCRIPT_NAME_${PN} = "neutrino"
-INITSCRIPT_PARAMS_${PN} = "start 99 5 . stop 20 0 1 2 3 4 6 ."
-
 include neutrino-mp.inc
 
 do_configure_prepend() {
@@ -67,7 +63,7 @@ do_configure_prepend() {
 	cp ${WORKDIR}/hardware_caps* ${S}/lib/libcoolstream2
 	INSTALL="`which install` -p"
 	export INSTALL
-	ln -sf ${WORKDIR}/build/src/gui/version.h ${S}/src/gui/
+	ln -sf ${B}/src/gui/version.h ${S}/src/gui/
 }
 
 do_compile () {
@@ -79,7 +75,6 @@ do_compile () {
 do_install_prepend () {
 # change number to force rebuild "1"
 	install -d ${D}/${sysconfdir}/init.d ${D}${sysconfdir}/network
-	install -m 755 ${WORKDIR}/neutrino.init ${D}${sysconfdir}/init.d/neutrino
 	install -m 755 ${WORKDIR}/custom-poweroff.init ${D}${sysconfdir}/init.d/custom-poweroff
 	install -m 755 ${WORKDIR}/pre-wlan0.sh ${D}${sysconfdir}/network/
 	install -m 755 ${WORKDIR}/post-wlan0.sh ${D}${sysconfdir}/network/
@@ -91,28 +86,13 @@ do_install_prepend () {
 	echo "creator=${CREATOR}"             >> ${D}/.version 
 	echo "imagename=Neutrino-MP"             >> ${D}/.version 
 	echo "homepage=${HOMEPAGE}"              >> ${D}/.version 
-	update-rc.d -r ${D} custom-poweroff start 89 0 .
-}
-
-# compatibility with binaries hand-built with --prefix=
-do_install_append() {
-	install -d ${D}/share
-	ln -s ${D}${datadir}/tuxbox ${D}/share/
-	ln -s ${D}${datadir}/fonts  ${D}/share/
 }
 
 FILES_${PN} += "\
 	/.version \
 	${sysconfdir} \
+	/share \
 	/usr/share \
-	/usr/share/tuxbox \
-	/usr/share/iso-codes \
-	/usr/share/fonts \
-	/usr/share/tuxbox/neutrino \
-	/usr/share/iso-codes \
-	/usr/share/fonts \
-	/share/fonts \
-	/share/tuxbox \
 	/var/cache \
 	/var/tuxbox/plugins \
 	/var/httpd/styles \

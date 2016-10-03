@@ -1,0 +1,156 @@
+! Xmodmap fuer ein deutsches Tastaturlayout
+! Die Apple-Taste führti in die zweite Tastaturebene.
+! Im Bereich  der 'Modifier-Zeile'  steht in einem Kommentar
+! wie dies auf die 'Alt'-Taste umgelegt werden kann.
+
+
+! Funktionstastenzeile
+!===========================
+keycode  61 = Escape
+keycode 130 = F1
+keycode 128 = F2
+keycode 107 = F3
+keycode 126 = F4
+keycode 104 = F5
+keycode 105 = F6
+keycode 106 = F7
+keycode 108 = F8
+keycode 109 = F9
+keycode 117 = F10
+keycode 111 = F11
+keycode 119 = F12
+
+
+!    Zahlenzeile
+!==================
+!Die erste Taste dieser Zeile ist parralell zu der neben LeftShift 
+! geschaltet (siehe 3.Buchstabenzeile)
+keycode  26 = 1 exclam      at at
+keycode  27 = 2 quotedbl
+keycode  28 = 3 section 
+keycode  29 = 4 dollar
+keycode  31 = 5 percent     bracketleft
+keycode  30 = 6 ampersand   bracketright
+keycode  34 = 7 slash       bar          backslash
+keycode  36 = 8 parenleft   braceleft    asciitilde
+keycode  33 = 9 parenright  braceright   asciicircum
+keycode  37 = 0 equal
+keycode  35 = ssharp  question 
+keycode  32 = apostrophe grave
+keycode  59 = BackSpace
+
+
+!1. Buchstabenzeile
+!===========================
+keycode  56 = Tab ISO_Left_Tab
+keycode  20 = q Q
+keycode  21 = w W
+keycode  22 = e E
+keycode  23 = r R
+keycode  25 = t T
+keycode  24 = z Z
+keycode  40 = u U
+keycode  42 = i I
+keycode  39 = o O
+keycode  43 = p P
+keycode  41 = udiaeresis Udiaeresis
+keycode  38 = plus asterisk
+keycode  44 = Return
+
+
+! 2. Buchstabenreihe
+!===========================
+keycode  65 = Caps_Lock
+keycode   8 = a A
+keycode   9 = s S
+keycode  10 = d D
+keycode  11 = f F
+keycode  13 = g G
+keycode  12 = h H
+keycode  46 = j J
+keycode  48 = k K asciitilde asciitilde
+keycode  45 = l L
+keycode  49 = odiaeresis Odiaeresis 
+keycode  47 = adiaeresis Adiaeresis
+keycode  50 = numbersign apostrophe
+
+
+!3. Buchstabenreihe
+!===========================
+keycode  64 = Shift_L
+! Diese Taste ist parralel zu der unter der ESC geschaltet, keycode 58 beeinflusst beide
+keycode  58 =  less greater 
+keycode  14 = y Y
+keycode  15 = x X
+keycode  16 = c C
+keycode  17 = v V
+keycode  19 = b B
+keycode  53 = n N
+keycode  54 = m M
+keycode  51 = comma semicolon
+keycode  55 = period colon
+keycode  52 = minus underscore    
+
+
+!Die Modifier-Zeile
+!=====================================================
+keycode  62 = Control_L
+keycode  66 = Alt_L
+keycode  63 = Mode_switch
+!
+! Wenn statt der Apfel-Taste, die Alt-Taste, die zweite Tastaturebene aktivieren soll,
+! muessen die beiden folgenden Zeilen einkommentiert werden (das ! davor wegnehmen)
+! und die beiden Zeil über diesem Kommentar auskommentiert werden (ein ! davorsetzen)
+!   (Alt_L und Meta_L sind weitegehend äquivalent
+! keycode  66 = Mode_switch
+! keycode  63 = Meta_L
+! 
+keycode  57 = space
+keycode  67 = Left
+keycode  68 = Right
+keycode  69 = Down
+keycode  70 = Up
+
+
+!Die Ziffernblock von oben links nach rechts unten
+!=====================================================
+keycode 122 = Insert
+keycode 123 = Home End
+keycode 124 = Prior
+keycode 129 = Next
+keycode  79 = Num_Lock
+keycode  89 = KP_Equal
+keycode  83 = KP_Divide
+keycode  75 = KP_Multiply
+keycode  97 = KP_7 KP_Home
+keycode  99 = KP_8 KP_Up
+keycode 100 = KP_9 KP_Prior
+keycode  86 = KP_Subtract
+keycode  94 = KP_4 KP_Left
+keycode  95 = KP_5 KP_Begin
+keycode  96 = KP_6 KP_Right
+keycode  77 = KP_Add
+keycode  91 = KP_1 KP_End
+keycode  92 = KP_2 KP_Down
+keycode  93 = KP_3 KP_Next
+keycode  84 = KP_Enter
+keycode  90 = KP_0 KP_Insert
+keycode  73 = KP_Decimal KP_Delete
+
+! weitere Tasten (keine Ahnung wo die liegen, moeglicherweise auf anderen USB-Keyboards vorhanden
+keycode 113 = Print
+keycode 115 = Scroll_Lock
+keycode 121 = Pause
+keycode 125 = Delete
+keycode 127 = End
+keycode 131 = Shift_R
+keycode 132 = Alt_R
+keycode 133 = Control_R
+keycode 134 = Meta_R
+
+
+! die Modifier Mod1 und mod2 muessen noch korrigiert werden.
+clear mod1
+clear mod2
+add Mod1 = Alt_L Meta_L
+

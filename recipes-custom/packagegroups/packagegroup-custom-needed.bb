@@ -10,7 +10,7 @@ PACKAGES = "\
 "
 
 RDEPENDS_packagegroup-custom-needed = "\
-	virtual/stb-hal-libs \
+	libstb-hal \
 	image-config \	
 	e2fsprogs-mke2fs \
 	e2fsprogs-e2fsck \

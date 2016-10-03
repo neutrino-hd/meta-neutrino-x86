@@ -1,6 +1,39 @@
-# Base this image on core-image-minimal
+DESCRIPTION = "Image with Sato, a mobile environment and visual style for \
+mobile devices. The image supports X11 with a Sato theme, Pimlico \
+applications, and contains terminal, editor, and file manager."
 
-include neutrino-image-base.inc
+IMAGE_FEATURES += "splash package-management x11-base x11-sato ssh-server-openssh hwcodecs"
+
+LICENSE = "MIT"
+LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=4d92cd373abda3937c2bc47fbc49d690 \
+                    file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
+
+
+SRCREV ?= "2679a347c576f5411fbe802d2f6201c94036ecb2"
+SRC_URI = "git://git.yoctoproject.org/poky;branch=master \
+           file://Yocto_Build_Appliance.vmx \
+           file://Yocto_Build_Appliance.vmxf \
+	   file://mimeapps.list \
+           file://README_VirtualBox_Guest_Additions.txt \
+          "
+
+include neutrino-image-base-dev.inc
+
+DEPENDS = "zip-native useradd"
+
+IMAGE_FEATURES_append += " \
+	dev-pkgs \
+	tools-sdk \
+	tools-debug \
+	eclipse-debug \
+	tools-profile \
+	tools-testapps \
+	debug-tweaks \
+"
+
+EXTRA_IMAGE_FEATURES_append = "dbg-pkgs \
+			       ptest-pkgs \
+"
 
 IMAGE_INSTALL += " \
 	${NEUTRINO_FLAVOUR} \
@@ -18,4 +51,60 @@ IMAGE_INSTALL += " \
 	neutrino-plugin-youtube \
 	neutrino-plugin-webtv \
 	neutrino-plugin-rockpalast \
-	"
+"
+
+IMAGE_INSTALL_append += " \
+	kernel-devsrc \
+	glibc-locale \
+	localedef \
+	glibc-charmaps \
+	glibc-localedata-de-de \
+	glibc-localedata-translit-combining \
+	neutrino-mp \
+	vsftpd \
+	pugixml \
+	firmware \
+	mc \
+	bash \
+	nano \
+	git \
+	samba \
+	cmake \
+	image-config \
+	xterm \
+	xdg-utils \
+	meld \
+	subversion \
+	epiphany \
+	builder \
+	xarchiver \
+	vim \
+	include-meta-neutrino \
+	local-build \
+	python3-core \
+	python3-textutils \
+	python3-sqlite3 \
+	python3-pickle \
+	python3-logging \
+	python3-curses \
+	python3-compile \
+	python3-fcntl \
+	python3-shell \
+	python3-misc \
+	python3-multiprocessing \
+	python3-subprocess \
+	python3-xmlrpc \
+	python3-netclient \
+	python3-netserver \
+	python3-distutils \
+	python3-unixadmin \
+	python3-compression \
+	python3-json \
+	python3-unittest \
+	python3-mmap \
+	python3-difflib \
+	python3-pprint \
+	python3-git \
+	python3-pkgutil \
+"
+
