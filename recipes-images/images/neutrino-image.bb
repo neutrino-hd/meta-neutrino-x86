@@ -76,7 +76,6 @@ IMAGE_INSTALL_append += " \
 	meld \
 	subversion \
 	epiphany \
-	builder \
 	xarchiver \
 	vim \
 	include-meta-neutrino \

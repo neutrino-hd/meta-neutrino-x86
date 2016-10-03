@@ -17,7 +17,7 @@ USERADD_PARAM_${PN} = "--system --create-home \
 "
 
 SRC_URI = " \
-	git://github.com/neutrino-hd/meta-neutrino.git \
+	git://github.com/neutrino-hd/meta-neutrino.git;branch=x86 \
 	file://local.conf \
 	file://bblayers.conf \
 "
