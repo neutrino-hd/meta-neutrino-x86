@@ -19,7 +19,7 @@ SRC_URI = "git://git.yoctoproject.org/poky;branch=master \
 
 include neutrino-image-base-dev.inc
 
-DEPENDS = "zip-native useradd"
+DEPENDS = "zip-native"
 
 IMAGE_FEATURES_append += " \
 	dev-pkgs \
@@ -80,30 +80,30 @@ IMAGE_INSTALL_append += " \
 	vim \
 	include-meta-neutrino \
 	local-build \
-	python3-core \
-	python3-textutils \
-	python3-sqlite3 \
-	python3-pickle \
-	python3-logging \
-	python3-curses \
-	python3-compile \
-	python3-fcntl \
-	python3-shell \
-	python3-misc \
-	python3-multiprocessing \
-	python3-subprocess \
-	python3-xmlrpc \
-	python3-netclient \
-	python3-netserver \
-	python3-distutils \
-	python3-unixadmin \
-	python3-compression \
-	python3-json \
-	python3-unittest \
-	python3-mmap \
-	python3-difflib \
-	python3-pprint \
-	python3-git \
-	python3-pkgutil \
+	python-core \
+	python-textutils \
+	python-sqlite3 \
+	python-pickle \
+	python-logging \
+	python-curses \
+	python-compile \
+	python-fcntl \
+	python-shell \
+	python-misc \
+	python-multiprocessing \
+	python-subprocess \
+	python-xmlrpc \
+	python-netclient \
+	python-netserver \
+	python-distutils \
+	python-unixadmin \
+	python-compression \
+	python-json \
+	python-unittest \
+	python-mmap \
+	python-difflib \
+	python-pprint \
+	python-debugger \
+	python-pkgutil \
 "
 

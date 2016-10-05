@@ -6,7 +6,7 @@ LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 
 DEPENDS = "python itstool-native"
-RDEPENDS_${PN} = "python-core gtk+ python3-pygobject"
+RDEPENDS_${PN} = "python-core gtk+ python-pygobject"
 
 SRCREV ?= "${AUTOREV}"
 PV = "${SRCPV}"
@@ -18,6 +18,6 @@ SRC_URI = "git://github.com/GNOME/meld.git;branch=meld-3-14;protocol=http \
 S = "${WORKDIR}/git"
 
 
-inherit distutils
+inherit distutils gobject-introspection
 
 FILES_${PN} += "/usr/share"
