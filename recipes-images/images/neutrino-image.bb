@@ -105,5 +105,6 @@ IMAGE_INSTALL_append += " \
 	python-pprint \
 	python-debugger \
 	python-pkgutil \
+	multi-tools \
 "
 

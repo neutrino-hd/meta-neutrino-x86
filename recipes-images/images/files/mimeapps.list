@@ -1,8 +1,8 @@
 
 [Default Applications]
 inode/directory=pcmanfm.desktop
-text/plain=l3afpad.desktop
+text/plain=leafpad.desktop
 x-scheme-handler/http=epiphany.desktop
 x-scheme-handler/https=epiphany.desktop
 text/html=epiphany.desktop
-application/x-shellscript=l3afpad.desktop
+application/x-shellscript=leafpad.desktop
