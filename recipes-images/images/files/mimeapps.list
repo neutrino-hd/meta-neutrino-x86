@@ -24,4 +24,5 @@ text/x-script.phyton=leafpad.desktop
 application/x-bytecode.python=leafpad.desktop
 text/x-script.sh=leafpad.desktop
 audio/wav=gtk-play.desktop
+application/pdf=evince.desktop
 

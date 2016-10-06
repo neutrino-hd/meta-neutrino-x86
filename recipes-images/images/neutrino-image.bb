@@ -107,5 +107,6 @@ IMAGE_INSTALL_append += " \
 	python-pkgutil \
 	multipath-tools \
 	hplip \
+	evince \
 "
 
