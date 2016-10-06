@@ -108,5 +108,6 @@ IMAGE_INSTALL_append += " \
 	multipath-tools \
 	hplip \
 	evince \
+	gparted \
 "
 
