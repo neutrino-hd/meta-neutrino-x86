@@ -1,8 +1,6 @@
-DESCRIPTION = "Image with Sato, a mobile environment and visual style for \
-mobile devices. The image supports X11 with a Sato theme, Pimlico \
-applications, and contains terminal, editor, and file manager."
+DESCRIPTION = "The image supports X11 with awesome wm, it aims at neutrino-mp developement and contains terminal, editor, file manager"
 
-IMAGE_FEATURES += "splash package-management x11-base x11-sato ssh-server-openssh hwcodecs"
+IMAGE_FEATURES += "splash package-management x11-base ssh-server-openssh hwcodecs"
 
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=4d92cd373abda3937c2bc47fbc49d690 \
@@ -19,7 +17,7 @@ SRC_URI = "git://git.yoctoproject.org/poky;branch=master \
 
 include neutrino-image-base-dev.inc
 
-DEPENDS = "zip-native"
+DEPENDS = "zip-native builder"
 
 IMAGE_FEATURES_append += " \
 	dev-pkgs \
@@ -71,7 +69,6 @@ IMAGE_INSTALL_append += " \
 	samba \
 	cmake \
 	image-config \
-	xterm \
 	xdg-utils \
 	meld \
 	subversion \
@@ -80,6 +77,24 @@ IMAGE_INSTALL_append += " \
 	vim \
 	include-meta-neutrino \
 	local-build \
+	multipath-tools \
+	evince \
+	gparted \
+	awesome \
+	sublime \
+	nautilus \
+	settings-daemon \
+	shutdown-desktop \
+	libsdl \
+	sudo \
+	connman-gnome \
+	udev-extraconf \
+	gst-player-bin \
+	xf86-video-vmware \
+	xf86-input-vmmouse \
+"
+
+IMAGE_INSTALL_append += " \
 	python-core \
 	python-textutils \
 	python-sqlite3 \
@@ -105,9 +120,32 @@ IMAGE_INSTALL_append += " \
 	python-pprint \
 	python-debugger \
 	python-pkgutil \
-	multipath-tools \
-	hplip \
-	evince \
-	gparted \
 "
 
+IMAGE_INSTALL_append += " \
+	python3-core \
+	python3-textutils \
+	python3-sqlite3 \
+	python3-pickle \
+	python3-logging \
+	python3-curses \
+	python3-compile \
+	python3-fcntl \
+	python3-shell \
+	python3-misc \
+	python3-multiprocessing \
+	python3-subprocess \
+	python3-xmlrpc \
+	python3-netclient \
+	python3-netserver \
+	python3-distutils \
+	python3-unixadmin \
+	python3-compression \
+	python3-json \
+	python3-unittest \
+	python3-mmap \
+	python3-difflib \
+	python3-pprint \
+	python3-debugger \
+	python3-pkgutil \
+"

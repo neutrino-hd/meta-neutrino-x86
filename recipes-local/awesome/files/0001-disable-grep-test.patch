@@ -1,0 +1,28 @@
+From 0a2d8e919fb3dd713776811c2bcf246bece8bb6b Mon Sep 17 00:00:00 2001
+From: flk <f_l_k@t-online.de>
+Date: Sun, 9 Oct 2016 09:45:54 +0200
+Subject: [PATCH] disable grep test
+
+Signed-off-by: flk <f_l_k@t-online.de>
+---
+ awesomeConfig.cmake | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/awesomeConfig.cmake b/awesomeConfig.cmake
+index 8f1f2ac..0fc3840 100644
+--- a/awesomeConfig.cmake
++++ b/awesomeConfig.cmake
+@@ -45,7 +45,9 @@ endmacro()
+ 
+ a_find_program(CAT_EXECUTABLE cat TRUE)
+ a_find_program(LN_EXECUTABLE ln TRUE)
+-a_find_program(GREP_EXECUTABLE grep TRUE)
++# grep isn´t built native in yocto but set to assume_provided.
++# lets assume, grep is provided by almost every distribution and avoid searching for it in sysroot
++# a_find_program(GREP_EXECUTABLE grep TRUE)
+ a_find_program(GIT_EXECUTABLE git FALSE)
+ # programs needed for man pages
+ a_find_program(ASCIIDOC_EXECUTABLE asciidoc FALSE)
+-- 
+2.7.4
+

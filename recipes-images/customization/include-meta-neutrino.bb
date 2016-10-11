@@ -5,17 +5,8 @@ SECTION = "libs"
 LICENSE = "BSD-2-Clause"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/BSD-2-Clause;md5=8bef8e6712b1be5aa76af1ebde9d6378"
 
-inherit useradd
-
-# builder user password is "builder"
-BUILDER_PASSWORD ?= ".gLibiNXn0P12"
-USERADD_PACKAGES = "${PN}"
-USERADD_PARAM_${PN} = "--system --create-home \
-                       --groups video,tty,audio \
-                       --password ${BUILDER_PASSWORD} \
-                       --user-group builder \
-"
-
+DEPENDS += "builder"
+RDEPENDS_${PN} += "bash"
 SRC_URI = " \
 	git://github.com/neutrino-hd/meta-neutrino-x86.git;branch=krogoth \
 	file://local.conf \
@@ -37,5 +28,6 @@ do_install() {
 	install -m 644 ${WORKDIR}/bblayers.conf ${D}/home/builder/poky/build/conf
 }
 
-FILES_${PN} = "/home/builder/poky"
+FILES_${PN} = "/home/builder/poky \
+"
 

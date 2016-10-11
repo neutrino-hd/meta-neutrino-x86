@@ -38,6 +38,7 @@ PV = "${SRCPV}"
 PR = "3"
 
 SRC_URI = "git://git.slknet.de/test-cst-next.git;protocol=http \
+	file://0001-fix-compilation-with-ffmpeg3.0.1.patch \
 	file://0001-fix-for-gcc-6.x.patch \
 	file://timezone.xml \
 	file://custom-poweroff.init \
@@ -47,11 +48,10 @@ SRC_URI = "git://git.slknet.de/test-cst-next.git;protocol=http \
 	file://hardware_caps.h \
 	file://pre-wlan0.sh \
 	file://post-wlan0.sh \
-	file://0001-fix-compilation-with-ffmpeg3.0.1.patch \
 "
 
 
-SRC_URI_append_libc-glibc = "file://0006-Makefile.am-we-don-t-need-liconv-for-glibc.patch\
+SRC_URI_append_libc-glibc = "file://0006-Makefile.am-we-don-t-need-liconv-for-glibc.patch \
 "
 
 S = "${WORKDIR}/git"
@@ -60,7 +60,7 @@ include neutrino-mp.inc
 
 do_configure_prepend() {
 	# change number to force rebuild "2"
-	cp ${WORKDIR}/hardware_caps* ${S}/lib/libcoolstream2
+#	cp ${WORKDIR}/hardware_caps* ${S}/lib/libcoolstream2
 	INSTALL="`which install` -p"
 	export INSTALL
 	ln -sf ${B}/src/gui/version.h ${S}/src/gui/

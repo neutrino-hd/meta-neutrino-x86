@@ -3,14 +3,11 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/base-files:"
 SRC_URI += "file://profile \
 	    file://inputrc \
 	    file://nsswitch.conf \
-	    file://update_kernel.sh \
-	    file://update-kernel.service \
 	    file://cam.service \
 "
 
 inherit systemd
 
-SYSTEMD_SERVICE_${PN} = "update-kernel.service"
 BASEFILESISSUEINSTALL = "do_custom_baseissueinstall"
 
 do_custom_baseissueinstall() {
@@ -40,12 +37,8 @@ do_custom_baseissueinstall() {
 
 do_install_append () {
 	install -d ${D}${localstatedir}/update ${D}${systemd_unitdir}/system/multi-user.target.wants
-	install -m 755 ${S}/update_kernel.sh ${D}${sysconfdir}/update_kernel.sh
-	install -m 644 ${S}/update-kernel.service ${D}${systemd_unitdir}/system/update-kernel.service
 	install -m 644 ${S}/cam.service ${D}${systemd_unitdir}/system/cam.service
 	ln -s /lib/systemd/system/cam.service ${D}${systemd_unitdir}/system/multi-user.target.wants/cam.service
-	touch ${D}${localstatedir}/update/.newimage
- 	if [ ${CLEAN_ENV} = "yes" ];then
-		touch ${D}${localstatedir}/update/.erase_env 
-	fi
+	rm ${D}${sysconfdir}/skel/.profile
+	rm ${D}${sysconfdir}/skel/.bashrc
 }
