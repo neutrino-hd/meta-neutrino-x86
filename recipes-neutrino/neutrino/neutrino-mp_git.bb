@@ -59,8 +59,6 @@ S = "${WORKDIR}/git"
 include neutrino-mp.inc
 
 do_configure_prepend() {
-	# change number to force rebuild "2"
-#	cp ${WORKDIR}/hardware_caps* ${S}/lib/libcoolstream2
 	INSTALL="`which install` -p"
 	export INSTALL
 	ln -sf ${B}/src/gui/version.h ${S}/src/gui/

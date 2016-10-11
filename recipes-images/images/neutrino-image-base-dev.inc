@@ -73,8 +73,8 @@ fakeroot do_populate_poky_src () {
 	echo "builder ALL=(ALL) NOPASSWD: ALL" >> ${IMAGE_ROOTFS}/etc/sudoers
 
 	# Load tap/tun at startup
-	lnr sbin/iptables ${IMAGE_ROOTFS}/sbin/iptables
-	echo "tun" >> modules
+	ln -sr ${IMAGE_ROOTFS}/usr/sbin/iptables ${IMAGE_ROOTFS}/sbin/iptables
+	echo "tun" >> ${IMAGE_ROOTFS}/etc/modules
 
 	# Use Clearlooks GTK+ theme
 	mkdir -p ${IMAGE_ROOTFS}/etc/gtk-2.0
