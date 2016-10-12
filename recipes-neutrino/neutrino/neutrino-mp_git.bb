@@ -8,6 +8,7 @@ LIC_FILES_CHKSUM = "file://${WORKDIR}/COPYING.GPL;md5=751419260aa954499f7abaabaa
 inherit autotools pkgconfig
 
 DEPENDS += " \
+	builder \
 	curl \
 	ffmpeg \
 	flac \
@@ -72,7 +73,7 @@ do_compile () {
 
 do_install_prepend () {
 # change number to force rebuild "1"
-	install -d ${D}/${sysconfdir}/init.d ${D}${sysconfdir}/network
+	install -d ${D}/${sysconfdir}/init.d ${D}${sysconfdir}/network ${D}/etc/neutrino/config
 	install -m 755 ${WORKDIR}/custom-poweroff.init ${D}${sysconfdir}/init.d/custom-poweroff
 	install -m 755 ${WORKDIR}/pre-wlan0.sh ${D}${sysconfdir}/network/
 	install -m 755 ${WORKDIR}/post-wlan0.sh ${D}${sysconfdir}/network/
@@ -84,6 +85,10 @@ do_install_prepend () {
 	echo "creator=${CREATOR}"             >> ${D}/.version 
 	echo "imagename=Neutrino-MP"             >> ${D}/.version 
 	echo "homepage=${HOMEPAGE}"              >> ${D}/.version 
+}
+
+do_install_append() {
+	chown builder:builder -R ${D}/etc/neutrino/config
 }
 
 FILES_${PN} += "\

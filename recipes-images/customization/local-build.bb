@@ -16,10 +16,13 @@ PR = "1"
 S = "${WORKDIR}"
 
 do_install() {
-	install -d ${D}/home/builder
+	install -d ${D}/home/builder ${D}/usr/local
 	cp -R ${WORKDIR}/local_build ${D}/home/builder
 	chown -R builder:builder ${D}/home/builder/local_build
+	chown -R builder:builder ${D}/usr/local
 }
 
-FILES_${PN} = "/home/builder/local_build"
+FILES_${PN} = "/home/builder/local_build \
+	       /usr/local \
+"
 
