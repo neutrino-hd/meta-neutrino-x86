@@ -93,6 +93,7 @@ IMAGE_INSTALL_append += " \
 	xf86-video-vmware \
 	xf86-input-vmmouse \
 	ntpdate \
+	imagemagick \
 "
 
 IMAGE_INSTALL_append += " \

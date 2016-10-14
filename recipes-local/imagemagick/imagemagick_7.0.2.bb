@@ -11,6 +11,7 @@ DEPENDS = "lcms bzip2 jpeg libpng librsvg tiff zlib fftw freetype"
 # update to the last pachset of a version
 PATCHSET = "10"
 SRC_URI = "http://www.imagemagick.org/download/releases/ImageMagick-${PV}-${PATCHSET}.tar.xz \
+	   file://screenshot \
 "
 SRC_URI[md5sum] = "e1cb23d9c10a8eff228ef30ee281711a"
 SRC_URI[sha256sum] = "dad306bfd7730e1665c6fdb6eb478fb2c41e2db71ab56451bbaebe9df546b1d2"
@@ -33,6 +34,11 @@ PACKAGECONFIG[pango] = "--with-pango,--without-pango,pango cairo"
 PACKAGECONFIG[webp] = "--with-webp,--without-webp,libwebp"
 PACKAGECONFIG[wmf] = "--with-wmf,--without-wmf,libwmf"
 PACKAGECONFIG[x11] = "--with-x,--without-x,virtual/libx11 libxext libxt"
+
+do_install_append() {
+	install -d ${D}/usr/bin
+	install -m 755 ${WORKDIR}/screenshot ${D}/usr/bin/screenshot
+}
 
 FILES_${PN} += "${libdir}/ImageMagick-${PV}/modules-Q16/*/*.so \
                 ${libdir}/ImageMagick-${PV}/modules-Q16/*/*.la \

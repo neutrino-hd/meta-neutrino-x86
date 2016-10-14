@@ -24,7 +24,8 @@ S = "${WORKDIR}"
 LIC_FILES_CHKSUM = "file://COPYING.MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
 do_install() {
-	install -d ${D}/home/builder ${D}${sysconfdir}/systemd/system/getty.target.wants/
+	install -d ${D}/home/builder/pictures ${D}/home/builder/movies ${D}/home/builder/audio \
+		${D}/home/builder/documents ${D}${sysconfdir}/systemd/system/getty.target.wants/
 	install -m 0644 -D ${S}/default.bootlogd ${D}${sysconfdir}/default/bootlogd 
 	install -m 0644 -D ${S}/00aliases        ${D}${sysconfdir}/profile.d/00aliases
 	for i in root builder;do

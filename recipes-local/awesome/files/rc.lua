@@ -378,7 +378,9 @@ globalkeys = awful.util.table.join(
      awful.key({ modkey }, "F3", function () awful.util.spawn_with_shell("subl") end),
      awful.key({ modkey }, "F4", function () awful.util.spawn_with_shell("meld") end),
      awful.key({ modkey }, "F5", function () awful.util.spawn_with_shell("neutrino") end),
-
+     awful.key({ modkey }, "F10", function () awful.util.spawn_with_shell("screenshot -a") end),
+     awful.key({ modkey }, "F11", function () awful.util.spawn_with_shell("screenshot -s") end),
+     awful.key({ modkey }, "F12", function () awful.util.spawn_with_shell("screenshot -w") end),
     -- Tag browsing
     awful.key({ modkey }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey }, "Right",  awful.tag.viewnext       ),
