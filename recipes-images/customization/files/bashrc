@@ -21,7 +21,7 @@ export SIMULATE_FE="1"
 alias nautilus='nautilus --no-desktop'
 alias t='rxvt&'
 alias ls='ls -h --color=auto'
-alias ll='ls -l'
+alias ll='ls -lha'
 alias la='ls -A'
 alias l='ls -CF'
 alias svim='sudo vim'

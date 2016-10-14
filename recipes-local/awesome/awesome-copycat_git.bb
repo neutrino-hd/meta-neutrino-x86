@@ -7,6 +7,7 @@ DEPENDS = "awesome lain unclutter rxvt-unicode lua5.2 builder"
 RDEPENDS_${PN} += "make"
 
 SRC_URI = "git://github.com/copycat-killer/awesome-copycats.git \
+	   file://rc.lua \
 "
 
 SRCREV = "${AUTOREV}"
@@ -19,7 +20,7 @@ do_install() {
 	install -d ${D}/home/builder/.config/awesome
 	cp -rf ${S}/* ${D}/home/builder/.config/awesome
 	chown -R builder:builder ${D}/home/builder/.config/awesome
-	ln -sf /home/builder/.config/awesome/rc.lua.powerarrow-darker ${D}/home/builder/.config/awesome/rc.lua
+	install -m 644 ${WORKDIR}/rc.lua ${D}/home/builder/.config/awesome/rc.lua
 }
 
 FILES_${PN} = "/home"

@@ -92,6 +92,7 @@ IMAGE_INSTALL_append += " \
 	gst-player-bin \
 	xf86-video-vmware \
 	xf86-input-vmmouse \
+	ntpdate \
 "
 
 IMAGE_INSTALL_append += " \

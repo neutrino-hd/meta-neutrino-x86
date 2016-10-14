@@ -7,7 +7,7 @@ PR = "r0"
 S = "${WORKDIR}/unclutter-${PV}"
 
 SRC_URI = "${SOURCEFORGE_MIRROR}/unclutter/unclutter-${PV}.tar.gz \
-	file://cross-compile.patch \
+	   file://cross-compile.patch \
 "
 LIC_FILES_CHKSUM = "file://README;md5=7c9b6681ac4b35194de7d5f3585702b6"
 SRC_URI[md5sum] = "8c4464367b2db1d15fe36a8752e917c8"
