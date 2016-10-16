@@ -1,4 +1,4 @@
-# a simple script for creating screen captures using ffmpeg
+# a simple bash script for creating screen captures using ffmpeg under X11
 
 Array=($(pidof ffmpeg))
 
@@ -14,30 +14,30 @@ comp="-c:v libx264 -preset ultrafast -qp 0"
 whole_screen()
 {
  ffmpeg -f alsa \
- 		-ac 2 \
- 		-f x11grab \
- 		-r 15 \
- 		-s $(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1)"x"$(xrandr --current \
- 			| grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f2) \
- 		-i :0.0+$(xwininfo -root | grep -oEe 'Corners: +\+[0-9]+\+[0-9]+' \
- 			| grep -oEe '[0-9]+\+[0-9]+' | sed -e 's/\+/,/' ) \
- 		-acodec pcm_s16le \
- 		$comp \
- 		-y ~/movies/$(date +%F_%H%M%S_%N).mkv
+ 	-ac 2 \
+ 	-f x11grab \
+ 	-r 15 \
+ 	-s $(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1)"x"$(xrandr --current \
+ 		| grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f2) \
+ 	-i :0.0+$(xwininfo -root | grep -oEe 'Corners: +\+[0-9]+\+[0-9]+' \
+ 		| grep -oEe '[0-9]+\+[0-9]+' | sed -e 's/\+/,/' ) \
+ 	-acodec pcm_s16le \
+ 	$comp \
+ 	-y ~/movies/$(date +%F_%H%M%S_%N).mkv
 }
  
 active_window() 
 {
  ffmpeg -f alsa \
- 		-ac 2 \
- 		-f x11grab \
- 		-r 15 \
- 		-s $(xwininfo -frame | grep -oEe 'geometry [0-9]+x[0-9]+' | grep -oEe '[0-9]+x[0-9]+') \
- 		-i :0.0+$(xwininfo -frame | grep -oEe 'Corners: +\+[0-9]+\+[0-9]+' \
- 			| grep -oEe '[0-9]+\+[0-9]+' | sed -e 's/\+/,/' ) \
- 		-acodec pcm_s16le \
- 		$comp \
- 		-y ~/movies/$(date +%F_%H%M%S_%N).mkv
+ 	-ac 2 \
+ 	-f x11grab \
+ 	-r 15 \
+ 	-s $(xwininfo -frame | grep -oEe 'geometry [0-9]+x[0-9]+' | grep -oEe '[0-9]+x[0-9]+') \
+ 	-i :0.0+$(xwininfo -frame | grep -oEe 'Corners: +\+[0-9]+\+[0-9]+' \
+ 		| grep -oEe '[0-9]+\+[0-9]+' | sed -e 's/\+/,/' ) \
+ 	-acodec pcm_s16le \
+ 	$comp \
+ 	-y ~/movies/$(date +%F_%H%M%S_%N).mkv
 }
 
 
