@@ -5,6 +5,7 @@ DEPENDS_append += "rtmpdump openssl virtual/libiconv"
 SRC_URI_append += " \
 		   file://0001-Revert-lavc-Switch-bitrate-to-64bit-unless-compatibi.patch;apply=no \
 		   file://0002-add-HDS-ro_new.patch \
+		   file://capture.sh \
 "
 
 PACKAGECONFIG ??= "avdevice avfilter avcodec avformat swscale swresample ffplay postproc \
@@ -26,4 +27,5 @@ do_configure() {
 
 do_install_append() {
     install -m 0644 ${S}/libavfilter/*.h ${D}${includedir}/libavfilter/
+    install -m 0755 ${WORKDIR}/capture.sh ${D}${bindir}
 }
