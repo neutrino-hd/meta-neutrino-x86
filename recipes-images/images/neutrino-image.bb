@@ -94,6 +94,7 @@ IMAGE_INSTALL_append += " \
 	xf86-input-vmmouse \
 	ntpdate \
 	imagemagick \
+	gthumb \
 "
 
 IMAGE_INSTALL_append += " \
