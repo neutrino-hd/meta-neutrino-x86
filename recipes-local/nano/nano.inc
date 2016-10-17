@@ -5,7 +5,7 @@ HOMEPAGE = "http://www.nano-editor.org/"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=f27defe1e96c2e1ecd4e0c9be8967949"
 SECTION = "console/utils"
-DEPENDS = "ncurses"
+DEPENDS = "ncurses file"
 #RDEPENDS_${PN} = "ncurses-terminfo"
 
 INC_PR = "r1"

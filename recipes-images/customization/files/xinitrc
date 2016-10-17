@@ -1,0 +1,15 @@
+ #!/bin/sh
+ #
+ # User's .xinitrc file
+
+ # Merge custom X resources
+ xrdb -merge "${HOME}/.Xresources"
+ 
+ # Set screen resolution
+ xrandr --output default --mode 1280x960
+
+ # Map mod4 to win key
+ xmodmap -e "keycode 115 = Super_L" -e "add mod4 = Super_L"
+
+ # Start the window manager
+ exec awesome

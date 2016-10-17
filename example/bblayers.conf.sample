@@ -9,7 +9,7 @@ BBLAYERS ?= " \
   ##COREBASE##/meta \
   ##COREBASE##/meta-poky \
   ##COREBASE##/meta-yocto-bsp \
-  ##COREBASE##/meta-neutrino \
+  ##COREBASE##/meta-neutrino-x86 \
 "
 
 BBLAYERS_NON_REMOVABLE ?= " \

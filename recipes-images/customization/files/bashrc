@@ -1,0 +1,136 @@
+##  ~/.bashrc
+[ -z "$PS1" ] && return
+
+# Basic options
+export HISTCONTROL=ignoredups
+export COLORFGBG='default;default'
+
+shopt -s checkwinsize
+
+if [[ -f /etc/DIR_COLORS ]]; then
+        grep -q "^TERM ${safe_term}" /etc/DIR_COLORS && use_color=true
+elif dircolors --print-database | grep -q "^TERM ${safe_term}"; then
+        use_color=true
+fi
+
+# using the fake tuner for developement. Disable to use a real one
+export SIMULATE_FE="1"
+
+
+# Aliases
+alias nautilus='nautilus --no-desktop'
+alias t='rxvt&'
+alias ls='ls -h --color=auto'
+alias ll='ls -lha'
+alias la='ls -A'
+alias l='ls -CF'
+alias svim='sudo vim'
+alias h='cd'
+alias ..='cd ..'
+alias cd..='cd ..'
+alias ...='cd ../..'
+alias cim='vim'
+alias back='cd $OLDPWD'
+alias root='sudo su'
+alias runlevel='sudo /sbin/init'
+alias grep='grep --color=auto'
+alias dfh='df -h'
+alias gvim='gvim -geom 84x26'
+alias start='startx'
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+# Prompt
+#BLUE=`tput setf 1`
+#GREEN=`tput setf 2`
+#CYAN=`tput setf 3`
+#RED=`tput setf 4`
+#MAGENTA=`tput setf 5`
+#YELLOW=`tput setf 6`
+#WHITE=`tput setf 7`
+PS1='\[\e[0;33m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[m\] \[\e[1;32m\]\$ \[\e[m\]\[\e[1;37m\] '
+
+# Paths
+PATH=$PATH:${HOME}/bin:/usr/lib/wine/bin:/sbin:/usr/sbin
+export PATH=$PATH:/usr/local/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/wine/lib:/usr/local/lib
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
+
+# X Terminal titles
+case "$TERM" in
+xterm*|rxvt*)
+	PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+	;;
+*)
+	;;
+esac
+
+# Functions
+extract () {
+	if [ -f $1 ] ; then
+		case $1 in
+			*.tar.bz2)	tar xjf $1		;;
+			*.tar.gz)	tar xzf $1		;;
+			*.bz2)		bunzip2 $1		;;
+			*.rar)		rar x $1		;;
+			*.gz)		gunzip $1		;;
+			*.tar)		tar xf $1		;;
+			*.tbz2)		tar xjf $1		;;
+			*.tgz)		tar xzf $1		;;
+			*.zip)		unzip $1		;;
+			*.Z)		uncompress $1	;;
+			*)			echo "'$1' cannot be extracted via extract()" ;;
+		esac
+	else
+		echo "'$1' is not a valid file"
+	fi
+}
+ziprm () {
+	if [ -f $1 ] ; then
+		unzip $1
+		rm $1
+	else
+		echo "Need a valid zipfile"
+	fi
+}
+psgrep() {
+	if [ ! -z $1 ] ; then
+		echo "Grepping for processes matching $1..."
+		ps aux | grep $1 | grep -v grep
+	else
+		echo "!! Need name to grep for"
+	fi
+}
+grab() {
+	sudo chown -R ${USER} ${1:-.}
+}
+dirsize ()
+{
+du -shx * .[a-zA-Z0-9_]* 2> /dev/null | \
+egrep '^ *[0-9.]*[MG]' | sort -n > /tmp/list
+egrep '^ *[0-9.]*M' /tmp/list
+egrep '^ *[0-9.]*G' /tmp/list
+rm -f /tmp/list
+}
+
+# Bash completion
+if [ -f /etc/bash_completion ]; then
+	. /etc/bash_completion
+fi
+
+# Locale and editor
+export EDITOR=nano
+export BROWSER="epiphany '%s' &"
+
+# Language settings
+export LC_ALL=de_DE.utf8
+export BA_SRCREV=2679a347c576f5411fbe802d2f6201c94036ecb2
+loadkeys de-latin1-nodeadkeys
+
+# If working behind a proxy and using the provided oe-git-proxy script
+# you need to set ALL_PROXY based on your proxy settings.
+# Example ALL_PROXY values:
+# export ALL_PROXY=https://proxy.example.com:8080
+# export ALL_PROXY=socks://socks.example.com:1080
+

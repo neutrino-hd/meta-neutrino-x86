@@ -1,0 +1,11 @@
+--- a/INSTALL	2016-10-11 18:40:09.536529077 +0200
++++ b/INSTALL	2016-10-17 10:54:23.394434679 +0200
+@@ -34,7 +34,7 @@
+ ## If you need to, you can customise the install paths used here:
+ ##
+ PYTHON ?= python
+-prefix := /usr/local
++prefix := /usr
+ bindir := $(prefix)/bin
+ libdir := $(prefix)/lib
+ docdir := $(prefix)/share/doc

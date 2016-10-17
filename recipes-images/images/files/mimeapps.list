@@ -1,8 +1,28 @@
 
 [Default Applications]
 inode/directory=pcmanfm.desktop
-text/plain=l3afpad.desktop
+text/plain=sublime_text.desktop
 x-scheme-handler/http=epiphany.desktop
 x-scheme-handler/https=epiphany.desktop
 text/html=epiphany.desktop
-application/x-shellscript=l3afpad.desktop
+application/x-shellscript=sublime_text.desktop
+text/x-c=sublime_text.desktop
+application/msword=sublime_text.desktop
+image/gif=gtk-play.desktop
+application/x-compressed=xarchiver.desktop
+application/x-gzip=xarchiver.desktop
+text/x-h=sublime_text.desktop
+text/html=sublime_text.desktop
+video/mpeg=gtk-play.desktop
+video/x-motion-jpeg=gtk-play.desktop
+video/quicktime=gtk-play.desktop
+audio/mpeg=gtk-play.desktop
+audio/mpeg3=gtk-play.desktop
+image/png=gtk-play.desktop
+image/tiff=gtk-play.desktop
+text/x-script.phyton=sublime_text.desktop
+application/x-bytecode.python=sublime_text.desktop
+text/x-script.sh=sublime_text.desktop
+audio/wav=gtk-play.desktop
+application/pdf=evince.desktop
+image/jpg=gtk-play.desktop

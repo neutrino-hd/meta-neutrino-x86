@@ -1,0 +1,11 @@
+--- a/doc/Makefile.am	2016-10-08 21:30:21.000000000 +0200
++++ b/doc/Makefile.am	2016-10-15 15:11:43.276385027 +0200
+@@ -6,7 +6,7 @@
+ subdir = doc
+ 
+ DEFS = -DSYSCONFDIR=\"$(sysconfdir)\" -DBINDIR=\"$(bindir)\" -DHAVE_CONFIG_H=1
+-AM_CPPFLAGS = -I. -I.. -I$(includedir) -I$(top_srcdir)
++AM_CPPFLAGS = -I. -I.. -I$(top_srcdir)
+ 
+ MAKEDOC_CPP = $(CPP) $(AM_CPPFLAGS) $(DEFS) $(CPPFLAGS) -D_MAKEDOC -C
+ 
