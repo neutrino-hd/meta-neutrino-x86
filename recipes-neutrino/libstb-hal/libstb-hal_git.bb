@@ -79,6 +79,7 @@ EXTRA_OECONF_append_tripledragon += "--with-boxtype=tripledragon"
 
 do_configure_prepend() {
 	export AUTOMAKE="automake --foreign"
+	sed -i "s|GLFramebuffer(x, y)|GLFramebuffer(1280, 960)|" ${S}/generic-pc/init.cpp
 }
 
 do_install_append() {

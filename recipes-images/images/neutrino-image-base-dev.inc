@@ -83,6 +83,12 @@ fakeroot do_populate_poky_src () {
 	# set suid bit to loadkeys
 	chmod u+s ${IMAGE_ROOTFS}/usr/bin/loadkeys
 
+	# chown /etc/neutrino by builder
+	chown -R builder:builder ${IMAGE_ROOTFS}/etc/neutrino
+
+	# chown /usr/local by builder
+	chown -R builder:builder ${IMAGE_ROOTFS}/usr/local
+
 	# set ENV Variable to allow bash interactive nologin shells to source .bashrc
 	echo "ENV=~/.bashrc" >> ${IMAGE_ROOTFS}/etc/environment
 }

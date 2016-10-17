@@ -1,0 +1,11 @@
+
+--- a/configure.ac	2005-06-03 12:53:28.000000000 +0200
++++ b/configure.ac	2005-06-03 12:54:29.000000000 +0200
+@@ -27,7 +27,6 @@
+ AC_INIT([spext], [1.0], [lauri.leukkunen@nokia.com], spext)
+ AM_INIT_AUTOMAKE([dist-bzip2])
+ AM_MAINTAINER_MODE
+-AC_CONFIG_AUX_DIR(.)
+ 
+ dnl PKG_CHECK_MODULES(FIXESEXT, fixesext)
+

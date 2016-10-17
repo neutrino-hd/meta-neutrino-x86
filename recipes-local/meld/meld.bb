@@ -13,6 +13,7 @@ PV = "${SRCPV}"
 PR = "1"
 
 SRC_URI = "git://github.com/GNOME/meld.git;branch=meld-1-8;protocol=http \
+	   file://change_prefix.patch \
 "
 
 S = "${WORKDIR}/git"
@@ -20,8 +21,8 @@ S = "${WORKDIR}/git"
 
 inherit autotools-brokensep gobject-introspection gsettings
 
-do_compile() {
-	make prefix=${D}${exec_prefix} install
+do_configure() {
+	prefix=${D}/usr
 }
 
 

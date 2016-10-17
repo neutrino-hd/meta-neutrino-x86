@@ -35,7 +35,6 @@ do_install() {
 		install -m 0644 -D ${S}/Xresources        ${D}/home/$i/.Xresources
 		install -m 0644 -D ${S}/gtkrc        ${D}/home/$i/.gtkrc-2.0
 	done
-	chown -R builder:builder  ${D}/home/builder
 }
 
 CONFFILES_$PN = " \

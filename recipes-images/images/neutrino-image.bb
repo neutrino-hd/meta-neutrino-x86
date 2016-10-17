@@ -89,12 +89,13 @@ IMAGE_INSTALL_append += " \
 	sudo \
 	connman-gnome \
 	udev-extraconf \
-	gst-player-bin \
 	xf86-video-vmware \
 	xf86-input-vmmouse \
 	ntpdate \
 	imagemagick \
 	gthumb \
+	deadbeef \
+	mpv \
 "
 
 IMAGE_INSTALL_append += " \
