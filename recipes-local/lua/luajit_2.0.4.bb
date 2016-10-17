@@ -16,9 +16,9 @@ S = "${WORKDIR}/LuaJIT-${PV}"
 
 inherit autotools-brokensep
 
-BUILD_CC_ARCH_append_x86 = ' -m32'
+BUILD_CC_ARCH_append = ' -m32'
 
-INSANE_SKIP_${PN} = "already-stripped"
+INSANE_SKIP_${PN} = "already-stripped arch"
 
 do_configure_prepend() {
 	sed -i "s|/usr/local|/usr|" ${S}/Makefile

@@ -15,9 +15,13 @@ SRC_URI[sha256sum] = "3a53575fe2a75a34bc9a2b0ad92ee0f8a7dbedc05d8783f191c500060a
 
 inherit autotools-brokensep
 
+LDFLAGS_append += "--hash-style=gnu"
+
+
 do_install () {
     install -d ${D}${bindir}/ ${D}${mandir}/man1
     install -m 0755 ${S}/unclutter ${D}${bindir}/
     install -m 0644 ${S}/unclutter.man ${D}${mandir}/man1/unclutter.1
 }
 
+INSANE_SKIP_${PN} += "ldflags"

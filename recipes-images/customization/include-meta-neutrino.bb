@@ -8,11 +8,7 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/BSD-2-Clause;m
 DEPENDS += "builder"
 RDEPENDS_${PN} += "bash"
 SRC_URI = " \
-<<<<<<< 85d63d32edb14c7ffcc6a8af4206d6a73463e983
-	git://github.com/neutrino-hd/meta-neutrino-x86.git;branch=krogoth \
-=======
 	git://github.com/neutrino-hd/meta-neutrino-x86.git;branch=master \
->>>>>>> fix git url
 	file://local.conf \
 	file://bblayers.conf \
 "

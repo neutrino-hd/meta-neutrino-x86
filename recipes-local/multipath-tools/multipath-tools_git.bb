@@ -74,3 +74,6 @@ FILES_kpartx = "${base_sbindir}/kpartx \
                "
 
 RDEPENDS_${PN} += "kpartx"
+
+INSANE_SKIP_${PN} = "ldflags"
+INSANE_SKIP_kpartx = "ldflags"
