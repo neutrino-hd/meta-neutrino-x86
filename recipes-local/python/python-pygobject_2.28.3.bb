@@ -51,3 +51,6 @@ FILES_${PN}-lib = "${libdir}/lib*.so.*"
 FILES_${PN}-dev += "${bindir} ${datadir}"
 
 BBCLASSEXTEND = "native"
+
+
+

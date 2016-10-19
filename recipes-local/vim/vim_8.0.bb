@@ -1,6 +1,6 @@
 SUMMARY = "Vi IMproved - enhanced vi editor"
 SECTION = "console/utils"
-DEPENDS = "ncurses gettext-native"
+DEPENDS = "ncurses gettext-native libxt libice glib-2.0 pango libsm gtk+ libx11 gdk-pixbuf"
 # vimdiff doesn't like busybox diff
 RSUGGESTS_${PN} = "diffutils"
 LICENSE = "vim"
@@ -30,19 +30,19 @@ do_configure () {
     touch auto/config.mk auto/config.h
 }
 
-#Available PACKAGECONFIG options are gtkgui, acl, x11, tiny
-PACKAGECONFIG ??= "x11 elfutils gtkgui acl"
+#Available PACKAGECONFIG options are acl
+PACKAGECONFIG ??= "elfutils acl"
 PACKAGECONFIG += "${@bb.utils.contains('DISTRO_FEATURES', 'acl', 'acl', '', d)}"
 PACKAGECONFIG += "${@bb.utils.contains('DISTRO_FEATURES', 'selinux', 'selinux', '', d)}"
 
-PACKAGECONFIG[gtkgui] = "--enable-gtk2-test --enable-gui=gtk2,--enable-gui=no,gtk+,"
 PACKAGECONFIG[acl] = "--enable-acl,--disable-acl,acl,"
-PACKAGECONFIG[x11] = "--with-x,--without-x,xt,"
-PACKAGECONFIG[tiny] = "--with-features=tiny,--with-features=big,,"
 PACKAGECONFIG[selinux] = "--enable-selinux,--disable-selinux,libselinux,"
 PACKAGECONFIG[elfutils] = "--enable-elf-check,,elfutils,"
 
 EXTRA_OECONF = " \
+    --with-x \
+    --enable-gui=gtk2 \
+    --with-features=big \
     --disable-gpm \
     --disable-xim \
     --disable-netbeans \
@@ -103,8 +103,9 @@ RDEPENDS_${PN} = "ncurses-terminfo-base"
 # Recommend that runtime data is installed along with vim
 RRECOMMENDS_${PN} = "${PN}-syntax ${PN}-help ${PN}-tutor ${PN}-vimrc ${PN}-common"
 
-ALTERNATIVE_${PN} = "vi vim"
+ALTERNATIVE_${PN} = "vi vim gvim"
 ALTERNATIVE_TARGET = "${bindir}/${BPN}.${BPN}"
 ALTERNATIVE_LINK_NAME[vi] = "${base_bindir}/vi"
 ALTERNATIVE_LINK_NAME[vim] = "${bindir}/vim"
+ALTERNATIVE_LINK_NAME[gvim] = "${bindir}/gvim"
 ALTERNATIVE_PRIORITY = "100"

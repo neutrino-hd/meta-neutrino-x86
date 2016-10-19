@@ -32,7 +32,7 @@ gtk-auto-mnemonics = 1
 
 gtk-menu-popup-delay = 50
 
-#include "murrine.rc"
+gtk-icon-theme-name = "Tango"
 
 style "theme-default" {
 
@@ -128,7 +128,6 @@ style "theme-default" {
   fg[SELECTED]     	=  @selected_fg_color
   fg[INSENSITIVE]  	=  mix (0.08, @selected_bg_color, shade(0.51, "#dbdbdb"))
 
-  bg_pixmap[NORMAL] = "/images/WindowBg.png"
   bg[NORMAL]       	=  "#2C2C2C" #mix (0.30, @selected_bg_color, "#262626")
   bg[ACTIVE]        =  shade (0.8, @base_color) # inactive tab color
   bg[PRELIGHT]      =  mix (0.4, @selected_bg_color, shade (1.1, @base_color))
@@ -258,26 +257,6 @@ style "theme-entry" {
 
 }
 
-style "theme-frame" = "theme-wider" {
-  GtkWidget::draw-border = {3,3,3,3} #If I add pixmap like menubar it will display the WindowBg.png instead of the base[NORMAL] color for STATUSBAR...Im not sure if this would affect any other app favorably.
-  	bg_pixmap[NORMAL] = "/images/WindowBg.png"
-
-  engine "pixmap"
-{
-
-	image
-	{
-		function	= BOX
-		recolorable	= TRUE
-		state		= NORMAL
-		file		= "/images/WindowBg.png"
-		border		= { 0 ,0 , 0 ,0}
-		stretch		= FALSE
-
-	}
-}
-}
-
 style "theme-handlebox" = "theme-default" {
   bg[NORMAL] = shade (0.95, @bg_color)
 
@@ -338,20 +317,6 @@ style "theme-menubar-item" = "theme-menuitem" {
 	engine "equinox"{}
 }
 
-style "theme-toolbar" = "theme-default" {
-  bg_pixmap[NORMAL] = "/images/WindowBg.png"
-engine "pixmap"
-{
-	image
-	{
-		function	= BOX
-		recolorable	= TRUE
-		file		= "/images/WindowBg.png"
-		border		= { 0 , 0 , 0 , 0 }
-		stretch		= FALSE
-	}
-}
-}
 
 style "theme-tree" = "theme-default" {
   xthickness   = 3
@@ -439,23 +404,6 @@ style "theme-arrow" = "theme-default" {
   text[SELECTED] = "#dbdbdb"
 }
 
-style "theme-viewport" = "theme-default" {
-
-	engine "pixmap" {
-		#image {
-		#	function	= SHADOW
-		#}		
-			image
-	{
-		function	= FLAT_BOX
-		recolorable	= TRUE
-		file		= "/images/V-Box.png"
-		border		= { 6, 6 , 6 , 6 }
-		stretch		= TRUE
-	}
-	}
-}
-
 style "theme-statusbar" = "theme-default" {
 }
 
@@ -502,13 +450,11 @@ engine "equinox" {
 class "GtkWidget"       style "theme-default"
 class "GtkScale"        style "theme-scale"
 class "GtkRange"        style "theme-range"
-class "GtkFrame"        style "theme-frame"
 class "GtkEntry"        style "theme-entry"
 #class "GtkProgressBar"  style "murrine-progressbar"
 class "GtkSeparator"    style "theme-wide"
 class "GtkScrollbar"	  style "theme-scrollbar"
 class "GtkCalendar"     style "theme-calendar"
-class "GtkViewport"     style "theme-viewport"
 class "GtkStatusbar"    style "theme-statusbar"
 class "GtkArrow"        style "theme-arrow"
 
@@ -523,7 +469,6 @@ widget_class "*<GtkHandleBox>"    style "theme-handlebox"
 # Toolbar
 #class "*HandleBox"          style "theme-toolbar"
 #class "GtkToolbar"  style "murrine-toolbar"
-widget_class "*HandleBox"   style "theme-toolbar"
 
 # tooltips stuff
 widget "gtk-tooltip*"  						style "theme-tooltips"
@@ -567,37 +512,12 @@ widget_class "*<GtkStatusbar>.<GtkFrame>"    style "statusbar-frame-fix"
 ##  Panel
 #######################################################
 
-style "theme-panel" = "theme-black" {
-  xthickness   = 1
-  ythickness   = 1
-  bg_pixmap[NORMAL] = "images/panel_bg.png"
-}
-
 style "theme-panel-button" = "theme-black" {
   xthickness        = 3
   ythickness        = 2
 }
 
-widget "*PanelWidget*"                    style "theme-panel"
-#widget "*Panel*Frame*"                    style "theme-panel"
 widget_class "*PanelApplet*<GtkButton>*"  style "theme-panel-button"
-widget "*fast-user-switch-applet*"	style "theme-panel" # Workaround for Fast User Switch applet
-class "PanelApp*" 						      style "theme-panel"
-class "PanelToplevel*" 					    style "theme-panel"
-widget_class "*Panel*<GtkMenuBar>*" style:highest "theme-panel" # The panel menubar
-widget "*TomboyTray*"					      style "theme-panel" # Workaround for Tomboy
-widget "*TomboyApplet*"					    style "theme-panel"
-widget "*Net*Applet*"					      style "theme-panel"
-widget "*CPU*Applet*"					      style "theme-panel"
-widget "*dictApplet*"					      style "theme-panel"
-#XFCE panel
-widget_class "*notif*"					    style "theme-panel"
-widget_class "*Notif*"					    style "theme-panel"
-widget_class "*Tray*"					      style "theme-panel"
-widget_class "*tray*"					      style "theme-panel"
-widget "*Xfce*Panel*"					      style "theme-panel"
-class "*Xfce*Panel*"					      style "theme-panel"
-
 
 style "theme-button-panel" {
   xthickness   = 3

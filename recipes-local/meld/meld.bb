@@ -21,4 +21,8 @@ S = "${WORKDIR}/git"
 
 inherit autotools-brokensep gobject-introspection gsettings
 
-FILES_${PN} += "/usr"
+FILES_${PN} += "/usr \
+		/usr/bin \
+		/usr/lib \
+		/usr/share \		
+"

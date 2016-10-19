@@ -8,7 +8,7 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=4d92cd373abda3937c2bc47fbc49d
 
 
 SRCREV ?= "2679a347c576f5411fbe802d2f6201c94036ecb2"
-SRC_URI = "git://git.yoctoproject.org/poky;branch=master \
+SRC_URI = "git://git.yoctoproject.org/poky;branch=morty \
            file://Yocto_Build_Appliance.vmx \
            file://Yocto_Build_Appliance.vmxf \
 	   file://mimeapps.list \
@@ -70,9 +70,7 @@ IMAGE_INSTALL_append += " \
 	cmake \
 	image-config \
 	xdg-utils \
-	meld \
 	subversion \
-	epiphany \
 	xarchiver \
 	vim \
 	include-meta-neutrino \
@@ -96,6 +94,11 @@ IMAGE_INSTALL_append += " \
 	gthumb \
 	deadbeef \
 	mpv \
+	xchat \
+	gnupg \
+	epiphany \
+	meld \
+	tango-icon-theme \
 "
 
 IMAGE_INSTALL_append += " \

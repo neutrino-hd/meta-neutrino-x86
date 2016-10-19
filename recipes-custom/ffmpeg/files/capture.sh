@@ -50,5 +50,5 @@ if   [ "$1" = "-w" ]; then
 elif [ "$1" = "-a" ]; then
 	active_window
 else 
-	echo -e "missing parameter:\n -w (whole screen)\n -a (active_window)\n\nappend -c for compressed output"
+	echo -e "missing parameter:\n -w (whole screen)\n -a (active_window)\n\n append -c for compressed output"
 fi

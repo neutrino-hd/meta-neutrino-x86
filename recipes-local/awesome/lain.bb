@@ -6,7 +6,6 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=80
 DEPENDS = "lua5.2 awesome builder"
 RDEPENDS_${PN} = "bash"
 
-
 SRC_URI = "git://github.com/copycat-killer/lain.git \
 "
 
@@ -25,3 +24,4 @@ do_install() {
 
 FILES_${PN} = "/home"
 
+INSANE_SKIP_${PN} = "host-user-contaminated"

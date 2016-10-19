@@ -8,7 +8,7 @@ SRC_URI_append += " \
 		   file://capture.sh \
 "
 
-PACKAGECONFIG ??= "avdevice avfilter avcodec avformat swscale swresample ffplay postproc \
+PACKAGECONFIG ??= "avdevice avfilter avcodec avformat swscale swresample postproc \
                    bzlib gpl lzma librtmp libvorbis openssl theora x264 libroxml \
 "
 

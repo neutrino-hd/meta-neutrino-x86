@@ -95,6 +95,13 @@ fakeroot do_populate_poky_src () {
 
 IMAGE_PREPROCESS_COMMAND += "do_populate_poky_src; "
 
+# workaround: NOHDD varibale isn`t respected in do_wic_image
+IMAGE_PREPROCESS_COMMAND_append += "do_fix_image_gen;"
+do_fix_image_gen() {
+mkdir -p  ${S}/hddimg/EFI/BOOT/
+touch ${S}/hddimg/EFI/BOOT/bla
+}
+
 addtask rootfs after do_unpack
 
 python () {
@@ -103,4 +110,4 @@ python () {
 	d.delVarFlag("do_unpack", "noexec")
 }
 
-
+INSANE_SKIP_${PN} = "host-user-contaminated"

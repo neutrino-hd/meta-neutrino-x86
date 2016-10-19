@@ -31,3 +31,4 @@ do_install() {
 FILES_${PN} = "/home/builder/poky \
 "
 
+INSANE_SKIP_${PN} = "host-user-contaminated"

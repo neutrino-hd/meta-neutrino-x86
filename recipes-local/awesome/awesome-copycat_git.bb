@@ -1,7 +1,7 @@
 DESCRIPTION = "awesome copycat themes"
 HOMEPAGE = "https://github.com/copycat-killer/awesome-copycats"
-LICENSE = "GPL-2.0"
-LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
+LICENSE = "CC-BY-NC-SA-3.0"
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/CC-BY-NC-SA-3.0;md5=b285975b5e439d99c95bcba5b5a8cf39"
 
 DEPENDS = "awesome lain unclutter rxvt-unicode lua5.2 builder"
 RDEPENDS_${PN} += "make"
@@ -25,3 +25,4 @@ do_install() {
 
 FILES_${PN} = "/home"
 
+INSANE_SKIP_${PN} = "host-user-contaminated"
