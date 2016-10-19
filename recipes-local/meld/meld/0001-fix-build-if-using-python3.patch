@@ -1,0 +1,24 @@
+From eee431004f8c2a53cbf2c1b69fded6cd10541c11 Mon Sep 17 00:00:00 2001
+From: flk <f_l_k@t-online.de>
+Date: Wed, 19 Oct 2016 20:04:01 +0200
+Subject: [PATCH] fix build if using python3
+
+Signed-off-by: flk <f_l_k@t-online.de>
+---
+ tools/install_paths | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/install_paths b/tools/install_paths
+index ac9a074..babda18 100755
+--- a/tools/install_paths
++++ b/tools/install_paths
+@@ -6,5 +6,5 @@ txt = sys.stdin.read()
+ for s in sys.argv[1:]:
+     a,b = s.split("=")
+     txt = txt.replace("#%s#"%a.upper(), '"%s"' % b)
+-print txt
++print (txt)
+ 
+-- 
+2.7.4
+

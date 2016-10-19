@@ -14,6 +14,7 @@ PR = "1"
 
 SRC_URI = "git://github.com/GNOME/meld.git;branch=meld-1-8;protocol=http \
 	   file://change_prefix.patch \
+	   file://0001-fix-build-if-using-python3.patch \
 "
 
 S = "${WORKDIR}/git"
