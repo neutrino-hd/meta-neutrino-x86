@@ -1,0 +1,25 @@
+--- a/makefile	2016-05-10 11:51:35.000000000 +0200
++++ b/makefile	2016-10-21 21:37:08.684075755 +0200
+@@ -2,12 +2,12 @@
+ # Makefile for UNIX - unrar
+ 
+ # Linux using GCC
+-CXX=c++
++CXX=${CC}
+ CXXFLAGS=-O2
+ LIBFLAGS=-fPIC
+ DEFINES=-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -DRAR_SMP
+ STRIP=strip
+-LDFLAGS=-pthread
++LDFLAGS=-pthread -lstdc++
+ DESTDIR=/usr
+ 
+ # Linux using LCC
+@@ -121,7 +121,6 @@
+ unrar:	clean $(OBJECTS) $(UNRAR_OBJ)
+ 	@rm -f unrar
+ 	$(LINK) -o unrar $(LDFLAGS) $(OBJECTS) $(UNRAR_OBJ) $(LIBS)	
+-	$(STRIP) unrar
+ 
+ sfx:	WHAT=SFX_MODULE
+ sfx:	clean $(OBJECTS)

@@ -98,6 +98,7 @@ IMAGE_INSTALL_append += " \
 	gnupg \
 	meld \
 	tango-icon-theme \
+	unrar \
 "
 
 IMAGE_INSTALL_append += " \
