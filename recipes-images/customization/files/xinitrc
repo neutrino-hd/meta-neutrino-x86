@@ -6,7 +6,7 @@
  xrdb -merge "${HOME}/.Xresources"
  
  # Set screen resolution
- xrandr --output default --mode 1280x960
+ xrandr --output default --mode 1280x720
 
  # Map mod4 to win key
  xmodmap -e "keycode 115 = Super_L" -e "add mod4 = Super_L"

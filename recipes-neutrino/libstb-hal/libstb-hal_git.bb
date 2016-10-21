@@ -52,6 +52,7 @@ SRC_URI = " \
 	file://blank_480.mpg \
 	file://blank_576.mpg \
 	file://timer-wakeup.init \
+	file://0001-xgl-threads.patch;apply=yes \
 "
 
 S = "${WORKDIR}/git"
@@ -79,7 +80,6 @@ EXTRA_OECONF_append_tripledragon += "--with-boxtype=tripledragon"
 
 do_configure_prepend() {
 	export AUTOMAKE="automake --foreign"
-	sed -i "s|GLFramebuffer(x, y)|GLFramebuffer(1280, 960)|" ${S}/generic-pc/init.cpp
 }
 
 do_install_append() {

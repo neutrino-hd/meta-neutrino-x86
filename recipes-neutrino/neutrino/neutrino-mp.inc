@@ -21,5 +21,9 @@ EXTRA_OECONF = " \
 	--with-boxtype=generic \
 	--with-stb-hal-includes=${STAGING_INCDIR}/libstb-hal \
 	--with-target=native \
+	--prefix=/ \
+	--exec_prefix=/usr \
+	--includedir=${exec_prefix}/include \
+	--with-configdir=${sysconfdir}/neutrino/config \
 "
 

@@ -96,7 +96,6 @@ IMAGE_INSTALL_append += " \
 	mpv \
 	xchat \
 	gnupg \
-	epiphany \
 	meld \
 	tango-icon-theme \
 "

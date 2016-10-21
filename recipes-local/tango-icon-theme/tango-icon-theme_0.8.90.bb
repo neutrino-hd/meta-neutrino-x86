@@ -2,7 +2,7 @@ SUMMARY = "Icon theme"
 SECTION = "icons"
 HOMEPAGE = ""
 
-DEPENDS += "gtk+ icon-naming-utils-native intltool-native"
+DEPENDS += "gtk+ icon-naming-utils-native intltool-native imagemagick"
 
 LICENSE = "GPL-2.0"
 LIC_FILES_CHKSUM = "file://${S}/COPYING;md5=b66026716fdf499434f80b11851a6cdd"
@@ -21,6 +21,10 @@ inherit autotools pkgconfig gettext
 
 do_configure_prepend() {
 	sed -i "s|ICONMAP=|ICONMAP=${STAGING_LIBEXECDIR_NATIVE}/icon-name-mapping|" ${S}/configure.ac
+}
+
+do_install_append() {
+	sed -i "s|ICONMAP=${STAGING_LIBEXECDIR_NATIVE}/icon-name-mapping|ICONMAP=|" ${S}/configure.ac
 }
 
 FILES_${PN} = "/usr"

@@ -49,6 +49,9 @@ SRC_URI = "git://git.slknet.de/test-cst-next.git;protocol=http \
 	file://hardware_caps.h \
 	file://pre-wlan0.sh \
 	file://post-wlan0.sh \
+	file://mount.mdev \
+	file://icons.tar.gz \
+	file://var.tar.gz \
 "
 
 
@@ -60,9 +63,10 @@ S = "${WORKDIR}/git"
 include neutrino-mp.inc
 
 do_configure_prepend() {
-	INSTALL="`which install` -p"
-	export INSTALL
 	ln -sf ${B}/src/gui/version.h ${S}/src/gui/
+	sed -i "s|XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|${YT_DEV_KEY}|" ${S}/src/neutrino.cpp
+	sed -i "s|XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|${TMDB_DEV_KEY}|" ${S}/src/neutrino.cpp
+sed -i "s|XXXXXXXXXXXXXXXX|${SHOUTCAST_DEV_KEY}|" ${S}/src/neutrino.cpp
 }
 
 do_compile () {
@@ -72,15 +76,15 @@ do_compile () {
 
 
 do_install_prepend () {
-# change number to force rebuild "1"
 	install -d ${D}/${sysconfdir}/init.d ${D}${sysconfdir}/network ${D}/etc/neutrino/config
 	install -m 755 ${WORKDIR}/custom-poweroff.init ${D}${sysconfdir}/init.d/custom-poweroff
 	install -m 755 ${WORKDIR}/pre-wlan0.sh ${D}${sysconfdir}/network/
 	install -m 755 ${WORKDIR}/post-wlan0.sh ${D}${sysconfdir}/network/
 	install -m 644 ${WORKDIR}/timezone.xml ${D}${sysconfdir}/timezone.xml
 	install -d ${D}/var/cache
-	install -d ${D}/var/tuxbox/config/
-	install -d ${D}/var/tuxbox/plugins/
+	install -d ${D}${localstatedir}/tuxbox
+	install -d ${D}/lib/mdev/fs
+	install -m 755 ${WORKDIR}/mount.mdev ${D}/lib/mdev/fs/mount
 	echo "version=${DISTRO_VERSION}  `date +%Y-%m-%d` `date +%H:%M`"    > ${D}/.version  
 	echo "creator=${CREATOR}"             >> ${D}/.version 
 	echo "imagename=Neutrino-MP"             >> ${D}/.version 
@@ -88,6 +92,17 @@ do_install_prepend () {
 }
 
 do_install_append() {
+	install -d ${D}/share ${D}/${sysconfdir}/neutrino/bin
+	ln -s ${datadir}/tuxbox ${D}/share/
+	ln -s ${datadir}/fonts  ${D}/share/
+	if [ -d ${WORKDIR}/icons ];then
+		install -m 644 ${WORKDIR}/icons/* ${D}/usr/share/tuxbox/neutrino/icons/
+	fi
+	if [ -d ${WORKDIR}/var ];then
+		install -d ${D}/var/tuxbox/plugins/webtv
+		install -m 644 ${WORKDIR}/var/tuxbox/config/* ${D}/etc/neutrino/config
+		install -m 644 ${WORKDIR}/var/tuxbox/plugins/webtv/* ${D}/var/tuxbox/plugins/webtv
+	fi
 	chown builder:builder -R ${D}/etc/neutrino/config
 }
 
@@ -99,7 +114,14 @@ FILES_${PN} += "\
 	/var/cache \
 	/var/tuxbox/plugins \
 	/var/httpd/styles \
+	/lib \
 "
+
+pkg_preinst_${PN} () {
+	if [ -f /etc/neutrino/config/zapit/frontend.conf ];then
+		mv /etc/neutrino/config/zapit/frontend.conf /etc/neutrino/config/zapit/frontend.conf.orig
+	fi
+}
 
 pkg_postinst_${PN} () {
 	update-alternatives --install /bin/backup.sh backup.sh /usr/bin/backup.sh 100
@@ -111,4 +133,9 @@ pkg_postinst_${PN} () {
 		I=/usr/share/tuxbox/neutrino/icons
 		pic2m2v $I/mp3.jpg $I/radiomode.jpg $I/scan.jpg $I/shutdown.jpg $I/start.jpg
 	fi
+	if [ -f /etc/neutrino/config/zapit/frontend.conf.orig ];then 
+		mv /etc/neutrino/config/zapit/frontend.conf.orig /etc/neutrino/config/zapit/frontend.conf
+	fi
 }
+
+INSANE_SKIP_${PN} = "host-user-contaminated"
