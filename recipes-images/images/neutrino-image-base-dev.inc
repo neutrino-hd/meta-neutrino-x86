@@ -88,9 +88,6 @@ fakeroot do_populate_poky_src () {
 
 	# chown /usr/local by builder
 	chown -R builder:builder ${IMAGE_ROOTFS}/usr/local
-
-	# set ENV Variable to allow bash interactive nologin shells to source .bashrc
-	echo "ENV=~/.bashrc" >> ${IMAGE_ROOTFS}/etc/environment
 }
 
 IMAGE_PREPROCESS_COMMAND += "do_populate_poky_src; "

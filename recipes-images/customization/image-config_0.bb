@@ -11,7 +11,7 @@ SRC_URI = " \
 	file://00aliases \
 	file://bashrc \
 	file://xinitrc \
-	file://profile \
+	file://bash_profile \
 	file://Xresources \
 	file://gtkrc \
 "
@@ -31,7 +31,7 @@ do_install() {
 	for i in root builder;do
 		install -m 0644 -D ${S}/bashrc        ${D}/home/$i/.bashrc
 		install -m 0644 -D ${S}/xinitrc        ${D}/home/$i/.xinitrc
-		install -m 0644 -D ${S}/profile        ${D}/home/$i/.profile
+		install -m 0644 -D ${S}/bash_profile        ${D}/home/$i/.bash_profile
 		install -m 0644 -D ${S}/Xresources        ${D}/home/$i/.Xresources
 		install -m 0644 -D ${S}/gtkrc        ${D}/home/$i/.gtkrc-2.0
 	done

@@ -25,4 +25,4 @@ do_install() {
 FILES_${PN} = "/home/builder/local_build \
 	       /usr/local \
 "
-
+INSANE_SKIP_${PN} = "host-user-contaminated"

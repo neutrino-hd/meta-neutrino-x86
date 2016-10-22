@@ -5,17 +5,18 @@ PR = "r7"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-
-
 # builder user password is "builder"
 BUILDER_PASSWORD ?= ".gLibiNXn0P12"
 USERADD_PACKAGES = "${PN}"
-GROUPADD_PARAM_${PN} = "--system shutdown"
-USERADD_PARAM_${PN} = "--create-home \
+USERADD_PARAM_${PN} = "--system \
+		       --create-home \
                        --groups video,tty,audio,input,shutdown,disk \
 		       --password ${BUILDER_PASSWORD} \
-                       --user-group builder"
-
+                       --user-group \
+		       --shell /bin/bash \
+		       --uid 1200 \
+		       builder \
+"
 
 SRC_URI = "file://system-builder.conf"
 
