@@ -20,12 +20,11 @@ PR = "1"
 S = "${WORKDIR}/git"
 
 do_install() {
-	install -d ${D}/home/builder/poky/git/meta-neutrino ${D}/home/builder/poky/build/conf
+	install -d ${D}/home/builder/poky/git/meta-neutrino ${D}/home/builder/poky/git/build/conf
 	tar cfv packed_layer.tar -C ${S} .
 	tar -xf packed_layer.tar -C ${D}/home/builder/poky/git/meta-neutrino
-	chown -R builder:builder ${D}/home/builder/poky/git/meta-neutrino
-	install -m 644 ${WORKDIR}/local.conf ${D}/home/builder/poky/build/conf
-	install -m 644 ${WORKDIR}/bblayers.conf ${D}/home/builder/poky/build/conf
+	install -m 644 ${WORKDIR}/local.conf ${D}/home/builder/poky/git/build/conf
+	install -m 644 ${WORKDIR}/bblayers.conf ${D}/home/builder/poky/git/build/conf
 }
 
 FILES_${PN} = "/home/builder/poky \

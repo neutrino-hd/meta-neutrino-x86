@@ -19,7 +19,6 @@ S = "${WORKDIR}/git"
 do_install() {
 	install -d ${D}/home/builder/.config/awesome
 	cp -rf ${S}/* ${D}/home/builder/.config/awesome
-	chown -R builder:builder ${D}/home/builder/.config/awesome
 	install -m 644 ${WORKDIR}/rc.lua ${D}/home/builder/.config/awesome/rc.lua
 }
 

@@ -19,7 +19,6 @@ S = "${WORKDIR}/git"
 do_install() {
 	install -d ${D}/home/builder/.config/awesome/lain
 	cp -rf ${S}/* ${D}/home/builder/.config/awesome/lain
-	chown -R builder:builder ${D}/home/builder/.config/awesome/lain
 }
 
 FILES_${PN} = "/home"

@@ -16,7 +16,7 @@ S = "${WORKDIR}/LuaJIT-${PV}"
 
 inherit autotools-brokensep
 
-BUILD_CC_ARCH_append = ' -m32'
+BUILD_CC_ARCH_append = ' -m64'
 
 INSANE_SKIP_${PN} = "already-stripped arch"
 

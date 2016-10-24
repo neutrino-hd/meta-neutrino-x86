@@ -53,10 +53,11 @@ IMAGE_INSTALL += " \
 
 IMAGE_INSTALL_append += " \
 	kernel-devsrc \
-	glibc-locale \
 	localedef \
+	glibc-locale \
 	glibc-charmaps \
 	glibc-localedata-de-de \
+	glibc-localedata-en-us \
 	glibc-localedata-translit-combining \
 	neutrino-mp \
 	vsftpd \
@@ -87,6 +88,8 @@ IMAGE_INSTALL_append += " \
 	sudo \
 	connman-gnome \
 	udev-extraconf \
+	xf86-video-intel \
+	xf86-input-synaptics \
 	xf86-video-vmware \
 	xf86-input-vmmouse \
 	ntpdate \
@@ -99,6 +102,19 @@ IMAGE_INSTALL_append += " \
 	meld \
 	tango-icon-theme \
 	unrar \
+	sylpheed \
+	epiphany \
+	python3-pydoc \
+	python3-resource \
+	texinfo \
+	chrpath \
+	wget \
+	cpio \
+	coreutils \
+	util-linux \
+	gzip \
+	socat \
+	libsdl \
 "
 
 IMAGE_INSTALL_append += " \

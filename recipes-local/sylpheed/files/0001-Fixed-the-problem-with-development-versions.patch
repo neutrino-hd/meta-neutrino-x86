@@ -1,0 +1,251 @@
+From 1f63a8fb9214a5f1d8b82a6e111a2a286d2d0ba4 Mon Sep 17 00:00:00 2001
+From: Sergio Costas <raster@rastersoft.com>
+Date: Sun, 11 Jan 2015 18:17:35 +0100
+Subject: [PATCH] Fixed the problem with development versions
+
+Signed-off-by: flk <f_l_k@t-online.de>
+---
+ cmake/ValaVersion.cmake       | 13 +++++++------
+ data/cmake/ValaVersion.cmake  | 13 +++++++------                |  5 +++++
+ src/CMakeLists.txt            |  8 ++------
+ src/autovala.vala             |  2 +-
+ src/autovalaLib/findVala.vala |  5 -----
+ 12 files changed, 42 insertions(+), 34 deletions(-)
+
+diff --git a/README.md b/README.md
+index 3abf57d..840145d 100644
+--- a/README.md
++++ b/README.md
+@@ -54,7 +54,10 @@ and enjoy.
+ 
+ 
+ ## History of versions ##
+-* version 0.99.11 (2014-11-27)
++* version 0.99.12 (2015-01-11)
++    * Fixed a bug when using development versions of Vala compiler
++    * Allows to use alternative CMAKE files
++* version 0.99.11 (2014-12-12)
+     * Can create automagically the metadata for .deb and .rpm packages
+     * Now honors the c_library parameters also in libraries
+     * Now only updates the project view in editor plugins when the project file has changed.
+diff --git a/autovala.avprj b/autovala.avprj
+index e7ab011..bcf0eed 100644
+--- a/autovala.avprj
++++ b/autovala.avprj
+@@ -10,10 +10,7 @@ custom: data/debian share/autovala/debian
+ 
+ 
+ vala_binary: src/autovala
+-*version: 0.99.11
+-if DEBUG
+-compile_options: -g --fatal-warnings
+-end
++*version: 0.99.12
+ compile_c_options: -O2
+ vala_local_package: AutoVala
+ *vala_package: posix
+diff --git a/cmake/ValaVersion.cmake b/cmake/ValaVersion.cmake
+index 9279702..07946de 100644
+--- a/cmake/ValaVersion.cmake
++++ b/cmake/ValaVersion.cmake
+@@ -106,7 +106,8 @@ macro(ensure_vala_version ensure_version)
+ 		endif(NOT VALA_VERSION)
+ 
+ 		# this code allows to identify development versions as the right version
+-		# e.g. 0.19.1 -> 0.20 ; 0.20.1 -> 0.20 ; 0.24.0.2-2235 -> 0.26
++		# e.g. 0.19.1 -> 0.20 ; 0.20.1 -> 0.20 ;
++		# But this code seems to not be fine 0.24.0.2-2235 -> 0.26
+ 		# Thanks to Yannick Inizan
+ 		string(REPLACE "Vala" "" "VALA_VERSION" ${VALA_VERSION})
+ 		string(STRIP ${VALA_VERSION} "VALA_VERSION")
+@@ -116,11 +117,11 @@ macro(ensure_vala_version ensure_version)
+ 		list(GET VALA_LIST 2 rev_ver)
+ 		math(EXPR is_odd "${min_ver} % 2")
+ 		list(LENGTH VALA_LIST len)
+-		if((${is_odd} EQUAL 1))
+-			math(EXPR min_ver "${min_ver} + 1")
+-		elseif(len GREATER 3)
+-			math(EXPR min_ver "${min_ver} + 2")
+-		endif()
++		#if((${is_odd} EQUAL 1))
++		#	math(EXPR min_ver "${min_ver} + 1")
++		#elseif(len GREATER 3)
++		#	math(EXPR min_ver "${min_ver} + 2")
++		#endif()
+ 
+ 		set(VALA_SVERSION "${maj_ver}.${min_ver}" CACHE INTERNAL "")
+ 
+diff --git a/data/cmake/ValaVersion.cmake b/data/cmake/ValaVersion.cmake
+index 9279702..07946de 100644
+--- a/data/cmake/ValaVersion.cmake
++++ b/data/cmake/ValaVersion.cmake
+@@ -106,7 +106,8 @@ macro(ensure_vala_version ensure_version)
+ 		endif(NOT VALA_VERSION)
+ 
+ 		# this code allows to identify development versions as the right version
+-		# e.g. 0.19.1 -> 0.20 ; 0.20.1 -> 0.20 ; 0.24.0.2-2235 -> 0.26
++		# e.g. 0.19.1 -> 0.20 ; 0.20.1 -> 0.20 ;
++		# But this code seems to not be fine 0.24.0.2-2235 -> 0.26
+ 		# Thanks to Yannick Inizan
+ 		string(REPLACE "Vala" "" "VALA_VERSION" ${VALA_VERSION})
+ 		string(STRIP ${VALA_VERSION} "VALA_VERSION")
+@@ -116,11 +117,11 @@ macro(ensure_vala_version ensure_version)
+ 		list(GET VALA_LIST 2 rev_ver)
+ 		math(EXPR is_odd "${min_ver} % 2")
+ 		list(LENGTH VALA_LIST len)
+-		if((${is_odd} EQUAL 1))
+-			math(EXPR min_ver "${min_ver} + 1")
+-		elseif(len GREATER 3)
+-			math(EXPR min_ver "${min_ver} + 2")
+-		endif()
++		#if((${is_odd} EQUAL 1))
++		#	math(EXPR min_ver "${min_ver} + 1")
++		#elseif(len GREATER 3)
++		#	math(EXPR min_ver "${min_ver} + 2")
++		#endif()
+ 
+ 		set(VALA_SVERSION "${maj_ver}.${min_ver}" CACHE INTERNAL "")
+ 
+diff --git a/doc/autovala-tricks.7 b/doc/autovala-tricks.7
+index 26e4fd4..aab5c61 100644
+--- a/doc/autovala-tricks.7
++++ b/doc/autovala-tricks.7
+@@ -8,6 +8,8 @@
+ <p>Autovala-tricks(1)</p>
+ <h1 id="name">NAME</h1>
+ <p>Autovala tricks - Several tricks for Autovala</p>
++<h2 id="using-alternative-cmake-files">Using alternative CMAKE files</h2>
++<p>When updating the CMAKE files for Vala, Autovala will check if the <strong>AUTOVALA_CMAKE_SCRIPT</strong> environment variable is defined with a path. If that is the case, it will copy from that path the CMAKE scripts for the project, instead of using the default ones.</p>
+ <h2 id="creating-packages-for-linux-distributions">Creating packages for linux distributions</h2>
+ <p>AutoVala can create the metadata files for creating .deb and .rpm source packages. It should be easy to add support for other package systems.</p>
+ <p>To generate .deb files, just run <strong>autovala deb</strong>. It will create a folder called <strong>debian</strong> and inside will be the <strong>control</strong>, <strong>changelog</strong> and <strong>rules</strong> files, and, if needed, <strong>preinst</strong>, <strong>prerm</strong>, <strong>postinst</strong> and <strong>postrm</strong>. The <strong>control</strong> file will have only the bare minimum, but autovala will include inside the dependencies needed both for building the package, and for running the project. These dependencies are generated automatically from the information extracted from the project. The <strong>changelog</strong> will add a boilerplate line only if there is no line for the current version, so it is strongly recommended to edit and complete this file after doing the automatic generation.</p>
+diff --git a/doc/autovala.1 b/doc/autovala.1
+index e152931..b3e43c0 100644
+--- a/doc/autovala.1
++++ b/doc/autovala.1
+@@ -20,14 +20,14 @@
+ </ul>
+ <p>Autovala greatly simplifies the process of working with Vala because:</p>
+ <ul>
+-<li>Automatically determines the vala packages and libraries needed to compile<br /> and run the project, by inspecting the source code<br /></li>
++<li>Automatically determines the vala packages and libraries needed to compile<br />and run the project, by inspecting the source code<br /></li>
+ <li>Automatically generates the .vapi and pkg-config files for libraries<br /></li>
+-<li>Automatically determinates the final destination for an icon, by checking<br /> its type (svg or png) and, in the later case, its size.<br /></li>
+-<li>Automatically generates manpages from text files in several possible input<br /> format (markdown, html, latex...).<br /></li>
+-<li>Greatly simplifies creating libraries in Vala, or a project with a binary<br /> that uses a library defined in the same project.<br /></li>
++<li>Automatically determinates the final destination for an icon, by checking<br />its type (svg or png) and, in the later case, its size.<br /></li>
++<li>Automatically generates manpages from text files in several possible input<br />format (markdown, html, latex...).<br /></li>
++<li>Greatly simplifies creating libraries in Vala, or a project with a binary<br />that uses a library defined in the same project.<br /></li>
+ <li>Automatically generates the metadata files to create .DEB and .RPM packages.<br /></li>
+ <li>Easily integrates unitary tests for each binary in the project.<br /></li>
+-<li>Can generate automatically DBUS bindings by using the DBUS introspection<br /> capabilities.<br /></li>
++<li>Can generate automatically DBUS bindings by using the DBUS introspection<br />capabilities.<br /></li>
+ <li>Automatically generates the list of source files for GETTEXT.<br /></li>
+ <li>Simplifies mixing C and Vala source files.</li>
+ </ul>
+diff --git a/doc/versions b/doc/versions
+index 1d8ed73..1cabf55 100644
+--- a/doc/versions
++++ b/doc/versions
+@@ -6,6 +6,11 @@
+ <div class="main_frame">
+ <p><a href="index.html">Home</a></p>
+ <ul>
++<li><p>version 0.99.12 (2015-01-11)</p>
++<ul>
++<li>Fixed a bug when using development versions of Vala compiler<br /></li>
++<li>Allows to use alternative CMAKE files<br /></li>
++</ul></li>
+ <li><p>version 0.99.11 (2014-11-25)</p>
+ <ul>
+ <li>Can create automagically the metadata for .deb and .rpm packages<br /></li>
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 89dc4a5..b989d98 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -7,13 +7,13 @@ set (GETTEXT_PACKAGE "autovala")
+ set (RELEASE_NAME "autovala")
+ set (CMAKE_C_FLAGS "")
+ set (PREFIX ${CMAKE_INSTALL_PREFIX})
+-set (VERSION "0.99.11")
++set (VERSION "0.99.12")
+ set (TESTSRCDIR "${CMAKE_SOURCE_DIR}")
+ set (DOLLAR "$")
+ 
+ configure_file (${CMAKE_SOURCE_DIR}/src/Config.vala.cmake ${CMAKE_BINARY_DIR}/src/Config.vala)
+ add_definitions(-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\")
+-set (VERSION "0.99.11")
++set (VERSION "0.99.12")
+ add_definitions (${DEPS_CFLAGS})
+ include_directories ( ${CMAKE_BINARY_DIR}/src/autovalaLib )
+ link_libraries ( ${DEPS_LIBRARIES} -lAutoVala )
+@@ -39,10 +39,6 @@ endif ()
+ if (DEBUG)
+ 	set (COMPILE_OPTIONS ${COMPILE_OPTIONS} -D DEBUG)
+ endif ()
+-if (DEBUG)
+-	set (COMPILE_OPTIONS ${COMPILE_OPTIONS} -g --fatal-warnings )
+-endif ()
+-
+ 
+ set (CMAKE_C_FLAGS ${CMAKE_C_FLAGS} " -O2 " )
+ 
+diff --git a/src/autovala.vala b/src/autovala.vala
+index a22f5f1..9093270 100644
+--- a/src/autovala.vala
++++ b/src/autovala.vala
+@@ -20,7 +20,7 @@ using GLib;
+ using Gee;
+ using Posix;
+ 
+-//project version = 0.99.11
++//project version = 0.99.12
+ 
+ void help() {
+ 
+diff --git a/src/autovalaLib/findVala.vala b/src/autovalaLib/findVala.vala
+index 1f41170..6886159 100644
+--- a/src/autovalaLib/findVala.vala
++++ b/src/autovalaLib/findVala.vala
+@@ -152,11 +152,6 @@ namespace AutoVala {
+ 						var numbers=element.split(".");
+ 						this.major=int.parse(numbers[0]);
+ 						this.minor=int.parse(numbers[1]);
+-						if ((this.minor % 2) != 0) {
+-							this.minor++; // odd minor numbers are development versions, so bump to next version
+-						} else if (numbers.length > 3) {
+-							this.minor+=2; // even minor numbers and more than three version numbers are also development versions
+-						}
+ 						return false;
+ 					}
+ 				}
+diff --git a/wiki/autovala-tricks.7.md b/wiki/autovala-tricks.7.md
+index 47a9be2..d7866be 100644
+--- a/wiki/autovala-tricks.7.md
++++ b/wiki/autovala-tricks.7.md
+@@ -5,6 +5,11 @@ Autovala-tricks(1)
+ Autovala tricks - Several tricks for Autovala
+ 
+ 
++## Using alternative CMAKE files
++
++When updating the CMAKE files for Vala, Autovala will check if the **AUTOVALA_CMAKE_SCRIPT** environment variable is defined with a path. If that is the case, it will copy from that path the CMAKE scripts for the project, instead of using the default ones.
++
++
+ ## Creating packages for linux distributions
+ 
+ AutoVala can create the metadata files for creating .deb and .rpm source packages. It should be easy to add support for other package systems.
+diff --git a/wiki/versions.md b/wiki/versions.md
+index b789e36..39cddd1 100644
+--- a/wiki/versions.md
++++ b/wiki/versions.md
+@@ -1,3 +1,6 @@
++* version 0.99.12 (2015-01-11)
++    * Fixed a bug when using development versions of Vala compiler
++    * Allows to use alternative CMAKE files
+ * version 0.99.11 (2014-11-25)
+     * Can create automagically the metadata for .deb and .rpm packages
+     * Now honors the c_library parameters also in libraries
+-- 
+2.7.4
+

@@ -71,7 +71,7 @@ LOCALE_GENERATION_WITH_CROSS-LOCALEDEF = "1"
 ### Machine Selection
 
 # This sets the default machine to be qemux86 if no other machine is selected. Possible values genericx86 or genericx86_64
-MACHINE ?= "genericx86"
+MACHINE ?= "genericx86-64"
 
 TCLIBC ?= "glibc"
 

@@ -103,7 +103,6 @@ do_install_append() {
 		install -m 644 ${WORKDIR}/var/tuxbox/config/* ${D}/etc/neutrino/config
 		install -m 644 ${WORKDIR}/var/tuxbox/plugins/webtv/* ${D}/var/tuxbox/plugins/webtv
 	fi
-	chown builder:builder -R ${D}/etc/neutrino/config
 }
 
 FILES_${PN} += "\

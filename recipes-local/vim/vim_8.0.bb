@@ -74,6 +74,10 @@ do_install() {
     mv ${D}${bindir}/${BPN} ${D}${bindir}/${BPN}.${BPN}
 }
 
+do_install_append() {
+    rm -rf ${D}${datadir}/applications/vim.desktop
+}
+
 PARALLEL_MAKEINST = ""
 
 PACKAGES =+ "${PN}-common ${PN}-syntax ${PN}-help ${PN}-tutor ${PN}-vimrc ${PN}-tools"

@@ -86,6 +86,9 @@ fakeroot do_populate_poky_src () {
 	# chown /etc/neutrino by builder
 	chown -R builder:builder ${IMAGE_ROOTFS}/etc/neutrino
 
+	# chown ~/ by builder
+	chown -R builder:builder ${IMAGE_ROOTFS}/home/builder
+
 	# chown /usr/local by builder
 	chown -R builder:builder ${IMAGE_ROOTFS}/usr/local
 }
