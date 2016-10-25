@@ -38,6 +38,8 @@ PRSERV_HOST = "localhost:0"
 
 DEFAULT_TIMEZONE = "Europe/Berlin"
 
+INHERIT += "rm_work"
+
 ### Disk Space Monitoring during the build
 
 BB_DISKMON_DIRS = "\

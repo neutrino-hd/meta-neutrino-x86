@@ -7,31 +7,48 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=4d92cd373abda3937c2bc47fbc49d
                     file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
 
 
-SRCREV ?= "2679a347c576f5411fbe802d2f6201c94036ecb2"
+SRCREV ?= "fb1df184b96e0b5a29f330ba4fbf6555f9034eda"
 SRC_URI = "git://git.yoctoproject.org/poky;branch=morty \
+	   file://system-builder.conf \
            file://Yocto_Build_Appliance.vmx \
            file://Yocto_Build_Appliance.vmxf \
 	   file://mimeapps.list \
            file://README_VirtualBox_Guest_Additions.txt \
           "
 
-include neutrino-image-base-dev.inc
+inherit useradd
 
-DEPENDS = "zip-native builder"
-
-IMAGE_FEATURES_append += " \
-	dev-pkgs \
-	tools-sdk \
-	tools-debug \
-	eclipse-debug \
-	tools-profile \
-	tools-testapps \
-	debug-tweaks \
+# builder user password is "builder"
+BUILDER_PASSWORD ?= ".gLibiNXn0P12"
+USERADD_PACKAGES = "${PN}"
+USERADD_PARAM_${PN} = "--system \
+		       --create-home \
+                       --groups video,tty,audio,input,shutdown,disk \
+		       --password ${BUILDER_PASSWORD} \
+                       --user-group \
+		       --shell /bin/bash \
+		       --uid 1200 \
+		       builder \
 "
 
-EXTRA_IMAGE_FEATURES_append = "dbg-pkgs \
-			       ptest-pkgs \
-"
+FILES_${PN} = "${sysconfdir}/dbus-1/system.d/system-builder.conf"
+
+
+
+include neutrino-image-base-dev.inc 
+
+IMAGE_FEATURES_append += "dev-pkgs tools-sdk" 
+
+IMAGE_FEATURES_append += "${@'' if IMAGETYPE != 'debug' else 'tools-debug eclipse-debug tools-profile tools-testapps debug-tweaks'}"
+
+EXTRA_FEATURES_append += "${@'' if IMAGETYPE != 'debug' else 'dbg-pkgs ptest-pkgs'}"
+
+
+DEPENDS = "zip-native"
+
+do_install_append () {
+    install -D -m 0644 ${WORKDIR}/system-builder.conf ${D}${sysconfdir}/dbus-1/system.d/system-builder.conf
+}
 
 IMAGE_INSTALL += " \
 	${NEUTRINO_FLAVOUR} \
@@ -67,6 +84,7 @@ IMAGE_INSTALL_append += " \
 	mc \
 	bash \
 	nano \
+	connman-gnome \ 
 	git \
 	samba \
 	cmake \
@@ -108,6 +126,7 @@ IMAGE_INSTALL_append += " \
 	python3-resource \
 	texinfo \
 	chrpath \
+	libxml2-python \
 	wget \
 	cpio \
 	coreutils \

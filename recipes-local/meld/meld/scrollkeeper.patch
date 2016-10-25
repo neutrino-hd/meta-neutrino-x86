@@ -1,0 +1,98 @@
+From ac29de3ab1130129635655fb094e431bdb5b2a8a Mon Sep 17 00:00:00 2001
+From: flk <f_l_k@t-online.de>
+Date: Tue, 25 Oct 2016 22:22:02 +0200
+Subject: [PATCH] dont use scrollkeeper
+
+Signed-off-by: flk <f_l_k@t-online.de>
+---
+ help/C/Makefile  | 4 ----
+ help/es/Makefile | 3 ---
+ help/fr/Makefile | 3 ---
+ 3 files changed, 10 deletions(-)
+
+diff --git a/help/C/Makefile b/help/C/Makefile
+index df67ba6..3c8a0d4 100644
+--- a/help/C/Makefile
++++ b/help/C/Makefile
+@@ -6,26 +6,22 @@ LANG := $(notdir $(CURDIR))
+ XML_DIR_ := $(DESTDIR)$(helpdir)/meld/$(LANG)
+ OMF_NAME := meld-$(LANG).omf
+ OMF_DIR_ := $(DESTDIR)$(sharedir)/omf/meld
+-OMF_STATE:= $(DESTDIR)$(localstatedir)/lib/scrollkeeper
+ INST_XML := $(helpdir_)/$(LANG)/meld.xml
+ 
+ .PHONY : all
+ all $(OMF_NAME).install : $(OMF_NAME)
+-	scrollkeeper-preinstall $(INST_XML) $(OMF_NAME) $(OMF_NAME).install
+ 
+ .PHONY : install
+ install : $(OMF_NAME).install
+ 	-mkdir -m 755 -p $(OMF_DIR_) $(XML_DIR_)
+ 	install -m 644 meld.xml $(XML_DIR_)/meld.xml
+ 	-install -m 644 $< $(OMF_DIR_)/$(OMF_NAME)
+-	-scrollkeeper-update -p $(OMF_STATE) -o $(OMF_DIR_)
+ 
+ .PHONY : uninstall
+ uninstall :
+ 	-rm -f $(OMF_DIR_)/$(OMF_NAME) \
+ 		$(XML_DIR_)/meld.xml
+ 	-rmdir $(XML_DIR_)
+-	-scrollkeeper-update -p $(OMF_STATE) -o $(OMF_DIR_)
+ 
+ .PHONY : clean
+ clean :
+diff --git a/help/es/Makefile b/help/es/Makefile
+index d0dde60..a70fb75 100644
+--- a/help/es/Makefile
++++ b/help/es/Makefile
+@@ -11,21 +11,18 @@ INST_XML := $(helpdir_)/$(LANG)/meld.xml
+ 
+ .PHONY : all
+ all $(OMF_NAME).install : $(OMF_NAME)
+-	scrollkeeper-preinstall $(INST_XML) $(OMF_NAME) $(OMF_NAME).install
+ 
+ .PHONY : install
+ install : $(OMF_NAME).install
+ 	-mkdir -m 755 -p $(OMF_DIR_) $(XML_DIR_)
+ 	install -m 644 meld.$(LANG).xml $(XML_DIR_)/meld.xml
+ 	-install -m 644 $< $(OMF_DIR_)/$(OMF_NAME)
+-	-scrollkeeper-update -p $(OMF_STATE) -o $(OMF_DIR_)
+ 
+ .PHONY : uninstall
+ uninstall :
+ 	-rm -f $(OMF_DIR_)/$(OMF_NAME) \
+ 		$(XML_DIR_)/meld.xml
+ 	-rmdir $(XML_DIR_)
+-	-scrollkeeper-update -p $(OMF_STATE) -o $(OMF_DIR_)
+ 
+ .PHONY : clean
+ clean :
+diff --git a/help/fr/Makefile b/help/fr/Makefile
+index d0dde60..a70fb75 100644
+--- a/help/fr/Makefile
++++ b/help/fr/Makefile
+@@ -11,21 +11,18 @@ INST_XML := $(helpdir_)/$(LANG)/meld.xml
+ 
+ .PHONY : all
+ all $(OMF_NAME).install : $(OMF_NAME)
+-	scrollkeeper-preinstall $(INST_XML) $(OMF_NAME) $(OMF_NAME).install
+ 
+ .PHONY : install
+ install : $(OMF_NAME).install
+ 	-mkdir -m 755 -p $(OMF_DIR_) $(XML_DIR_)
+ 	install -m 644 meld.$(LANG).xml $(XML_DIR_)/meld.xml
+ 	-install -m 644 $< $(OMF_DIR_)/$(OMF_NAME)
+-	-scrollkeeper-update -p $(OMF_STATE) -o $(OMF_DIR_)
+ 
+ .PHONY : uninstall
+ uninstall :
+ 	-rm -f $(OMF_DIR_)/$(OMF_NAME) \
+ 		$(XML_DIR_)/meld.xml
+ 	-rmdir $(XML_DIR_)
+-	-scrollkeeper-update -p $(OMF_STATE) -o $(OMF_DIR_)
+ 
+ .PHONY : clean
+ clean :
+-- 
+2.7.4
+
