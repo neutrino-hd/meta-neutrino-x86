@@ -19,7 +19,8 @@ LICENSE_PATH += "${YOCTO_BASEDIR}/meta-neutrino/custom-licenses"
 
 PACKAGE_CLASSES ?= "package_ipk"
 
-SDKMACHINE ?= "i686"
+#SDKMACHINE ?= "i686"
+SDKMACHINE = "x86_64"
 
 DISTRO_FEATURES_LIBC_append = "x11 opengl pam ipv6"
 
@@ -27,6 +28,7 @@ DISTRO_FEATURES_append += "systemd"
 VIRTUAL-RUNTIME_init_manager = "systemd"
 DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
 VIRTUAL-RUNTIME_initscripts = ""
+
 
 USER_CLASSES ?= "buildstats image-mklibs"
 
@@ -46,11 +48,7 @@ BB_DISKMON_DIRS = "\
     ABORT,${DL_DIR},100M,1K \
     ABORT,${SSTATE_DIR},100M,1K" 
 
-# Uncomment this to delete work files as the build progresses rather than
-# keeping them around, which saves a lot of disk space. However, if any
-# problems arise it can be useful to have the work files to examine, which
-# is why it is off by default.
-INHERIT += "rm_work"
+
 
 ### Qemu configuration
 
@@ -61,11 +59,9 @@ ASSUME_PROVIDED += "libsdl-native"
 CONF_VERSION = "1"
 
 
-### Language Settings
-
-IMAGE_LINGUAS ?= "de-de"
+IMAGE_LINGUAS ?= "de-de en-us"
 ENABLE_BINARY_LOCALE_GENERATION ?= "1"
-GLIBC_GENERATE_LOCALES = "de_DE.UTF-8"
+GLIBC_GENERATE_LOCALES = "de_DE.UTF-8 en_US.UTF-8"
 LOCALE_GENERATION_WITH_CROSS-LOCALEDEF = "1"
 
 ### Machine Selection
@@ -73,6 +69,7 @@ LOCALE_GENERATION_WITH_CROSS-LOCALEDEF = "1"
 # This sets the default machine to be qemux86 if no other machine is selected. Possible values genericx86 or genericx86_64
 MACHINE ?= "genericx86-64"
 
+# Choose wether to use glibc or uclibc (only coolstream-hd2)
 TCLIBC ?= "glibc"
 
 DISTRO = "poky"
@@ -91,22 +88,25 @@ ROOTPW = ""
 PLUGIN_INSTALL += "msgbox tuxcom shellexec"
 
 # Add Image Maintainer here
-CREATOR = "builder"
+CREATOR = ""
 
 # set your git account name
-GIT_USER = "builder"
+GIT_USER = ""
 
 # set your email adress
-MAIL = "builder@builder.org"
+MAIL = ""
 
 # set your email password. it will be stored in /etc/msmtprc in cleartext (for now)
-PASSWD = "builder"
+PASSWD = ""
 
 # set your email provider. possible entries are: gmail, t-online, gmx, web.de, aol, mail.de, outlook
 PROVIDER = "t-online"
 
 # Web server from which packages and images are updated. Defaults to local folder on your cst harddrive.
-IPK_FEED_SERVER = "file:////home/builder/poky/build/tmp/deploy/ipk"
+IPK_FEED_SERVER = "file:////home/builder/poky/git/build/tmp/deploy/ipk"
+IMAGE_LOCATION = "file:////home/builder/poky/git/build/tmp/deploy/images/genericx86-64"
+RELEASE_TEXT_LOCATION = "" 
+#RELEASE_TEXT_LOCATION_HOST = ""
 
 # put your yt_dev_id here, if you need working youtube playback
 YT_DEV_KEY = ""
@@ -115,6 +115,9 @@ TMDB_DEV_KEY = ""
 # put your shoutcast_dev_id here, if you need shoutcast functionality
 SHOUTCAST_DEV_KEY = ""
 
+# comment out the following line if you want to build ffmpeg from the official git master branch
+PREFERRED_VERSION_ffmpeg = "3.%" 
+
+
+
 IMAGETYPE = "normal"
-
-

@@ -60,6 +60,7 @@ IMAGE_INSTALL_append += " \
 	glibc-localedata-en-us \
 	glibc-localedata-translit-combining \
 	neutrino-mp \
+	neutrino-feed-config \
 	vsftpd \
 	pugixml \
 	firmware \
@@ -80,13 +81,12 @@ IMAGE_INSTALL_append += " \
 	evince \
 	gparted \
 	awesome \
-	sublime \
+	geany \
 	nautilus \
 	settings-daemon \
 	shutdown-desktop \
 	libsdl \
 	sudo \
-	connman-gnome \
 	udev-extraconf \
 	xf86-video-intel \
 	xf86-input-synaptics \
