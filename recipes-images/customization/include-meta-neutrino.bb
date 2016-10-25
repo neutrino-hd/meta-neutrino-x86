@@ -19,7 +19,7 @@ PR = "1"
 S = "${WORKDIR}/git"
 
 do_install() {
-	install -d ${D}/home/builder/poky/git/meta-neutrino ${D}/home/builder/poky/git/build/conf
+	install -d ${D}/home/builder/poky/git/meta-neutrino-x86 ${D}/home/builder/poky/git/build/conf
 	tar cfv packed_layer.tar -C ${S} .
 	tar -xf packed_layer.tar -C ${D}/home/builder/poky/git/meta-neutrino-x86
 	install -m 644 ${YOCTO_BASEDIR}/meta-neutrino-x86/example/local.conf.sample ${D}/home/builder/poky/git/build/conf/local.conf

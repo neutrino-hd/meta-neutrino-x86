@@ -69,9 +69,6 @@ LOCALE_GENERATION_WITH_CROSS-LOCALEDEF = "1"
 # This sets the default machine to be qemux86 if no other machine is selected. Possible values genericx86 or genericx86_64
 MACHINE ?= "genericx86-64"
 
-# Choose wether to use glibc or uclibc (only coolstream-hd2)
-TCLIBC ?= "glibc"
-
 DISTRO = "poky"
 
 ### Image Settings
@@ -88,13 +85,13 @@ ROOTPW = ""
 PLUGIN_INSTALL += "msgbox tuxcom shellexec"
 
 # Add Image Maintainer here
-CREATOR = ""
+CREATOR = "builder"
 
 # set your git account name
-GIT_USER = ""
+GIT_USER = "builder"
 
 # set your email adress
-MAIL = ""
+MAIL = "builder@build.org"
 
 # set your email password. it will be stored in /etc/msmtprc in cleartext (for now)
 PASSWD = ""
@@ -114,10 +111,5 @@ YT_DEV_KEY = ""
 TMDB_DEV_KEY = ""
 # put your shoutcast_dev_id here, if you need shoutcast functionality
 SHOUTCAST_DEV_KEY = ""
-
-# comment out the following line if you want to build ffmpeg from the official git master branch
-PREFERRED_VERSION_ffmpeg = "3.%" 
-
-
 
 IMAGETYPE = "normal"
