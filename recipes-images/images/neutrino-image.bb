@@ -134,6 +134,7 @@ IMAGE_INSTALL_append += " \
 	gzip \
 	socat \
 	libsdl \
+	python-argparse \
 "
 
 IMAGE_INSTALL_append += " \
