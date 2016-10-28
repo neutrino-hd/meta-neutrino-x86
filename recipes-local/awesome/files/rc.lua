@@ -64,12 +64,12 @@ editor     = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
 -- user defined
-browser    = "google-chrome-stable %F"
-gui_editor = "subl %F"
-graphics   = "gthumb %F"
-mail       = "sylpheed %F"
+browser    = "google-chrome-stable"
+gui_editor = "subl"
+graphics   = "gthumb"
+mail       = "sylpheed"
 iptraf     = terminal .. " -g 180x54-20+34 -e sudo iptraf -i all "
-musicplr   = "deadbeef %F"
+musicplr   = "deadbeef"
 
 local layouts = {
     awful.layout.suit.floating,
