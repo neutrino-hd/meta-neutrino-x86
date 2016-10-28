@@ -64,12 +64,12 @@ editor     = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
 -- user defined
-browser    = "epiphany"
+browser    = "google-chrome-stable"
 gui_editor = "subl"
 graphics   = ""
-mail       = terminal .. " -e mutt "
-iptraf     = terminal .. " -g 180x54-20+34 -e sudo iptraf-ng -i all "
-musicplr   = terminal .. " -g 130x34-320+16 -e ncmpcpp "
+mail       = terminal .. " -e sylpheed "
+iptraf     = terminal .. " -g 180x54-20+34 -e sudo iptraf -i all "
+musicplr   = terminal .. " -g 130x34-320+16 -e deadbeef "
 
 local layouts = {
     awful.layout.suit.floating,
@@ -212,7 +212,7 @@ volumewidget = lain.widgets.alsa({
             volicon:set_image(beautiful.widget_vol_mute)
         elseif tonumber(volume_now.level) == 0 then
             volicon:set_image(beautiful.widget_vol_no)
-        elseif tonumber(volume_now.levelrrr) <= 50 then
+        elseif tonumber(volume_now.level) <= 50 then
             volicon:set_image(beautiful.widget_vol_low)
         else
             volicon:set_image(beautiful.widget_vol)
@@ -373,7 +373,7 @@ globalkeys = awful.util.table.join(
     awful.key({ altkey }, "p", function() os.execute("screenshot") end),
 
   --Application start
-     awful.key({ modkey }, "F1", function () awful.util.spawn_with_shell("epiphany") end),
+     awful.key({ modkey }, "F1", function () awful.util.spawn_with_shell("google-chrome-stable") end),
      awful.key({ modkey }, "F2", function () awful.util.spawn_with_shell("nautilus --no-desktop") end),
      awful.key({ modkey }, "F3", function () awful.util.spawn_with_shell("subl") end),
      awful.key({ modkey }, "F4", function () awful.util.spawn_with_shell("meld") end),

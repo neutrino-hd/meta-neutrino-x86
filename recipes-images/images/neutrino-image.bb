@@ -80,10 +80,11 @@ IMAGE_INSTALL_append += " \
 	neutrino-feed-config \
 	vsftpd \
 	pugixml \
-	firmware \
 	mc \
 	bash \
 	nano \
+	connman \
+	connman-client \
 	connman-gnome \ 
 	git \
 	samba \
@@ -99,7 +100,7 @@ IMAGE_INSTALL_append += " \
 	evince \
 	gparted \
 	awesome \
-	geany \
+	sublime \
 	nautilus \
 	settings-daemon \
 	shutdown-desktop \
@@ -121,7 +122,7 @@ IMAGE_INSTALL_append += " \
 	tango-icon-theme \
 	unrar \
 	sylpheed \
-	epiphany \
+	chrome \
 	python3-pydoc \
 	python3-resource \
 	texinfo \
@@ -135,6 +136,7 @@ IMAGE_INSTALL_append += " \
 	socat \
 	libsdl \
 	python-argparse \
+	wpa-supplicant \
 "
 
 IMAGE_INSTALL_append += " \
