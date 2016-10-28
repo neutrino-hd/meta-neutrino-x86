@@ -7,6 +7,7 @@ DEPENDS = "lua5.2 awesome builder"
 RDEPENDS_${PN} = "bash"
 
 SRC_URI = "git://github.com/copycat-killer/lain.git \
+	   file://0001-fix-BAT-detection.patch \
 "
 
 SRCREV = "${AUTOREV}"

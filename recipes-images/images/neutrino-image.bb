@@ -137,6 +137,7 @@ IMAGE_INSTALL_append += " \
 	libsdl \
 	python-argparse \
 	wpa-supplicant \
+	iproute2 \
 "
 
 IMAGE_INSTALL_append += " \
