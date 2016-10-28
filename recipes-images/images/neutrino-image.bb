@@ -138,6 +138,8 @@ IMAGE_INSTALL_append += " \
 	python-argparse \
 	wpa-supplicant \
 	iproute2 \
+	tzdata \
+	minicom \
 "
 
 IMAGE_INSTALL_append += " \

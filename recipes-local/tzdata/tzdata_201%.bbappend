@@ -16,9 +16,8 @@ do_install_append () {
 	rm ${D}${sysconfdir}/localtime
 }
 
-# this depends on the implementation of the original .bb file...
+# set localtime
 pkg_postinst_${PN}_append () {
-	if [ ! -e "${etc_lt}" ]; then
-		ln -s "${datadir}/zoneinfo/${tz}" "${etc_lt}"
+		ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
 	fi
 }

@@ -64,12 +64,12 @@ editor     = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
 -- user defined
-browser    = "google-chrome-stable"
-gui_editor = "subl"
-graphics   = ""
-mail       = terminal .. " -e sylpheed "
+browser    = "google-chrome-stable %F"
+gui_editor = "subl %F"
+graphics   = "gthumb %F"
+mail       = "sylpheed %F"
 iptraf     = terminal .. " -g 180x54-20+34 -e sudo iptraf -i all "
-musicplr   = terminal .. " -g 130x34-320+16 -e deadbeef "
+musicplr   = "deadbeef %F"
 
 local layouts = {
     awful.layout.suit.floating,
@@ -402,12 +402,12 @@ globalkeys = awful.util.table.join(
      awful.key({ modkey }, "F4", function () awful.util.spawn_with_shell("meld") end),
      awful.key({ modkey }, "F5", function () awful.util.spawn_with_shell("neutrino") end),
      awful.key({ modkey }, "F6", function () awful.util.spawn_with_shell("mpv --profile=pseudo-gui") end),
-     awful.key({ modkey }, "F7", function () awful.util.spawn_with_shell("deadbeef %F") end),
-     awful.key({ modkey }, "F8", function () awful.util.spawn_with_shell("capture.sh -a -c") end),
-     awful.key({ modkey }, "F9", function () awful.util.spawn_with_shell("capture.sh -w -c") end),
-     awful.key({ modkey }, "F10", function () awful.util.spawn_with_shell("screenshot.sh -a") end),
-     awful.key({ modkey }, "F11", function () awful.util.spawn_with_shell("screenshot.sh -s") end),
-     awful.key({ modkey }, "F12", function () awful.util.spawn_with_shell("screenshot.sh -w") end),
+     awful.key({ modkey }, "F7", function () awful.util.spawn_with_shell("deadbeef") end),
+     awful.key({ modkey }, "F8", function () awful.util.spawn_with_shell("sylpheed") end),
+     awful.key({ modkey }, "F9", function () awful.util.spawn_with_shell("xchat") end),
+     awful.key({ modkey }, "F10", function () awful.util.spawn_with_shell("gvim") end),
+     awful.key({ modkey }, "F11", function () awful.util.spawn_with_shell("screenshot.sh -w") end),
+     awful.key({ modkey }, "F12", function () awful.util.spawn_with_shell("capture.sh -w -c") end),
     -- Tag browsing
     awful.key({ modkey }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey }, "Right",  awful.tag.viewnext       ),
