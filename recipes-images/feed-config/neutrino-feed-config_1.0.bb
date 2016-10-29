@@ -23,7 +23,7 @@ do_compile() {
 	fi
 	echo "#" >> $basefeedconf
 
-	ipkgarchs="all ${MACHINE_ARCH} ${PACKAGE_EXTRA_ARCHS}"
+	ipkgarchs="all ${PACKAGE_ARCH} core2-64"
 	for arch in $ipkgarchs; do
 		FNAME="$arch"
 		if [ -n "${IPK_FEED_SERVER}" ]; then

@@ -19,5 +19,4 @@ do_install_append () {
 # set localtime
 pkg_postinst_${PN}_append () {
 		ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
-	fi
 }

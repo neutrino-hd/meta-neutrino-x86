@@ -125,6 +125,7 @@ IMAGE_INSTALL_append += " \
 	chrome \
 	python3-pydoc \
 	python3-resource \
+	python3-html \
 	texinfo \
 	chrpath \
 	libxml2-python \
@@ -136,8 +137,9 @@ IMAGE_INSTALL_append += " \
 	socat \
 	libsdl \
 	python-argparse \
+	python-html \
+	python-resource \
 	wpa-supplicant \
-	iproute2 \
 	tzdata \
 	minicom \
 "
