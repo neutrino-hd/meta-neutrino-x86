@@ -9,7 +9,7 @@ PARALLEL_MAKE ?= "-j 4"
 
 ### System variables
 
-DL_DIR ?= "~/yocto-downloads"
+DL_DIR ?= "/home/builder/yocto-downloads"
 
 SSTATE_DIR = "${TOPDIR}/sstate-cache"
 
