@@ -9,13 +9,13 @@ PARALLEL_MAKE ?= "-j 4"
 
 ### System variables
 
-DL_DIR ?= "${YOCTO_BASEDIR}/yocto-downloads"
+DL_DIR ?= "~/yocto-downloads"
 
 SSTATE_DIR = "${TOPDIR}/sstate-cache"
 
 TMPDIR = "${TOPDIR}/tmp"
 
-LICENSE_PATH += "${YOCTO_BASEDIR}/meta-neutrino/custom-licenses"
+LICENSE_PATH += "${YOCTO_BASEDIR}/meta-neutrino-x86/custom-licenses"
 
 PACKAGE_CLASSES ?= "package_ipk"
 
