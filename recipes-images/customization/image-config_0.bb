@@ -14,8 +14,8 @@ SRC_URI = " \
 	file://bash_profile \
 	file://Xresources \
 	file://gtkrc \
-	file://cs1_build.sh \
-	file://cs2_build.sh \
+	file://cs1_build \
+	file://cs2_build \
 "
 
 DEPENDS += "builder"
@@ -31,8 +31,8 @@ do_install() {
 		${D}${bindir}
 	install -m 0644 -D ${S}/default.bootlogd ${D}${sysconfdir}/default/bootlogd 
 	install -m 0644 -D ${S}/00aliases        ${D}${sysconfdir}/profile.d/00aliases
-	install -m 0755 -D ${S}/cs1_build.sh     ${D}${bindir}/cs1_build
-	install -m 0755 -D ${S}/cs2_build.sh     ${D}${bindir}/cs2_build
+	install -m 0755 -D ${S}/cs1_build     ${D}${bindir}/cs1_build
+	install -m 0755 -D ${S}/cs2_build     ${D}${bindir}/cs2_build
 	for i in root builder;do
 		install -m 0644 -D ${S}/bashrc        ${D}/home/$i/.bashrc
 		install -m 0644 -D ${S}/xinitrc        ${D}/home/$i/.xinitrc
