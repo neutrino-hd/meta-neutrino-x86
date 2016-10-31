@@ -142,6 +142,9 @@ IMAGE_INSTALL_append += " \
 	wpa-supplicant \
 	tzdata \
 	minicom \
+	pulseaudio-server \
+	pavucontrol \
+	screenfetch \
 "
 
 IMAGE_INSTALL_append += " \
