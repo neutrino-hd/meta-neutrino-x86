@@ -16,6 +16,7 @@ SRC_URI = "git://github.com/GNOME/meld.git;branch=meld-1-8;protocol=http \
 	   file://change_prefix.patch \
 	   file://0001-fix-build-if-using-python3.patch \
 	   file://scrollkeeper.patch \
+	   file://0001-change-colors-to-make-meld-usable-with-dark-themes.patch \
 "
 
 S = "${WORKDIR}/git"
