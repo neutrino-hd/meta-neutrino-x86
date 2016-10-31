@@ -20,7 +20,7 @@ fi
 if [ ! -d meta-coolstream ];then
 	git clone -b morty https://github.com/neutrino-hd/meta-coolstream.git
 else
-	cd meta-coolstream && git checkout morty
+	cd meta-coolstream && git checkout morty && cd ..
 fi
 export TEMPLATECONF=meta-coolstream/example
 cd ~/yocto/poky

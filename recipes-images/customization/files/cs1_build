@@ -20,7 +20,7 @@ fi
 if [ ! -d meta-coolstream ];then
 	git clone -b krogoth https://github.com/neutrino-hd/meta-coolstream.git
 else
-	cd meta-coolstream && git checkout krogoth
+	cd meta-coolstream && git checkout krogoth && cd ..
 fi
 export TEMPLATECONF=meta-coolstream/example 
 cd ~/yocto/poky
