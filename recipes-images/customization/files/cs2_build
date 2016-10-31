@@ -11,17 +11,17 @@ if [ ! -d poky ];then
 	git clone -b morty git://git.yoctoproject.org/poky
 fi
 cd poky
-git checkout morty && git pull
+git checkout morty
 if [ ! -d meta-neutrino ];then
 		git clone -b morty https://github.com/neutrino-hd/meta-neutrino.git
 else
-	cd meta-neutrino && git checkout morty && git pull && cd ..
+	cd meta-neutrino && git checkout morty && cd ..
 fi
 if [ ! -d meta-coolstream ];then
 	git clone -b morty https://github.com/neutrino-hd/meta-coolstream.git
-	export TEMPLATECONF=meta-coolstream/example
 else
-	cd meta-coolstream && git checkout morty && git pull
-fi 
+	cd meta-coolstream && git checkout morty
+fi
+export TEMPLATECONF=meta-coolstream/example
 cd ~/yocto/poky
 . ./oe-init-build-env build-hd2 
