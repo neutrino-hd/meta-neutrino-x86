@@ -107,10 +107,10 @@ IMAGE_INSTALL_append += " \
 	libsdl \
 	sudo \
 	udev-extraconf \
-	xf86-video-intel \
 	xf86-input-synaptics \
 	xf86-video-vmware \
 	xf86-input-vmmouse \
+	xf86-video-modesetting \
 	ntpdate \
 	imagemagick \
 	gthumb \
@@ -123,9 +123,6 @@ IMAGE_INSTALL_append += " \
 	unrar \
 	sylpheed \
 	chrome \
-	python3-pydoc \
-	python3-resource \
-	python3-html \
 	texinfo \
 	chrpath \
 	libxml2-python \
@@ -136,14 +133,15 @@ IMAGE_INSTALL_append += " \
 	gzip \
 	socat \
 	libsdl \
-	python-argparse \
-	python-html \
-	python-resource \
 	wpa-supplicant \
 	tzdata \
 	minicom \
 	pulseaudio-server \
 	pavucontrol \
+	pulseaudio-module-bluetooth-discover \
+	pulseaudio-module-bluetooth-policy \
+	pulseaudio-module-bluez5-device \
+	pulseaudio-module-bluez5-discover \
 	screenfetch \
 "
 
@@ -173,6 +171,9 @@ IMAGE_INSTALL_append += " \
 	python-pprint \
 	python-debugger \
 	python-pkgutil \
+	python-argparse \
+	python-html \
+	python-resource \
 "
 
 IMAGE_INSTALL_append += " \
@@ -201,4 +202,7 @@ IMAGE_INSTALL_append += " \
 	python3-pprint \
 	python3-debugger \
 	python3-pkgutil \
+	python3-pydoc \
+	python3-resource \
+	python3-html \
 "

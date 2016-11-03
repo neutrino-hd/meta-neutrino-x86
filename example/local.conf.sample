@@ -117,3 +117,5 @@ TMDB_DEV_KEY = ""
 SHOUTCAST_DEV_KEY = ""
 
 IMAGETYPE = "normal"
+
+#PREFERRED_PROVIDER_linux-firmware = "firmware"
