@@ -80,8 +80,11 @@ fakeroot do_populate_poky_src () {
 	mkdir -p ${IMAGE_ROOTFS}/etc/gtk-2.0
 	echo 'gtk-theme-name = "Clearlooks"' > ${IMAGE_ROOTFS}/etc/gtk-2.0/gtkrc
 
-	# set suid bit to loadkeys
+	# setuid loadkeys
 	chmod u+s ${IMAGE_ROOTFS}/usr/bin/loadkeys
+
+	# setuid Xorg
+	chmod u+s ${IMAGE_ROOTFS}/usr/libexec/Xorg
 
 	# chown /etc/neutrino by builder
 	chown -R builder:builder ${IMAGE_ROOTFS}/etc/neutrino

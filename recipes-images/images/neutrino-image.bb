@@ -85,7 +85,7 @@ IMAGE_INSTALL_append += " \
 	nano \
 	connman \
 	connman-client \
-	connman-gnome \ 
+	connman-gtk \
 	git \
 	samba \
 	cmake \
@@ -111,6 +111,8 @@ IMAGE_INSTALL_append += " \
 	xf86-video-vmware \
 	xf86-input-vmmouse \
 	xf86-video-modesetting \
+	xf86-video-ati \
+	xf86-video-nouveau \
 	ntpdate \
 	imagemagick \
 	gthumb \
