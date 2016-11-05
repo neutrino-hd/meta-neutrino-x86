@@ -10,7 +10,7 @@ SRC_URI = "http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stabl
 SRC_URI[md5sum] = "9405b4f4ddb6b40b5c5aa260a1566984"
 SRC_URI[sha256sum] = "35acb5b5aa43947670081c666a54d414b49a7eb0d2dce0ab861637bce8eb98d6"
 
-
+RDEPENDS_${PN} += "cups"
 
 S = "${WORKDIR}"
 
