@@ -145,6 +145,7 @@ IMAGE_INSTALL_append += " \
 	pulseaudio-module-bluez5-device \
 	pulseaudio-module-bluez5-discover \
 	screenfetch \
+	polkit-gnome \
 "
 
 IMAGE_INSTALL_append += " \
