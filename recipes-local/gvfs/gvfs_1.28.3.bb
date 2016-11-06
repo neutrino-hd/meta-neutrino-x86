@@ -15,6 +15,8 @@ EXTRA_OECONF = " \
     --disable-documentation \
     --with-archive-includes=${STAGING_INCDIR} \
     --with-archive-libs=${STAGING_LIBDIR} \
+    --with-samba-libs=${STAGING_LIBDIR} \
+    --with-samba-includes=${STAGING_INCDIR} \
 "
 
 PACKAGES =+ "gvfsd-ftp gvfsd-sftp gvfsd-trash"
@@ -38,7 +40,7 @@ FILES_gvfsd-trash = "${libexecdir}/gvfsd-trash ${datadir}/gvfs/mounts/trash.moun
 
 RRECOMMENDS_gvfsd-ftp += "openssh-sftp openssh-ssh"
 
-PACKAGECONFIG ?= "libgphoto2 ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'systemd', '', d)}"
+PACKAGECONFIG ?= "libgphoto2 gtk samba fuse http gcr ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'systemd', '', d)}"
 
 PACKAGECONFIG[afc] = "--enable-afc, --disable-afc, libimobiledevice libplist"
 PACKAGECONFIG[archive] = "--enable-archive, --disable-archive, libarchive"

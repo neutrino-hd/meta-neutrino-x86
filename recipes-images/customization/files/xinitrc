@@ -12,4 +12,4 @@
  xmodmap -e "keycode 115 = Super_L" -e "add mod4 = Super_L"
 
  # Start the window manager
- exec awesome
+ exec ck-launch-session dbus-launch --sh-syntax --exit-with-session awesome

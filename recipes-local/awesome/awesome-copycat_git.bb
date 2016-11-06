@@ -10,7 +10,7 @@ SRC_URI = "git://github.com/copycat-killer/awesome-copycats.git \
 	   file://rc.lua \
 "
 
-SRCREV = "${AUTOREV}"
+SRCREV = "1d07c412457e4657a34983a8b7b2d08211a75f13"
 PV = "${SRCPV}"
 PR = "3"
 
