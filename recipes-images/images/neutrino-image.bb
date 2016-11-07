@@ -151,7 +151,9 @@ IMAGE_INSTALL_append += " \
 	cifs-utils \
 	gvfsd-ftp \
 	gvfs-bash-completion \
-	gvfs-locale-de \	
+	gvfs-locale-de \
+	parcellite \
+	parcellite-locale-de \
 "
 
 IMAGE_INSTALL_append += " \
