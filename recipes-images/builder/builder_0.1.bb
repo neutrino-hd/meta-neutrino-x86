@@ -10,7 +10,7 @@ BUILDER_PASSWORD ?= ".gLibiNXn0P12"
 USERADD_PACKAGES = "${PN}"
 USERADD_PARAM_${PN} = "--system \
 		       --create-home \
-                       --groups video,tty,audio,input,shutdown,disk \
+                       --groups users,video,tty,audio,input,shutdown,disk,systemd-journal,plugdev,adm \
 		       --password ${BUILDER_PASSWORD} \
                        --user-group \
 		       --shell /bin/bash \
