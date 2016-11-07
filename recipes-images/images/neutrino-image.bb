@@ -146,6 +146,12 @@ IMAGE_INSTALL_append += " \
 	pulseaudio-module-bluez5-discover \
 	screenfetch \
 	polkit-gnome \
+	inetutils-ftp \
+	libsmbclient \
+	cifs-utils \
+	gvfsd-ftp \
+	gvfs-bash-completion \
+	gvfs-locale-de \	
 "
 
 IMAGE_INSTALL_append += " \

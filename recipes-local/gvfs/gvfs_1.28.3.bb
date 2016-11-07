@@ -4,19 +4,20 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=05df38dd77c35ec8431f212410a3329e"
 
 inherit gnome bash-completion
 
-DEPENDS += "libsecret glib-2.0 gconf intltool-native libgudev udisks2 libbluray"
+DEPENDS += "libsecret glib-2.0 gconf intltool-native libgudev udisks2 libbluray samba"
 
 SRC_URI[archive.md5sum] = "d2399a1a217dd5030e8830c7e7c813c2"
 SRC_URI[archive.sha256sum] = "458c4cb68570f6ef4a9e152995c62d0057c3e0a07ed64d84c7200cdd22f0bd17"
 
 EXTRA_OECONF = " \
+    --enable-nfs \
     --disable-gdu \
     --enable-udisks2 \
     --disable-documentation \
     --with-archive-includes=${STAGING_INCDIR} \
     --with-archive-libs=${STAGING_LIBDIR} \
-    --with-samba-libs=${STAGING_LIBDIR} \
-    --with-samba-includes=${STAGING_INCDIR} \
+    --with-samba-libs=${STAGING_LIBDIR}/samba \
+    --with-samba-includes=${STAGING_INCDIR}/samba-4.0 \
 "
 
 PACKAGES =+ "gvfsd-ftp gvfsd-sftp gvfsd-trash"
@@ -40,7 +41,7 @@ FILES_gvfsd-trash = "${libexecdir}/gvfsd-trash ${datadir}/gvfs/mounts/trash.moun
 
 RRECOMMENDS_gvfsd-ftp += "openssh-sftp openssh-ssh"
 
-PACKAGECONFIG ?= "libgphoto2 gtk samba fuse http gcr ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'systemd', '', d)}"
+PACKAGECONFIG ?= "libgphoto2 gtk samba fuse http gcr avahi ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'systemd', '', d)}"
 
 PACKAGECONFIG[afc] = "--enable-afc, --disable-afc, libimobiledevice libplist"
 PACKAGECONFIG[archive] = "--enable-archive, --disable-archive, libarchive"
