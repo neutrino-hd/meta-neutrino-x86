@@ -10,12 +10,14 @@ LICENSE = "GPLv2 & LGPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=b234ee4d69f5fce4486a80fdaf4a4263 \
                     file://COPYING.LIB;md5=4fbd65380cdd255951079008b364516c"
 
-SRC_URI = "${SOURCEFORGE_MIRROR}/fuse/fuse-${PV}.tar.gz \
+SRC_URI = "git://github.com/libfuse/libfuse.git;branch=fuse-2_9_bugfix \
            file://gold-unversioned-symbol.patch \
            file://aarch64.patch \
 "
-SRC_URI[md5sum] = "ecb712b5ffc6dffd54f4a405c9b372d8"
-SRC_URI[sha256sum] = "6be9c0bff6af8c677414935f31699ea5a7f8f5f791cfa5205be02ea186b97ce1"
+SRCREV="${AUTOREV}"
+PV = "${SRCPV}"
+
+S= "${WORKDIR}/git"
 
 inherit autotools pkgconfig
 
@@ -24,6 +26,10 @@ DEPENDS = "gettext-native virtual/libiconv"
 PACKAGES =+ "fuse-utils-dbg fuse-utils libulockmgr libulockmgr-dev libulockmgr-dbg"
 
 RRECOMMENDS_${PN} = "kernel-module-fuse"
+
+do_configure_prepend() {
+	touch ${S}/config.rpath 
+}
 
 FILES_${PN} += "${libdir}/libfuse.so.*"
 FILES_${PN}-dev += "${libdir}/libfuse*.la"
