@@ -61,7 +61,6 @@ LIBSTB_HAL_GIT ?= "git://github.com/neutrino-mp/libstb-hal.git;protocol=http"
 
 SRC_URI = " \
 	${LIBSTB_HAL_GIT} \
-	file://0001-fix-for-ffmpeg-3.1.3.patch;apply=no \
 	file://blank_480.mpg \
 	file://blank_576.mpg \
 	file://timer-wakeup.init \
