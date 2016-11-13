@@ -7,5 +7,7 @@ SRC_URI += "file://vm_kvm.cfg \
 	    file://bluetooth.cfg \
 	    file://gfx.cfg \
 	    file://soundcard.cfg \
+	    file://usb_serial.cfg \
+	    file://x86_dev.cfg \
 "
 
