@@ -30,6 +30,18 @@ DEPENDS += " \
 	tremor \
 	virtual/stb-hal-libs \
 	virtual/libiconv \
+	gdk-pixbuf \
+	fontconfig \
+	atk \
+	cairo \
+	libpng \
+	pixman \
+	cogl-1.0 \
+	clutter-1.0 \
+	harfbuzz \
+	pango \
+	json-glib \
+	libxcomposite \
 "
 
 RCONFLICTS_${PN} = "neutrino-hd neutrino-ni"
@@ -38,9 +50,7 @@ SRCREV = "${AUTOREV}"
 PV = "${SRCPV}"
 PR = "3"
 
-SRC_URI = "git://git.slknet.de/test-cst-next.git;protocol=http \
-	file://0001-fix-compilation-with-ffmpeg3.0.1.patch \
-	file://0001-fix-for-gcc-6.x.patch \
+SRC_URI = "git://github.com/neutrino-mp/neutrino-mp.git;protocol=http \
 	file://timezone.xml \
 	file://custom-poweroff.init \
 	file://COPYING.GPL \

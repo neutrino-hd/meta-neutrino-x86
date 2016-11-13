@@ -22,6 +22,19 @@ DEPENDS = "\
 	freeglut \
 	libao \
 	libaio \
+	gdk-pixbuf \
+	fontconfig \
+	atk \
+	cairo \
+	libpng \
+	pixman \
+	cogl-1.0 \
+	clutter-1.0 \
+	harfbuzz \
+	freetype \
+	pango \
+	json-glib \
+	libxcomposite \
 "
 
 # on coolstream, the same is provided by cs-drivers pkg (libcoolstream)
@@ -44,11 +57,11 @@ PACKAGES_prepend_spark = "spark-fp "
 # libstb-hal-bin package for testing binaries etc.
 PACKAGES += "${PN}-bin"
 
-LIBSTB_HAL_GIT ?= "git://git.slknet.de/test-libstb-hal-cst-next.git;protocol=https"
+LIBSTB_HAL_GIT ?= "git://github.com/neutrino-mp/libstb-hal.git;protocol=http"
 
 SRC_URI = " \
 	${LIBSTB_HAL_GIT} \
-	file://0001-fix-for-ffmpeg-3.1.3.patch \
+	file://0001-fix-for-ffmpeg-3.1.3.patch;apply=no \
 	file://blank_480.mpg \
 	file://blank_576.mpg \
 	file://timer-wakeup.init \
@@ -71,6 +84,7 @@ EXTRA_OECONF += "\
 	--enable-maintainer-mode \
 	--disable-silent-rules \
 	--enable-shared \
+	--enable-clutter \
 "
 
 EXTRA_OECONF_append_spark += "--with-boxtype=spark"
