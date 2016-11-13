@@ -2,13 +2,13 @@ SUMMARY = "Google Chrome"
 LICENSE = "proprietary"
 LIC_FILES_CHKSUM = "file://${WORKDIR}/license;md5=17a6b3d5436a55985b200c725761907a"
 
-SRC_URI = "http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_54.0.2840.71-1_amd64.deb \
+SRC_URI = "http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_54.0.2840.100-1_amd64.deb \
 	   file://license \
 	   file://google-chrome-stable \
 "
 
-SRC_URI[md5sum] = "9405b4f4ddb6b40b5c5aa260a1566984"
-SRC_URI[sha256sum] = "35acb5b5aa43947670081c666a54d414b49a7eb0d2dce0ab861637bce8eb98d6"
+SRC_URI[md5sum] = "bdab2936bc4fc16f3a79651aa89a8128"
+SRC_URI[sha256sum] = "89f0fc871ce19f68b9edfccd6eee1f81cc4b8f79b98a86a30296cf639bf28917"
 
 RDEPENDS_${PN} += "cups"
 
