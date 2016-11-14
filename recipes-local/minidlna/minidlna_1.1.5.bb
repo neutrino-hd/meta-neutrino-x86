@@ -8,7 +8,7 @@ DEPENDS = "libexif libjpeg-turbo libid3tag flac libvorbis sqlite3 ffmpeg util-li
 PR = "r1"
 
 SRC_URI = "${SOURCEFORGE_MIRROR}/project/minidlna/minidlna/${PV}/minidlna-${PV}.tar.gz \
-		file://minidlna*.conf \
+		file://minidlna-${DISTRO}.conf \
 		file://minidlna.service \
 "
 
@@ -28,7 +28,7 @@ CONFFILES_${PN} = "${sysconfdir}/minidlna.conf"
 SYSTEMD_SERVICE_${PN} = "minidlna.service"
 
 do_configure_prepend() {
-	sed -i "s|Coolstream|${MACHINE}|" ${WORKDIR}/minidlna*.conf
+	sed -i "s|Coolstream|${MACHINE}|" ${WORKDIR}/minidlna-${DISTRO}.conf
 }
 
 do_install_append() {

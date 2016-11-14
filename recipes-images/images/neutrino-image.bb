@@ -121,6 +121,7 @@ IMAGE_INSTALL_append += " \
 	xchat \
 	gnupg \
 	meld \
+	minidlna \
 	tango-icon-theme \
 	unrar \
 	sylpheed \
