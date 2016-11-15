@@ -36,7 +36,8 @@ do_custom_baseissueinstall() {
 
 
 do_install_append () {
-	install -d ${D}${localstatedir}/update ${D}${systemd_unitdir}/system/multi-user.target.wants
+	install -d ${D}${localstatedir}/update ${D}${systemd_unitdir}/system/multi-user.target.wants 
+	install -d ${D}/srv/audio ${D}/srv/movies ${D}/srv/pictures
 	install -m 644 ${S}/cam.service ${D}${systemd_unitdir}/system/cam.service
 	ln -s /lib/systemd/system/cam.service ${D}${systemd_unitdir}/system/multi-user.target.wants/cam.service
 	rm ${D}${sysconfdir}/skel/.profile
