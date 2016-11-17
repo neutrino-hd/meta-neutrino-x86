@@ -45,11 +45,12 @@ function run_once(cmd)
      findme = cmd:sub(0, firstspace-1)
   end
   awful.util.spawn_with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
-  awful.util.spawn_with_shell("/usr/libexec/polkit-gnome-authentication-agent-1")
 end
 
 run_once("rxvtd")
 run_once("unclutter -root")
+run_once("/usr/libexec/polkit-gnome-authentication-agent-1")
+run_once("nm-applet")
 -- }}}
 
 -- {{{ Variable definitions

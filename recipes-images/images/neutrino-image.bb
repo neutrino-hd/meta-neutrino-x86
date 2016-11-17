@@ -52,6 +52,7 @@ do_install_append () {
 
 IMAGE_INSTALL += " \
 	${NEUTRINO_FLAVOUR} \
+	neutrino-feed-config \
 	neutrino-plugins \
 	neutrino-plugin-xupnpd \
 	neutrino-plugin-netzkino \
@@ -76,16 +77,11 @@ IMAGE_INSTALL_append += " \
 	glibc-localedata-de-de \
 	glibc-localedata-en-us \
 	glibc-localedata-translit-combining \
-	neutrino-mp \
-	neutrino-feed-config \
 	vsftpd \
 	pugixml \
 	mc \
 	bash \
 	nano \
-	connman \
-	connman-client \
-	connman-gtk \
 	git \
 	samba \
 	cmake \
@@ -155,6 +151,11 @@ IMAGE_INSTALL_append += " \
 	gvfs-locale-de \
 	parcellite \
 	parcellite-locale-de \
+	networkmanager \
+	network-manager-applet \
+	mobile-broadband-provider-info \
+	modemmanager \
+	usb-modeswitch \
 "
 
 IMAGE_INSTALL_append += " \

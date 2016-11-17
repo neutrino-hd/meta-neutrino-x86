@@ -1,13 +1,13 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
-SRC_URI += "file://vm_kvm.cfg \
+SRC_URI += "file://bluetooth.cfg \
 	    file://config_task_io_accounting.cfg \
-	    file://wlan.cfg \
 	    file://dvb.cfg \
-	    file://bluetooth.cfg \
-	    file://gfx.cfg \
+  	    file://gfx.cfg \
 	    file://soundcard.cfg \
-	    file://usb_serial.cfg \
+	    file://usb_config.cfg \
+	    file://vm_kvm.cfg \
+	    file://wlan.cfg \
 	    file://x86_dev.cfg \
 "
 

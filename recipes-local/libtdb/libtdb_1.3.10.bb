@@ -11,7 +11,7 @@ SRC_URI = "http://samba.org/ftp/tdb/tdb-${PV}.tar.gz \
 SRC_URI[md5sum] = "c98f24eb469022b0f1741d3a504cfda5"
 SRC_URI[sha256sum] = "5578fb726bd04835f250bea11fe7d1398fe0bb3a7c9390404241c83cd6b50c1c"
 
-DEPENDS += "attr"
+DEPENDS += "attr libbsd"
 
 S = "${WORKDIR}/tdb-${PV}"
 
