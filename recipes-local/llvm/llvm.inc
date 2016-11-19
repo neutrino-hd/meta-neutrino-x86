@@ -46,7 +46,9 @@ EXTRA_OECONF += "--disable-assertions \
                  --enable-libffi \
                  --enable-optimized \
                  --enable-shared \
-                 --enable-targets=host-only"
+		 --enable-zlib \
+		 --enable-targets=r600 \"
+
 EXTRA_OEMAKE += "REQUIRES_RTTI=1 VERBOSE=1"
 
 do_configure_prepend() {
