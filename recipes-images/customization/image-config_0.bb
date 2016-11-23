@@ -18,7 +18,7 @@ SRC_URI = " \
 	file://cs2_build \
 "
 
-DEPENDS += "builder"
+DEPENDS += "adduser"
 
 PR = "r1"
 

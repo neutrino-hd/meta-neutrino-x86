@@ -7,9 +7,9 @@ HOMEPAGE = "https://www.xiph.org/ao/"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=94d55d512a9ba36caa9b7df079bae19f"
 
-SRC_URI="http://downloads.xiph.org/releases/ao/${BP}.tar.gz"
-SRC_URI[md5sum] = "9f5dd20d7e95fd0dd72df5353829f097"
-SRC_URI[sha256sum] = "03ad231ad1f9d64b52474392d63c31197b0bc7bd416e58b1c10a329a5ed89caf"
+SRC_URI="git://git.xiph.org/libao.git;tag=1.2.2;protocol=https"
+
+S = "${WORKDIR}/git"
 
 inherit autotools
 
@@ -26,7 +26,7 @@ python populate_packages_prepend () {
     do_split_packages(d, rootdir_dbg, '^(.*)\.so$', output_pattern='${BPN}-plugin-%s-dbg', description='AO %s plugin debug data')
 }
 
-PACKAGECONFIG ?= "alsa"
+PACKAGECONFIG ?= "alsa pulseaudio"
 PACKAGECONFIG[esound] = "--enable-esd,--disable-esd,esound"
 PACKAGECONFIG[alsa] = "--enable-alsa,--disable-alsa,alsa-lib"
 PACKAGECONFIG[pulseaudio] = "--enable-pulse,--disable-pulse,pulseaudio"

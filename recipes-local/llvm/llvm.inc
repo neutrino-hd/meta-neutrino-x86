@@ -23,7 +23,7 @@ HOMEPAGE = "http://llvm.org"
 # 3-clause BSD-like
 # University of Illinois/NCSA Open Source License
 LICENSE = "NCSA"
-LIC_FILES_CHKSUM = "file://LICENSE.TXT;md5=47e311aa9caedd1b3abf098bd7814d1d"
+LIC_FILES_CHKSUM = "file://LICENSE.TXT;md5=4c0bc17c954e99fd547528d938832bfa"
 
 DEPENDS = "libffi libxml2-native llvm-common ncurses"
 

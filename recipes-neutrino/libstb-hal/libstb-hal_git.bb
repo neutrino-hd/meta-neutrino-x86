@@ -77,7 +77,7 @@ inherit autotools-brokensep pkgconfig
 CFLAGS_spark += "-funsigned-char"
 CPPFLAGS_tripledragon += "-I${STAGING_DIR_HOST}/usr/include/hardware"
 
-LDFLAGS = " -Wl,-rpath-link,${STAGING_DIR_HOST}/usr/lib -L${STAGING_DIR_HOST}/usr/lib -lrt"
+LDFLAGS = " -Wl,-rpath-link,${STAGING_DIR_HOST}/usr/lib -L${STAGING_DIR_HOST}/usr/lib -lrt -lao"
 
 EXTRA_OECONF += "\
 	--enable-maintainer-mode \

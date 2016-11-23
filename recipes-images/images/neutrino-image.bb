@@ -16,23 +16,7 @@ SRC_URI = "git://git.yoctoproject.org/poky;branch=morty \
            file://README_VirtualBox_Guest_Additions.txt \
           "
 
-inherit useradd
-
-# builder user password is "builder"
-BUILDER_PASSWORD ?= ".gLibiNXn0P12"
-USERADD_PACKAGES = "${PN}"
-USERADD_PARAM_${PN} = "--system \
-		       --create-home \
-                       --groups video,tty,audio,input,shutdown,disk \
-		       --password ${BUILDER_PASSWORD} \
-                       --user-group \
-		       --shell /bin/bash \
-		       --uid 1200 \
-		       builder \
-"
-
 FILES_${PN} = "${sysconfdir}/dbus-1/system.d/system-builder.conf"
-
 
 
 include neutrino-image-base-dev.inc 
@@ -44,7 +28,7 @@ IMAGE_FEATURES_append += "${@'' if IMAGETYPE != 'debug' else 'tools-debug eclips
 EXTRA_FEATURES_append += "${@'' if IMAGETYPE != 'debug' else 'dbg-pkgs ptest-pkgs'}"
 
 
-DEPENDS = "zip-native"
+DEPENDS = "zip-native adduser"
 
 do_install_append () {
     install -D -m 0644 ${WORKDIR}/system-builder.conf ${D}${sysconfdir}/dbus-1/system.d/system-builder.conf

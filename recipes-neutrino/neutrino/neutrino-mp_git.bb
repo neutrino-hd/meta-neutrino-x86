@@ -45,6 +45,7 @@ DEPENDS += " \
 "
 
 RCONFLICTS_${PN} = "neutrino-hd neutrino-ni"
+RDEPENDS_${PN} += "libao-plugin-libalsa libao-plugin-libpulse"
 
 SRCREV = "${AUTOREV}"
 PV = "${SRCPV}"

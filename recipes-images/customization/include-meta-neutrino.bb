@@ -5,7 +5,7 @@ SECTION = "libs"
 LICENSE = "BSD-2-Clause"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/BSD-2-Clause;md5=8bef8e6712b1be5aa76af1ebde9d6378"
 
-DEPENDS += "builder"
+DEPENDS += "adduser"
 RDEPENDS_${PN} += "bash"
 SRC_URI = " \
 	git://github.com/neutrino-hd/meta-neutrino-x86.git;branch=morty \

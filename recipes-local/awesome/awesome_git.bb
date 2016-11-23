@@ -4,7 +4,7 @@ LICENSE = "GPL-2.0"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
 
 DEPENDS = "imagemagick-native coreutils-native xcb-util xcb-util-cursor xcb-util-keysyms xcb-util-wm xdg-utils libxdg \
-	   libx11 libxkbcommon libxcb cairo dbus-glib pango startup-notification gdk-pixbuf glib-2.0 lua5.2 builder xrdb \
+	   libx11 libxkbcommon libxcb cairo dbus-glib pango startup-notification gdk-pixbuf glib-2.0 lua5.2 adduser xrdb \
 "
 
 RDEPENDS_${PN} = "lgi bash awesome-copycat"
