@@ -9,5 +9,6 @@ SRC_URI += "file://bluetooth.cfg \
 	    file://vm_kvm.cfg \
 	    file://wlan.cfg \
 	    file://x86_dev.cfg \
+	    file://pcmcia.cfg \
 "
 
