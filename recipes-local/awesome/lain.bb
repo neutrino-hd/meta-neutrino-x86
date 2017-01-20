@@ -10,7 +10,7 @@ SRC_URI = "git://github.com/copycat-killer/lain.git \
 	   file://0001-fix-BAT-detection.patch \
 "
 
-SRCREV = "${AUTOREV}"
+SRCREV = "98bb2dc5ef25ce2b2ad330bca7e78d77125e7c72"
 PV = "${SRCPV}"
 PR = "1"
 
