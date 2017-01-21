@@ -51,6 +51,7 @@ IMAGE_INSTALL += " \
 	neutrino-plugin-youtube \
 	neutrino-plugin-webtv \
 	neutrino-plugin-rockpalast \
+	neutrino-plugin-logo \
 "
 
 IMAGE_INSTALL_append += " \
