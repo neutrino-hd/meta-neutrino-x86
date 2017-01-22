@@ -65,6 +65,7 @@ IMAGE_INSTALL_append += " \
 	vsftpd \
 	pugixml \
 	mc \
+	ni-logos \
 	bash \
 	nano \
 	git \
