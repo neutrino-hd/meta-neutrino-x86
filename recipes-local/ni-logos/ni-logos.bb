@@ -3,7 +3,7 @@ LICENSE = "proprietary"
 LIC_FILES_CHKSUM = "file://${WORKDIR}/license;md5=17a6b3d5436a55985b200c725761907a"
 HOMEPAGE = "http://www.neutrino-images.de/board/viewtopic.php?f=40&t=54"
 
-S = "${WORKDIR}/ng_logobasis300"
+S = "${WORKDIR}/logo-Basis"
 
 PR = "r2"
 
