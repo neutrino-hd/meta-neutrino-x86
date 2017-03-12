@@ -23,7 +23,7 @@ inherit waf pkgconfig pythonnative distro_features_check
 
 # Note: both lua and libass are required to get on-screen-display (controls)
 PACKAGECONFIG ??= "lua libass"
-PACKAGECONFIG[lua] = "--enable-lua,--disable-lua,lua5.2 luajit"
+PACKAGECONFIG[lua] = "--enable-lua,--disable-lua,lua luajit"
 PACKAGECONFIG[libass] = "--enable-libass,--disable-libass,libass"
 PACKAGECONFIG[libarchive] = "--enable-libarchive,--disable-libarchive,libarchive"
 PACKAGECONFIG[jack] = "--enable-jack, --disable-jack, jack"

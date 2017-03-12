@@ -8,7 +8,7 @@ SRC_URI = "https://download.sublimetext.com/sublime_text_3_build_3126_x64.tar.bz
 "
 
 
-DEPENDS = "libx11 glib-2.0"
+RDEPENDS_${PN} = "libx11 glib-2.0"
 
 SRC_URI[md5sum] = "acc34252b0ea7dff1f581c5db1564dcb"
 SRC_URI[sha256sum] = "18db132e9a305fa3129014b608628e06f9442f48d09cfe933b3b1a84dd18727a"

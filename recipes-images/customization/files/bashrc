@@ -40,6 +40,7 @@ alias start='startx'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+alias gparted='gparted_polkit'
 
 # Prompt
 #BLUE=`tput setf 1`

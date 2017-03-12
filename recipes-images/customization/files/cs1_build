@@ -1,0 +1,27 @@
+#!/bin/sh
+
+if [ ! -d ~/yocto-downloads ];then
+	mkdir ~/yocto-downloads
+fi
+if [ ! -d ~/yocto ];then
+	mkdir ~/yocto
+fi
+cd ~/yocto
+if [ ! -d poky ];then
+	git clone -b krogoth git://git.yoctoproject.org/poky
+fi
+cd poky
+git checkout krogoth
+if [ ! -d meta-neutrino ];then
+		git clone -b krogoth https://github.com/neutrino-hd/meta-neutrino.git
+else
+	cd meta-neutrino && git checkout krogoth && cd ..
+fi
+if [ ! -d meta-coolstream ];then
+	git clone -b krogoth https://github.com/neutrino-hd/meta-coolstream.git
+else
+	cd meta-coolstream && git checkout krogoth && cd ..
+fi
+export TEMPLATECONF=meta-coolstream/example 
+cd ~/yocto/poky
+. ./oe-init-build-env build-hd1 

@@ -22,12 +22,11 @@ SRC_URI[md5sum] = "b9b88fc47d5452a18edcfd8463c0e94e"
 SRC_URI[sha256sum] = "33ee0d1962769875ce18ca2a9aac40dc5cf6b6d2d83688cc00429c7ff1dbf22c"
 
 
-inherit autotools cmake
+inherit cmake
 
 EXTRA_OECMAKE += "-DCMAKE_BUILD_TYPE=Release \
                   -DCMAKE_SYSTEM_NAME=Linux \
                   -D_OPENTHREADS_ATOMIC_USE_GCC_BUILTINS_EXITCODE=1 \
                   -D_OPENTHREADS_ATOMIC_USE_GCC_BUILTINS=1 \
-		  -DLIB_POSTFIX="" \
 "
 

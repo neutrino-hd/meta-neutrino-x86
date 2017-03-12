@@ -22,7 +22,7 @@ do_install_append() {
     sed -i 's:%sbindir%:${sbindir}:g' ${D}${sbindir}/gparted_polkit
     # relink menu entry to use our script
     sed -i 's:${sbindir}/gparted:${sbindir}/gparted_polkit:g' ${D}${datadir}/applications/gparted.desktop
-
+    sed -i 's:gksudo::g' ${D}${datadir}/applications/gparted.desktop
     install -d ${D}${datadir}/polkit-1/actions
     install ${WORKDIR}/org.yoctoproject.pkexec.run-gparted.policy ${D}${datadir}/polkit-1/actions/org.yoctoproject.pkexec.run-gparted.policy
 }

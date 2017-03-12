@@ -3,13 +3,15 @@
  # User's .xinitrc file
 
  # Merge custom X resources
- xrdb -merge "${HOME}/.Xresources"
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+
  
  # Set screen resolution
- xrandr --output default --mode 1280x720
+# xrandr --output default --mode 1280x720
 
  # Map mod4 to win key
  xmodmap -e "keycode 115 = Super_L" -e "add mod4 = Super_L"
 
  # Start the window manager
- exec awesome
+ feh --randomize --bg-fill ~/.wallpaper/*
+ exec ck-launch-session dbus-launch --sh-syntax --exit-with-session i3

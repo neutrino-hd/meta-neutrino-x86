@@ -3,7 +3,6 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 DEPENDS_append += "rtmpdump openssl virtual/libiconv libsdl libxcb "
 
 SRC_URI_append += " \
-		   file://0001-Revert-lavc-Switch-bitrate-to-64bit-unless-compatibi.patch;apply=no \
 		   file://0002-add-HDS-ro_new.patch \
 		   file://capture.sh \
 "

@@ -3,14 +3,14 @@ HOMEPAGE = "https://github.com/copycat-killer/awesome-copycats"
 LICENSE = "CC-BY-NC-SA-3.0"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/CC-BY-NC-SA-3.0;md5=b285975b5e439d99c95bcba5b5a8cf39"
 
-DEPENDS = "awesome lain unclutter rxvt-unicode lua5.2 builder"
+DEPENDS = "awesome lain unclutter rxvt-unicode lua5.2 adduser iproute2"
 RDEPENDS_${PN} += "make"
 
 SRC_URI = "git://github.com/copycat-killer/awesome-copycats.git \
 	   file://rc.lua \
 "
 
-SRCREV = "${AUTOREV}"
+SRCREV = "1d07c412457e4657a34983a8b7b2d08211a75f13"
 PV = "${SRCPV}"
 PR = "3"
 

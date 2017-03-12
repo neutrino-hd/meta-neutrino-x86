@@ -25,6 +25,7 @@ do_configure_prepend() {
     cp ${WORKDIR}/gtk-doc.make ${S}/
     sed -i -e s:docs::g ${S}/Makefile.am
     echo "EXTRA_DIST = version.xml" > gnome-doc-utils.make
+    sed -i "s|GNOME_COMPILE_WARNINGS|#GNOME_COMPILE_WARNINGS|" ${S}/configure.ac
 }
 
 FILES_${PN} += " ${datadir}/gtksourceview-2.0"

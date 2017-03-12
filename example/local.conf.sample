@@ -9,17 +9,18 @@ PARALLEL_MAKE ?= "-j 4"
 
 ### System variables
 
-DL_DIR ?= "${YOCTO_BASEDIR}/yocto-downloads"
+DL_DIR ?= "/home/builder/yocto-downloads"
 
 SSTATE_DIR = "${TOPDIR}/sstate-cache"
 
 TMPDIR = "${TOPDIR}/tmp"
 
-LICENSE_PATH += "${YOCTO_BASEDIR}/meta-neutrino/custom-licenses"
+LICENSE_PATH += "${YOCTO_BASEDIR}/meta-neutrino-x86/custom-licenses"
 
 PACKAGE_CLASSES ?= "package_ipk"
 
-SDKMACHINE ?= "i686"
+#SDKMACHINE ?= "i686"
+SDKMACHINE = "x86_64"
 
 DISTRO_FEATURES_LIBC_append = "x11 opengl pam ipv6"
 
@@ -28,13 +29,16 @@ VIRTUAL-RUNTIME_init_manager = "systemd"
 DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
 VIRTUAL-RUNTIME_initscripts = ""
 
+
 USER_CLASSES ?= "buildstats image-mklibs"
 
 PATCHRESOLVE = "noop"
 
 PRSERV_HOST = "localhost:0"
 
-DEFAULT_TIMEZONE = "Europe/Berlin"
+DEFAULT_TIMEZONE = "Europe/Paris"
+
+INHERIT += "rm_work"
 
 ### Disk Space Monitoring during the build
 
@@ -46,11 +50,7 @@ BB_DISKMON_DIRS = "\
     ABORT,${DL_DIR},100M,1K \
     ABORT,${SSTATE_DIR},100M,1K" 
 
-# Uncomment this to delete work files as the build progresses rather than
-# keeping them around, which saves a lot of disk space. However, if any
-# problems arise it can be useful to have the work files to examine, which
-# is why it is off by default.
-INHERIT += "rm_work"
+
 
 ### Qemu configuration
 
@@ -61,19 +61,17 @@ ASSUME_PROVIDED += "libsdl-native"
 CONF_VERSION = "1"
 
 
-### Language Settings
-
-IMAGE_LINGUAS ?= "de-de"
+IMAGE_LINGUAS ?= "de-de fr-fr en-gb"
 ENABLE_BINARY_LOCALE_GENERATION ?= "1"
-GLIBC_GENERATE_LOCALES = "de_DE.UTF-8"
+GLIBC_GENERATE_LOCALES = "de_DE.UTF-8 fr_FR.UTF-8 en_GB.UTF-8"
 LOCALE_GENERATION_WITH_CROSS-LOCALEDEF = "1"
 
 ### Machine Selection
 
 # This sets the default machine to be qemux86 if no other machine is selected. Possible values genericx86 or genericx86_64
 MACHINE ?= "genericx86-64"
-
-TCLIBC ?= "glibc"
+MULTILIBS = "multilib:lib32"
+DEFAULTTUNE_virtclass-multilib-lib32 = "x86"
 
 DISTRO = "poky"
 
@@ -97,16 +95,19 @@ CREATOR = "builder"
 GIT_USER = "builder"
 
 # set your email adress
-MAIL = "builder@builder.org"
+MAIL = "builder@build.org"
 
 # set your email password. it will be stored in /etc/msmtprc in cleartext (for now)
-PASSWD = "builder"
+PASSWD = ""
 
 # set your email provider. possible entries are: gmail, t-online, gmx, web.de, aol, mail.de, outlook
 PROVIDER = "t-online"
 
 # Web server from which packages and images are updated. Defaults to local folder on your cst harddrive.
-IPK_FEED_SERVER = "file:////home/builder/poky/build/tmp/deploy/ipk"
+IPK_FEED_SERVER = "file:////home/builder/poky/git/build/tmp/deploy/ipk"
+IMAGE_LOCATION = "file:////home/builder/poky/git/build/tmp/deploy/images/genericx86-64"
+RELEASE_TEXT_LOCATION = "" 
+#RELEASE_TEXT_LOCATION_HOST = ""
 
 # put your yt_dev_id here, if you need working youtube playback
 YT_DEV_KEY = ""
@@ -117,4 +118,4 @@ SHOUTCAST_DEV_KEY = ""
 
 IMAGETYPE = "normal"
 
-
+#PREFERRED_PROVIDER_linux-firmware = "firmware"

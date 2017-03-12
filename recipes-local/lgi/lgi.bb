@@ -5,7 +5,7 @@ HOMEPAGE = "https://github.com/pavouk/lgi.git "
 LICENSE = "GPL-2.0"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
 
-DEPENDS = "imagemagick-native gobject-introspection glib-2.0 libffi"
+DEPENDS = "imagemagick-native gobject-introspection glib-2.0 libffi lua5.2"
 
 SRC_URI = "git://github.com/pavouk/lgi.git \
 "
@@ -36,6 +36,5 @@ do_install() {
 	make install PREFIX=/usr DESTDIR=${D}
 }
 		
-
 FILES_${PN} = "/usr"
 

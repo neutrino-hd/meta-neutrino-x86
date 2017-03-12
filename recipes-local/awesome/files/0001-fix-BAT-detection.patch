@@ -1,0 +1,28 @@
+From 49ee086816170599e766cad4de4e9418989ecfbe Mon Sep 17 00:00:00 2001
+From: flk <f_l_k@t-online.de>
+Date: Fri, 28 Oct 2016 11:22:55 +0200
+Subject: [PATCH] fix BAT detection
+
+Signed-off-by: flk <f_l_k@t-online.de>
+---
+ widgets/bat.lua | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/widgets/bat.lua b/widgets/bat.lua
+index 991885a..4e1e4cf 100644
+--- a/widgets/bat.lua
++++ b/widgets/bat.lua
+@@ -30,8 +30,8 @@ local function worker(args)
+     local bat       = {}
+     local args      = args or {}
+     local timeout   = args.timeout or 30
+-    local batteries = args.batteries or (args.battery and {args.battery}) or {"BAT0"}
+-    local ac        = args.ac or "AC0"
++    local batteries = args.batteries or (args.battery and {args.battery}) or {"BAT1"}
++    local ac        = args.ac or "ACAD"
+     local notify    = args.notify or "on"
+     local settings  = args.settings or function() end
+ 
+-- 
+2.7.4
+

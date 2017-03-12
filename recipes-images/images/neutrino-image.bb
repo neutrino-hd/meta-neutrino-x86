@@ -7,34 +7,36 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=4d92cd373abda3937c2bc47fbc49d
                     file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
 
 
-SRCREV ?= "2679a347c576f5411fbe802d2f6201c94036ecb2"
+SRCREV ?= "fb1df184b96e0b5a29f330ba4fbf6555f9034eda"
 SRC_URI = "git://git.yoctoproject.org/poky;branch=morty \
+	   file://system-builder.conf \
            file://Yocto_Build_Appliance.vmx \
            file://Yocto_Build_Appliance.vmxf \
 	   file://mimeapps.list \
            file://README_VirtualBox_Guest_Additions.txt \
           "
 
-include neutrino-image-base-dev.inc
+FILES_${PN} = "${sysconfdir}/dbus-1/system.d/system-builder.conf"
 
-DEPENDS = "zip-native builder"
 
-IMAGE_FEATURES_append += " \
-	dev-pkgs \
-	tools-sdk \
-	tools-debug \
-	eclipse-debug \
-	tools-profile \
-	tools-testapps \
-	debug-tweaks \
-"
+include neutrino-image-base-dev.inc 
 
-EXTRA_IMAGE_FEATURES_append = "dbg-pkgs \
-			       ptest-pkgs \
-"
+IMAGE_FEATURES_append += "dev-pkgs tools-sdk" 
+
+IMAGE_FEATURES_append += "${@'' if IMAGETYPE != 'debug' else 'tools-debug eclipse-debug tools-profile tools-testapps debug-tweaks'}"
+
+EXTRA_FEATURES_append += "${@'' if IMAGETYPE != 'debug' else 'dbg-pkgs ptest-pkgs'}"
+
+
+DEPENDS = "zip-native adduser"
+
+do_install_append () {
+    install -D -m 0644 ${WORKDIR}/system-builder.conf ${D}${sysconfdir}/dbus-1/system.d/system-builder.conf
+}
 
 IMAGE_INSTALL += " \
 	${NEUTRINO_FLAVOUR} \
+	neutrino-feed-config \
 	neutrino-plugins \
 	neutrino-plugin-xupnpd \
 	neutrino-plugin-netzkino \
@@ -49,6 +51,7 @@ IMAGE_INSTALL += " \
 	neutrino-plugin-youtube \
 	neutrino-plugin-webtv \
 	neutrino-plugin-rockpalast \
+	neutrino-plugin-logo \
 "
 
 IMAGE_INSTALL_append += " \
@@ -59,11 +62,10 @@ IMAGE_INSTALL_append += " \
 	glibc-localedata-de-de \
 	glibc-localedata-en-us \
 	glibc-localedata-translit-combining \
-	neutrino-mp \
 	vsftpd \
 	pugixml \
-	firmware \
 	mc \
+	ni-logos \
 	bash \
 	nano \
 	git \
@@ -79,19 +81,24 @@ IMAGE_INSTALL_append += " \
 	multipath-tools \
 	evince \
 	gparted \
-	awesome \
+	i3 \
+	i3-status \
+	dmenu \
+	feh \
+	rxvt-unicode \
 	sublime \
 	nautilus \
 	settings-daemon \
 	shutdown-desktop \
 	libsdl \
 	sudo \
-	connman-gnome \
 	udev-extraconf \
-	xf86-video-intel \
 	xf86-input-synaptics \
 	xf86-video-vmware \
 	xf86-input-vmmouse \
+	xf86-video-modesetting \
+	xf86-video-ati \
+	xf86-video-nouveau \
 	ntpdate \
 	imagemagick \
 	gthumb \
@@ -100,14 +107,14 @@ IMAGE_INSTALL_append += " \
 	xchat \
 	gnupg \
 	meld \
+	minidlna \
 	tango-icon-theme \
 	unrar \
 	sylpheed \
-	epiphany \
-	python3-pydoc \
-	python3-resource \
+	chrome \
 	texinfo \
 	chrpath \
+	libxml2-python \
 	wget \
 	cpio \
 	coreutils \
@@ -115,6 +122,31 @@ IMAGE_INSTALL_append += " \
 	gzip \
 	socat \
 	libsdl \
+	wpa-supplicant \
+	tzdata \
+	minicom \
+	pulseaudio-server \
+	pavucontrol \
+	pulseaudio-module-bluetooth-discover \
+	pulseaudio-module-bluetooth-policy \
+	pulseaudio-module-bluez5-device \
+	pulseaudio-module-bluez5-discover \
+	pasystray \
+	screenfetch \
+	polkit-gnome \
+	inetutils-ftp \
+	libsmbclient \
+	cifs-utils \
+	gvfsd-ftp \
+	gvfs-bash-completion \
+	gvfs-locale-de \
+	parcellite \
+	parcellite-locale-de \
+	networkmanager \
+	network-manager-applet \
+	mobile-broadband-provider-info \
+	modemmanager \
+	usb-modeswitch \
 "
 
 IMAGE_INSTALL_append += " \
@@ -143,6 +175,9 @@ IMAGE_INSTALL_append += " \
 	python-pprint \
 	python-debugger \
 	python-pkgutil \
+	python-argparse \
+	python-html \
+	python-resource \
 "
 
 IMAGE_INSTALL_append += " \
@@ -171,4 +206,7 @@ IMAGE_INSTALL_append += " \
 	python3-pprint \
 	python3-debugger \
 	python3-pkgutil \
+	python3-pydoc \
+	python3-resource \
+	python3-html \
 "

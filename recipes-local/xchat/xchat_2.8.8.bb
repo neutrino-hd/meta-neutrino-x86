@@ -28,6 +28,8 @@ EXTRA_OECONF = "\
     --disable-perl \
     --disable-tcl \
 "
+LDFLAGS += "-lgmodule-2.0"
+
 
 RDEPENDS_${PN} += "dbus"
 FILES_${PN} += "${datadir}/dbus-1"

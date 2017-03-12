@@ -20,17 +20,25 @@ GNOME_COMPRESS_TYPE="bz2"
 SRC_URI += "file://idl-sysroot.patch \
             file://no-try-run-strftime.diff \
             file://no-G_DISABLE_DEPRECATED.patch \
+	    file://nautilus \
 "
 
 
 EXTRA_OECONF = " --disable-gtk-doc  --disable-update-mimedb "
 export SYSROOT = "${STAGING_DIR_HOST}"
 
+LDFLAGS += "-lgmodule-2.0"
+
 do_configure() {
     sed -i -e /docs/d ${S}/Makefile.am
     autotools_do_configure
     # We need native orbit-idl with target idl files. No way to say it in a clean way:
     find ${B} -name Makefile -exec sed -i '/\/usr\/bin\/orbit-idl-2/{s:/usr/bin:${STAGING_BINDIR_NATIVE}:;s:/usr/share:${STAGING_DATADIR}:g}' {} \;
+}
+
+do_install_append() {
+	mv ${D}${bindir}/nautilus ${D}${bindir}/nautilus_bin
+	install -m 0755 ${WORKDIR}/nautilus ${D}${bindir}/nautilus
 }
 
 RDEPENDS_${PN} = "gvfs gvfsd-ftp gvfsd-sftp gvfsd-trash glib-networking"

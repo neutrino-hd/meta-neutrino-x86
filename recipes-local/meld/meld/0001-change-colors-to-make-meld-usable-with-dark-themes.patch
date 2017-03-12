@@ -1,0 +1,67 @@
+From dfe2a16a036e4ad245bb4c03cd0a585f87b303cd Mon Sep 17 00:00:00 2001
+From: flk <f_l_k@t-online.de>
+Date: Mon, 31 Oct 2016 08:30:25 +0100
+Subject: [PATCH] change colors to make meld usable with dark themes
+
+Signed-off-by: flk <f_l_k@t-online.de>
+---
+ data/gtkrc | 28 +++++++++++++---------------
+ 1 file changed, 13 insertions(+), 15 deletions(-)
+
+diff --git a/data/gtkrc b/data/gtkrc
+index 1885d9b..d00857d 100644
+--- a/data/gtkrc
++++ b/data/gtkrc
+@@ -1,36 +1,34 @@
+-
+-style "meld-color-scheme"
++style "meld-color-scheme-user"
+ {
+-    color["insert-bg"] = "DarkSeaGreen1"
+-    color["insert-outline"] = shade(0.8, @insert-bg)
++    color["insert-bg"] = "#002200"
++    color["insert-outline"] = shade(1.8, @insert-bg)
+     color["insert-text"] = "#008800"
+ 
+-    color["delete-bg"] = "White"
+-    color["delete-outline"] = shade(0.8, @delete-bg)
++
++    color["delete-bg"] = "#111111"
++    color["delete-outline"] = shade(1.8, @delete-bg)
+     color["delete-text"] = "#880000"
+ 
+-    color["replace-bg"] = "#ddeeff"
+-    color["replace-outline"] = shade(0.8, @replace-bg)
++    color["replace-bg"] = "#000033"
++    color["replace-outline"] = shade(1.8, @replace-bg)
+     color["replace-text"] = "#0044dd"
+ 
+     color["conflict-bg"] = "Pink"
+-    color["conflict-outline"] = shade(0.8, @conflict-bg)
++    color["conflict-outline"] = shade(1.8, @conflict-bg)
+     color["conflict-text"] = "#ff0000"
+ 
+     color["error-bg"] = "#fce94f"
+-    color["error-outline"] = shade(0.8, @error-bg)
++    color["error-outline"] = shade(1.8, @error-bg)
+     color["error-text"] = "#faad3d"
+ 
+-    color["inline-bg"] = "LightSteelBlue2"
++    color["inline-bg"] = "#333366"
+     color["inline-fg"] = "Red"
+ 
+     color["unknown-text"] = "#888888"
+ 
+-    color["current-line-highlight"] = "#ffff00"
++    color["current-line-highlight"] = "#111100"
+ 
+     color["syncpoint-outline"] = "#555555"
+-
+-    color["current-chunk-highlight"] = "#ffffff"
+ }
+-widget "meldapp.*" style : lowest "meld-color-scheme"
++widget "meldapp.*" style : highest "meld-color-scheme-user"
+ 
+-- 
+2.7.4
+

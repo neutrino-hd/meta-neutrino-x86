@@ -34,9 +34,7 @@ RDEPENDS_${PN} = " libcap perl"
 RDEPENDS_${PN}-bin = "perl"
 
 pkg_postinst_ntpdate() {
-if test "x$D" != "x"; then
-        exit 1
-elif [ ! -e /usr/bin/crontab ];then
+if test "x$D" != "x" || [ ! -e /usr/bin/crontab ];then
 	exit 0
 else
         if ! grep -q -s ntpdate /var/spool/cron/root; then

@@ -49,6 +49,8 @@ end
 
 run_once("rxvtd")
 run_once("unclutter -root")
+run_once("/usr/libexec/polkit-gnome-authentication-agent-1")
+run_once("nm-applet")
 -- }}}
 
 -- {{{ Variable definitions
@@ -64,12 +66,12 @@ editor     = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
 -- user defined
-browser    = "epiphany"
+browser    = "google-chrome-stable"
 gui_editor = "subl"
-graphics   = ""
-mail       = terminal .. " -e mutt "
-iptraf     = terminal .. " -g 180x54-20+34 -e sudo iptraf-ng -i all "
-musicplr   = terminal .. " -g 130x34-320+16 -e ncmpcpp "
+graphics   = "gthumb"
+mail       = "sylpheed"
+iptraf     = terminal .. " -g 180x54-20+34 -e sudo iptraf -i all "
+musicplr   = "deadbeef"
 
 local layouts = {
     awful.layout.suit.floating,
@@ -89,7 +91,7 @@ end
 -- {{{ Tags
 tags = {
    names = { "1", "2", "3", "4", "5"},
-   layout = { layouts[1], layouts[2], layouts[3], layouts[1], layouts[4] }
+   layout = { layouts[2], layouts[2], layouts[3], layouts[3], layouts[4] }
 }
 
 for s = 1, screen.count() do
@@ -204,6 +206,29 @@ fswidget = lain.widgets.fs({
     end
 })
 
+-- Battery
+baticon = wibox.widget.imagebox(beautiful.widget_battery)
+batwidget = lain.widgets.bat({
+    settings = function()
+        if bat_now.status ~= "N/A" then
+            if bat_now.ac_status == 1 then
+                widget:set_markup(" AC ")
+                baticon:set_image(beautiful.widget_ac)
+                return
+            elseif tonumber(bat_now.perc) <= 5 then
+                baticon:set_image(beautiful.widget_battery_empty)
+            elseif tonumber(bat_now.perc) <= 15 then
+                baticon:set_image(beautiful.widget_battery_low)
+            else
+                baticon:set_image(beautiful.widget_battery)
+            end
+            widget:set_markup(" " .. bat_now.perc .. "% ")
+        else
+            baticon:set_image(beautiful.widget_ac)
+        end
+    end
+})
+
 -- ALSA volume
 volicon = wibox.widget.imagebox(beautiful.widget_vol)
 volumewidget = lain.widgets.alsa({
@@ -212,7 +237,7 @@ volumewidget = lain.widgets.alsa({
             volicon:set_image(beautiful.widget_vol_mute)
         elseif tonumber(volume_now.level) == 0 then
             volicon:set_image(beautiful.widget_vol_no)
-        elseif tonumber(volume_now.levelrrr) <= 50 then
+        elseif tonumber(volume_now.level) <= 50 then
             volicon:set_image(beautiful.widget_vol_low)
         else
             volicon:set_image(beautiful.widget_vol)
@@ -373,18 +398,18 @@ globalkeys = awful.util.table.join(
     awful.key({ altkey }, "p", function() os.execute("screenshot") end),
 
   --Application start
-     awful.key({ modkey }, "F1", function () awful.util.spawn_with_shell("epiphany") end),
+     awful.key({ modkey }, "F1", function () awful.util.spawn_with_shell("google-chrome-stable") end),
      awful.key({ modkey }, "F2", function () awful.util.spawn_with_shell("nautilus --no-desktop") end),
      awful.key({ modkey }, "F3", function () awful.util.spawn_with_shell("subl") end),
      awful.key({ modkey }, "F4", function () awful.util.spawn_with_shell("meld") end),
      awful.key({ modkey }, "F5", function () awful.util.spawn_with_shell("neutrino") end),
      awful.key({ modkey }, "F6", function () awful.util.spawn_with_shell("mpv --profile=pseudo-gui") end),
-     awful.key({ modkey }, "F7", function () awful.util.spawn_with_shell("deadbeef %F") end),
-     awful.key({ modkey }, "F8", function () awful.util.spawn_with_shell("capture.sh -a -c") end),
-     awful.key({ modkey }, "F9", function () awful.util.spawn_with_shell("capture.sh -w -c") end),
-     awful.key({ modkey }, "F10", function () awful.util.spawn_with_shell("screenshot.sh -a") end),
-     awful.key({ modkey }, "F11", function () awful.util.spawn_with_shell("screenshot.sh -s") end),
-     awful.key({ modkey }, "F12", function () awful.util.spawn_with_shell("screenshot.sh -w") end),
+     awful.key({ modkey }, "F7", function () awful.util.spawn_with_shell("deadbeef") end),
+     awful.key({ modkey }, "F8", function () awful.util.spawn_with_shell("sylpheed") end),
+     awful.key({ modkey }, "F9", function () awful.util.spawn_with_shell("xchat") end),
+     awful.key({ modkey }, "F10", function () awful.util.spawn_with_shell("gvim") end),
+     awful.key({ modkey }, "F11", function () awful.util.spawn_with_shell("screenshot.sh -w") end),
+     awful.key({ modkey }, "F12", function () awful.util.spawn_with_shell("capture.sh -w -c") end),
     -- Tag browsing
     awful.key({ modkey }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey }, "Right",  awful.tag.viewnext       ),

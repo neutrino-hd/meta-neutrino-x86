@@ -19,6 +19,8 @@ SRC_URI += "file://parallel.patch \
 
 do_configure_prepend () {
     rm -f ${S}/m4/gnome-doc-utils.m4
+    sed -i "s|GNOME_MAINTAINER_MODE_DEFINES|#GNOME_MAINTAINER_MODE_DEFINES|" ${S}/configure.ac
+    sed -i "s|GNOME_COMPILE_WARNINGS|#GNOME_COMPILE_WARNINGS|" ${S}/configure.ac
 }
 
 do_install_append () {

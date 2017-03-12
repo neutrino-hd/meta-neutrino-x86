@@ -15,7 +15,6 @@ EXTRA_OECONF = " \
 	--enable-silent-rules \
 	--enable-mdev \
 	--enable-upnp \
-	--with-tremor \
 	--enable-giflib \
 	--enable-flac \
 	--with-boxtype=generic \
