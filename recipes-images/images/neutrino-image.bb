@@ -132,6 +132,7 @@ IMAGE_INSTALL_append += " \
 	pulseaudio-module-bluez5-device \
 	pulseaudio-module-bluez5-discover \
 	pasystray \
+	notify-osd \
 	screenfetch \
 	polkit-gnome \
 	inetutils-ftp \
