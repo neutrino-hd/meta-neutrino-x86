@@ -148,6 +148,8 @@ IMAGE_INSTALL_append += " \
 	mobile-broadband-provider-info \
 	modemmanager \
 	usb-modeswitch \
+	perl-modules \
+	python-modules \
 "
 
 IMAGE_INSTALL_append += " \

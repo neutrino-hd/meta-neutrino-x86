@@ -104,17 +104,22 @@ bindsym Mod1+Shift+minus move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym Mod1+minus scratchpad show
 
+# set neutrino to fullscreen and bind to Mod1+n (toggle)
+for_window [title="neutrino"] mark "STATWIN", move scratchpad
+bindsym Mod1+n [con_mark="^STATWIN$"] exec [ $(ps h -C neutrino | wc -l) = 0 ] && /usr/bin/neutrino, fullscreen enable, scratchpad show
+
 # switch to workspace
-bindsym Mod1+1 workspace 1
-bindsym Mod1+2 workspace 2
-bindsym Mod1+3 workspace 3
-bindsym Mod1+4 workspace 4
-bindsym Mod1+5 workspace 5
-bindsym Mod1+6 workspace 6
-bindsym Mod1+7 workspace 7
-bindsym Mod1+8 workspace 8
-bindsym Mod1+9 workspace 9
-bindsym Mod1+0 workspace 10
+bindsym Mod1+1 workspace 1:workspace
+bindsym Mod1+2 workspace 2:web; exec [ $(ps h -C google-chrome-stable | wc -l) = 0 ] && /usr/bin/google-chrome-stable -s
+bindsym Mod1+6 workspace 3:mail; exec [ $(ps h -C sylpheed | wc -l) = 0 ] && /usr/bin/sylpheed -s
+bindsym Mod1+3 workspace 4:file; exec [ $(ps h -C nautilus | wc -l) = 0 ] && /usr/bin/nautilus -s
+bindsym Mod1+5 workspace 5:edit; exec [ $(ps h -C subl | wc -l) = 0 ] && /usr/bin/subl -s
+bindsym Mod1+7 workspace 6:meld; exec [ $(ps h -C meld | wc -l) = 0 ] && /usr/bin/meld
+bindsym Mod1+8 workspace 7:chat; exec [ $(ps h -C xchat | wc -l) = 0 ] && /usr/bin/xchat
+bindsym Mod1+4 workspace 8:media; exec [ $(ps h -C mpv | wc -l) = 0 ] && /usr/bin/mpv -s
+bindsym Mod1+9 workspace 9:music; exec [ $(ps h -C deadbeef | wc -l) = 0 ] && /usr/bin/deadbeef
+bindsym Mod1+0 workspace 10:pictures; exec [ $(ps h -C gthumb | wc -l) = 0 ] && /usr/bin/gthumb
+
 
 # move focused container to workspace
 bindsym Mod1+Shift+1 move container to workspace 1
