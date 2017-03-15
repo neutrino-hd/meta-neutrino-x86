@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=80
 
 DEPENDS = "virtual/gettext"
 
-SRC_URI = "git://github.com/martinh/libconfuse.git;protocoll=https;branch=master \
+SRC_URI = "git://github.com/martinh/libconfuse.git;protocol=https;branch=master \
 	   file://0001-add_missing-support-file.patch \
 "
 SRCREV = "${AUTOREV}"

@@ -1,6 +1,6 @@
 SECTION = "x11/network"
 SUMMARY = "Mail user agent"
-DEPENDS = "gtk+ gpgme gnutls cairo pango libpng gdk-pixbuf glib-2.0 openssl"
+DEPENDS = "gtk+ gpgme gnutls cairo pango libpng gdk-pixbuf glib-2.0 glib-2.0-native openssl"
 RDEPENDS_${PN} = "sylpheed-doc"
 LICENSE = "GPLv2 & LGPLv2.1"
 LIC_FILES_CHKSUM = "file://COPYING;md5=4325afd396febcb659c36b49533135d4 \
