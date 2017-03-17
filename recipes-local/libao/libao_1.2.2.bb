@@ -9,10 +9,13 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=94d55d512a9ba36caa9b7df079bae19f"
 
 SRC_URI="git://git.xiph.org/libao.git;tag=1.2.2;protocol=https"
 
+DEPENDS = "pulseaudio alsa-lib"
+
 S = "${WORKDIR}/git"
 
 inherit autotools
 
+PACKAGES += "${BPN}-ckport"
 PACKAGES_DYNAMIC += "^${BPN}-plugin-.*"
 
 do_install_append () {
@@ -26,9 +29,8 @@ python populate_packages_prepend () {
     do_split_packages(d, rootdir_dbg, '^(.*)\.so$', output_pattern='${BPN}-plugin-%s-dbg', description='AO %s plugin debug data')
 }
 
-PACKAGECONFIG ?= "alsa pulseaudio"
+PACKAGECONFIG ?= "${@bb.utils.filter('DISTRO_FEATURES', 'alsa pulseaudio', d)}"
 PACKAGECONFIG[esound] = "--enable-esd,--disable-esd,esound"
 PACKAGECONFIG[alsa] = "--enable-alsa,--disable-alsa,alsa-lib"
 PACKAGECONFIG[pulseaudio] = "--enable-pulse,--disable-pulse,pulseaudio"
-
-FILES_${PN} +="/usr/lib/ckport"
+FILES_${BPN}-ckport = "${libdir}/ckport"
