@@ -3,7 +3,7 @@ HOMEPAGE = "https://i3wm.org/"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
 
-DEPENDS = "libev libx11 libxcb xcb-util-xrm yajl xcb-util-wm xcb-util-cursor glib-2.0 libpcre pango libxkbcommon startup-notification cairo xcb-util-keysyms"
+DEPENDS = "libev libx11 libxcb xcb-util-xrm yajl xcb-util-wm xcb-util-cursor glib-2.0 libpcre pango libxkbcommon startup-notification cairo xcb-util-keysyms xdotool"
 
 RDEPENDS_${PN} = " xwininfo"
 
