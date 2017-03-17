@@ -1,6 +1,6 @@
 SUMMARY = "Icon theme"
 SECTION = "icons"
-HOMEPAGE = ""
+HOMEPAGE = "http://tango.freedesktop.org/Tango_Icon_Library"
 
 DEPENDS += "gtk+ icon-naming-utils-native intltool-native imagemagick imagemagick-native gconf-native"
 
@@ -20,7 +20,7 @@ S = "${WORKDIR}/${BPN}-${PV}"
 inherit autotools pkgconfig gettext gconf
 
 do_configure_prepend() {
-	sed -i "s|ICONMAP=|ICONMAP=${STAGING_LIBEXECDIR_NATIVE}/icon-name-mapping|" ${S}/configure.ac
+	sed -i "s|ICONMAP=libexecdir|ICONMAP=${STAGING_LIBEXECDIR_NATIVE}/icon-name-mapping|" ${S}/configure.ac
 }
 
 FILES_${PN} = "/usr"

@@ -15,7 +15,7 @@
 -                 and install tango-icon-theme])
 -fi
 +UTILS_PATH="`$PKG_CONFIG --variable=program_path icon-naming-utils`"
-+ICONMAP=
++ICONMAP=libexecdir
 +AC_SUBST(ICONMAP)
 +AC_MSG_RESULT([yes])
  
