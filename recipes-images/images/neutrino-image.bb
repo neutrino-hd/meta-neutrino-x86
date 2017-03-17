@@ -14,6 +14,7 @@ SRC_URI = "git://git.yoctoproject.org/poky;branch=morty \
            file://Yocto_Build_Appliance.vmxf \
 	   file://mimeapps.list \
            file://README_VirtualBox_Guest_Additions.txt \
+	   file://system-builder.conf \
           "
 
 FILES_${PN} = "${sysconfdir}/dbus-1/system.d/system-builder.conf"
@@ -27,8 +28,22 @@ IMAGE_FEATURES_append += "${@'' if IMAGETYPE != 'debug' else 'tools-debug eclips
 
 EXTRA_FEATURES_append += "${@'' if IMAGETYPE != 'debug' else 'dbg-pkgs ptest-pkgs'}"
 
+inherit useradd
 
-DEPENDS = "zip-native adduser"
+# builder user password is "builder"
+BUILDER_PASSWORD ?= ".gLibiNXn0P12"
+USERADD_PACKAGES = "${PN}"
+USERADD_PARAM_${PN} = "--system \
+		       --create-home \
+		       --password ${BUILDER_PASSWORD} \
+                       --user-group \
+		       --shell /bin/bash \
+		       --uid 1200 \
+		       builder \
+"
+
+
+DEPENDS = "zip-native"
 
 do_install_append () {
     install -D -m 0644 ${WORKDIR}/system-builder.conf ${D}${sysconfdir}/dbus-1/system.d/system-builder.conf
