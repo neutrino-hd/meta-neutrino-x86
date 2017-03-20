@@ -12,6 +12,7 @@ S = "${WORKDIR}/git"
 SRCREV = "4.6"
 
 DEPENDS = "libx11 libxinerama libxft freetype"
+RDEPENDS_${PN} = "libx11-locale"
 
 inherit autotools-brokensep pkgconfig
 
