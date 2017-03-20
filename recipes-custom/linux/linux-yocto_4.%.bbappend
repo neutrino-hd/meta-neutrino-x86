@@ -10,6 +10,5 @@ SRC_URI += "file://bluetooth.cfg \
 	    file://wlan.cfg \
 	    file://x86_dev.cfg \
 	    file://pcmcia.cfg \
-	    file://0001-dvb-usb-don-t-use-stack-for-firmware-load.patch \
 "
 
