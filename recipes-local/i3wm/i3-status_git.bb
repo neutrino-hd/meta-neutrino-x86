@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=80
 
 DEPENDS = "i3 libconfuse libnl alsa-lib pulseaudio asciidoc-native"
 
-SRC_URI = "git://github.com/i3/i3status.git;protocoll=https;branch=master \
+SRC_URI = "git://github.com/i3/i3status.git;protocol=https;branch=master \
 "
 SRCREV = "${AUTOREV}"
 
