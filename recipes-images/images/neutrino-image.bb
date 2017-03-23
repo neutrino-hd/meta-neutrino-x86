@@ -69,6 +69,7 @@ IMAGE_INSTALL_append += " \
 	bash \
 	nano \
 	git \
+	glib-2.0 \
 	samba \
 	cmake \
 	image-config \
@@ -80,6 +81,7 @@ IMAGE_INSTALL_append += " \
 	local-build \
 	multipath-tools \
 	evince \
+	procps \
 	gparted \
 	i3 \
 	i3-status \
@@ -102,6 +104,7 @@ IMAGE_INSTALL_append += " \
 	ntpdate \
 	imagemagick \
 	gthumb \
+	gnome-keyring \
 	deadbeef \
 	mpv \
 	xchat \
@@ -124,6 +127,7 @@ IMAGE_INSTALL_append += " \
 	libsdl \
 	wpa-supplicant \
 	tzdata \
+	unclutter \
 	minicom \
 	pulseaudio-server \
 	pavucontrol \
@@ -144,7 +148,7 @@ IMAGE_INSTALL_append += " \
 	parcellite \
 	parcellite-locale-de \
 	networkmanager \
-	network-manager-applet \
+	network-manager-applet-gtk2 \
 	mobile-broadband-provider-info \
 	modemmanager \
 	usb-modeswitch \

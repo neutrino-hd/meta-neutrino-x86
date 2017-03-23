@@ -1,4 +1,4 @@
-inherit core-image module-base
+inherit core-image module-base extrausers
 
 NOHDD = "1"
 
@@ -49,8 +49,6 @@ fakeroot do_populate_poky_src () {
 		rm -rf ${IMAGE_ROOTFS}/home/builder/poky/build/downloads/git2_*
 	fi
 
-	# Place the README_VirtualBox_Guest_Additions file in builders home folder.
-	cp ${WORKDIR}/README_VirtualBox_Guest_Additions.txt ${IMAGE_ROOTFS}/home/builder/
 
 	# Create a symlink, needed for out-of-tree kernel modules build
 	lnr ${IMAGE_ROOTFS}${KERNEL_SRC_PATH} ${IMAGE_ROOTFS}/lib/modules/${KERNEL_VERSION}/build
@@ -61,10 +59,6 @@ fakeroot do_populate_poky_src () {
 	install -d ${IMAGE_ROOTFS}/home/builder/.config ${IMAGE_ROOTFS}/home/builder/.local/share/applications
 	install -m 644 ${WORKDIR}/mimeapps.list ${IMAGE_ROOTFS}/home/builder/.config/mimeapps.list
 	ln -s /home/builder/.config/mimeapps.list ${IMAGE_ROOTFS}/home/builder/.local/share/applications/mimeapps.list
-
-	#chown home directory by builder
-	chown -R builder.builder ${IMAGE_ROOTFS}/home/builder
-	chmod -R ug+rw   ${IMAGE_ROOTFS}/home/builder
 
 	# Assume we will need CDROM to install guest additions
 	mkdir -p ${IMAGE_ROOTFS}/media/cdrom
@@ -85,25 +79,9 @@ fakeroot do_populate_poky_src () {
 
 	# setuid Xorg
 	chmod u+s ${IMAGE_ROOTFS}/usr/libexec/Xorg
-
-	# chown /etc/neutrino by builder
-	chown -R builder:builder ${IMAGE_ROOTFS}/etc/neutrino
-
-	# chown ~/ by builder
-	chown -R builder:builder ${IMAGE_ROOTFS}/home/builder
-
-	# chown /usr/local by builder
-	chown -R builder:builder ${IMAGE_ROOTFS}/usr/local
 }
 
 IMAGE_PREPROCESS_COMMAND += "do_populate_poky_src; "
-
-# workaround: NOHDD varibale isn`t respected in do_wic_image
-IMAGE_PREPROCESS_COMMAND_append += "do_fix_image_gen;"
-do_fix_image_gen() {
-mkdir -p  ${S}/hddimg/EFI/BOOT/
-touch ${S}/hddimg/EFI/BOOT/bla
-}
 
 addtask rootfs after do_unpack
 
