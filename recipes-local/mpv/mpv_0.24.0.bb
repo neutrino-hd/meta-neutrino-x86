@@ -54,8 +54,7 @@ EXTRA_OECONF = " \
 do_configure_prepend () {
     ln -sf waf-1.9.8 ${S}/waf
     chmod +x ${S}/waf
-    sed -i "s|TryExec=mpv|TryExec=mpv_si|" ${S}/etc/mpv.desktop
-    sed -i "s|Exec=mpv --profile=pseudo-gui -- %U|Exec=mpv_si|" ${S}/etc/mpv.desktop
+    sed -i "s|Exec=mpv --player-operation-mode=pseudo-gui -- %U|Exec=mpv_si|" ${S}/etc/mpv.desktop
 }
 
 do_install_append () {
