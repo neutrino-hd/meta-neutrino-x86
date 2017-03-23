@@ -92,17 +92,39 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# give focus
+for_window [class="mpv"] fullscreen enable
+for_window [class="mpv"] focus
+for_window [class="Sublime_text"] focus
+for_window [class="Nautilus"] focus
+for_window [class="Sylpheed"] focus
+for_window [class="XChat"] focus
+for_window [class="DeadBeef"] focus
+for_window [class="Gthumb"] focus
+for_window [class="Google-chrome"] focus
+
+# assign applications to workspaces
+assign [class="Google-chrome"] 2:web
+assign [class="Xchat"] 3:chat
+assign [class="Sylpheed"] 4:mail
+assign [class="Nautilus"] 5:file
+assign [class="Sublime_text"] 6:edit
+assign [class="Meld"] 7:compare
+assign [class="DeadBeef"] 8:audio
+assign [class="Gthumb"] 9:pictures
+assign [class="mpv"] 10:video
+
 # switch to workspace
 bindsym $mod+1 workspace 1:workspace
-bindsym $mod+2 workspace 2:web; exec raise_or_run.sh  class Google-chrome google-chrome-stable
+bindsym $mod+2 workspace 2:web;  exec raise_or_run.sh  class Google-chrome google-chrome-stable
 bindsym $mod+3 workspace 3:chat; exec raise_or_run.sh  class XChat xchat
 bindsym $mod+4 workspace 4:mail; exec raise_or_run.sh  class Sylpheed sylpheed
 bindsym $mod+5 workspace 5:file; exec raise_or_run.sh  class Nautilus nautilus
 bindsym $mod+6 workspace 6:edit; exec raise_or_run.sh  class Sublime_text subl
-bindsym $mod+7 workspace 7:meld; exec raise_or_run.sh  class Meld meld
+bindsym $mod+7 workspace 7:compare; exec raise_or_run.sh  class Meld meld
 bindsym $mod+8 workspace 8:audio; exec raise_or_run.sh  class DeadBeef deadbeef, exec raise_or_run.sh  class Pavucontrol pavucontrol
-bindsym $mod+9 workspace 9:video; exec raise_or_run.sh  class Mpv mpv
-bindsym $mod+0 workspace 10
+bindsym $mod+9 workspace 9:pictures; exec raise_or_run.sh  class Gthumb gthumb
+bindsym $mod+0 workspace 10:video; exec raise_or_run.sh  class mpv mpv
 
 # toggle between the two workspaces used last	
 bindsym $mod+Tab workspace back_and_forth
@@ -120,9 +142,8 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # move neutrino into scratchpad and toggle using [$MOD] + n
-for_window [title="neutrino"] mark "STATWIN", move scratchpad
-bindsym $mod+n [con_mark="^STATWIN$"] fullscreen enable,, scratchpad show
-
+for_window [title="^neutrino$"] mark "STATWIN", move scratchpad
+bindsym $mod+n [con_mark="^STATWIN$"] fullscreen enable, scratchpad show
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -174,6 +195,11 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+# Display calender
+for_window [class="Gsimplecal"] floating enable
+for_window [class="Gsimplecal"] move absolute position 20px 20px
+bindsym $mod+c exec --no-startup-id gsimplecal
+
 bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -183,5 +209,6 @@ bar {
 }
 
 exec --no-startup-id dbus-launch nm-applet
-exec --no-startup-id dbus-launch pasystray --always-notify
-exec --no-startup-id dbus-launch neutrino
+exec --no-startup-id dbus-launch pasystray --notify=all
+exec --no-startup-id dbus-launch parcellite
+exec --no-startup-id dbus-launch unclutter
