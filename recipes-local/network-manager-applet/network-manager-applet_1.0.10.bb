@@ -18,7 +18,6 @@ PACKAGECONFIG[bluetooth] = "--with-bluetooth,--without-bluetooth,gnome-bluetooth
 PACKAGECONFIG[modemmanager] = "--with-modem-manager-1,--without-modem-manager-1,modemmanager"
 PACKAGECONFIG ??= "bluetooth modemmanager"
 
-EXTRA_OECONF = "--with-gtkver=2"
 
 do_configure_append() {
     # Sigh... --enable-compile-warnings=no doesn't actually turn off -Werror
