@@ -1,0 +1,6 @@
+#! /bin/sh
+# We want only one instance of mpv running. There is a python script "umpv" that provides this feature. 
+# But lets just keep it simple ;)
+
+i3-msg [class=mpv] kill
+mpv --profile=pseudo-gui "$1"
