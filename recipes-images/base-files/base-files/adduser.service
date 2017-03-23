@@ -1,0 +1,8 @@
+[Unit]
+Description=add user ... workaround for broken useradd.bbclass
+Before=xserver-nodm.service
+
+[Service]
+ExecStart=/usr/bin/adduser.sh
+
+
