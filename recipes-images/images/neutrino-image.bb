@@ -104,11 +104,12 @@ IMAGE_INSTALL_append += " \
 	ntpdate \
 	imagemagick \
 	gthumb \
-	gnome-keyring \
+	gcalctool \
 	deadbeef \
 	mpv \
 	xchat \
 	gnupg \
+	redshift \
 	meld \
 	minidlna \
 	tango-icon-theme \
