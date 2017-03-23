@@ -212,3 +212,5 @@ exec --no-startup-id dbus-launch nm-applet
 exec --no-startup-id dbus-launch pasystray --notify=all
 exec --no-startup-id dbus-launch parcellite
 exec --no-startup-id dbus-launch unclutter
+exec --no-startup-id dbus-launch /usr/libexec/polkit-gnome-authentification-agent-1
+
