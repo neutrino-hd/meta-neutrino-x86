@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if id "$1" >/dev/null 2>&1; then
+if id "builder" >/dev/null 2>&1; then
         echo "user exists"
 else
 	# add user builder with password builder
