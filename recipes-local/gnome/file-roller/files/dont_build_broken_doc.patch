@@ -1,0 +1,33 @@
+--- a/Makefile.am	2011-04-26 16:29:35.000000000 +0200
++++ b/Makefile.am	2017-03-24 04:44:12.879069026 +0100
+@@ -9,7 +9,6 @@
+ 	copy-n-paste	\
+ 	data		\
+ 	src		\
+-	help		\
+ 	$(NAUTILUS)	\
+ 	po
+ 
+@@ -28,11 +27,9 @@
+ 	file-roller.spec.in	\
+ 	intltool-merge.in	\
+ 	intltool-update.in	\
+-	intltool-extract.in	\
+-	gnome-doc-utils.make
++	intltool-extract.in
+ 
+ DISTCLEANFILES =                        \
+-	gnome-doc-utils.make		\
+ 	po/.intltool-merge-cache        \
+ 	intltool-extract                \
+ 	intltool-merge                  \
+--- a/configure.ac	2011-04-26 16:35:49.000000000 +0200
++++ b/configure.ac	2017-03-24 04:56:44.747029279 +0100
+@@ -186,7 +186,6 @@
+ 		 src/commands/Makefile
+ 		 src/sh/Makefile
+ 		 nautilus/Makefile
+-		 help/Makefile
+ 		 po/Makefile.in])
+ AC_OUTPUT
+ 

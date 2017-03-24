@@ -75,7 +75,7 @@ IMAGE_INSTALL_append += " \
 	image-config \
 	xdg-utils \
 	subversion \
-	xarchiver \
+	file-roller \
 	vim \
 	include-meta-neutrino \
 	local-build \
