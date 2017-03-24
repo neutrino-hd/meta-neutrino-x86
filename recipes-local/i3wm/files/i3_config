@@ -114,8 +114,8 @@ assign [class="File-roller"] 5:file
 assign [class="Sublime_text"] 6:edit
 assign [class="Meld"] 7:compare
 assign [class="DeadBeef"] 8:audio
-assign [class="Gthumb"] 9:gxf
-assign [class="Gimp"] 9:gxf
+assign [class="Gthumb"] 9:gfx
+assign [class="Gimp"] 9:gfx
 assign [class="mpv"] 10:video
 
 # switch to workspace

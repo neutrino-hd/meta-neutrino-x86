@@ -1,4 +1,3 @@
-
 [Default Applications]
 application/javascript=sublime_text.desktop
 application/lrf=calibre-lrfviewer.desktop
@@ -91,6 +90,7 @@ video/x-ms-asf=mpv.desktop
 audio/x-wav=deadbeef.desktop
 audio/x-vorbis+ogg=deadbeef.desktop
 x-scheme-handler/gogdownloader=lgogd_uri.desktop
+application/x-xz=file-roller.desktop
 
 [Added Associations]
 application/javascript=sublime_text.desktop;
@@ -110,13 +110,24 @@ application/x-extension-xhtml=google-chrome.desktop;chromium-browser.desktop;
 application/x-navi-animation=gthumb.desktop
 application/x-perl=sublime_text.desktop;
 application/x-php=sublime_text.desktop;
-application/x-rar=kde4-ark.desktop;comix.desktop;
+application/x-rar=file-roller.desktop
 application/x-shellscript=sublime_text.desktop;
 application/x-tar=file-roller.desktop;
 application/x-yaml=sublime_text.desktop;
 application/xhtml+xml=google-chrome.desktop;
 application/xml=sublime_text.desktop;
-application/zip=kde4-ark.desktop;comix.desktop;
+application/x-zip=file-roller.desktop
+application/x-zip-compresssed=file-roller.desktop
+application/x-bzip=file-roller.desktop
+application/x-bzip2=file-roller.desktop
+application/x-bzip-compressed-tar=file-roller.desktop
+application/x-bzip2-compresssed-tar=file-roller.desktop
+application/x-gzip=file-roller.desktop
+application/x-xz=file-roller.desktop
+application/x-rar=file-roller.desktop
+application/x-rar-compresssed=file-roller.desktop
+application/x-debian-package=file-roller.desktop
+application/x-deb=file-roller.desktop
 audio/mp4=deadbeef.desktop;
 audio/mpeg=deadbeef.desktop;
 image/bmp=gthumb.desktop
@@ -175,4 +186,4 @@ application/vnd.adobe.flash.movie=gnash.desktop;
 video/x-ms-asf=mpv.desktop;mplayer.desktop;
 audio/x-wav=deadbeef.desktop;
 audio/x-vorbis+ogg=deadbeef.desktop;
-
+application/x-xz=file-roller.desktop;
