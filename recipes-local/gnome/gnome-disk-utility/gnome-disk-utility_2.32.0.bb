@@ -10,7 +10,7 @@ DEPENDS = "glib-2.0 gtk+ libnotify libunique udisks avahi-ui \
 
 PR = "r4"
 
-inherit gnomebase gtk-icon-cache distro_features_check
+inherit gnomebase gtk-icon-cache distro_features_check pkgconfig
 
 REQUIRED_DISTRO_FEATURES = "x11"
 
@@ -28,7 +28,7 @@ SRC_URI += "\
 
 EXTRA_OECONF += "--disable-scrollkeeper"
 
-PACKAGECONFIG ??= ""
+PACKAGECONFIG ??= "nautilus"
 PACKAGECONFIG[nautilus] = "--enable-nautilus,--disable-nautilus,nautilus"
 
 do_configure_prepend() {
@@ -42,4 +42,4 @@ FILES_${PN}-dev += "${libdir}/nautilus/extensions-2.0/*.la"
 FILES_${PN}-staticdev += "${libdir}/nautilus/extensions-2.0/*.a"
 FILES_${PN}-dbg += "${libdir}/nautilus/extensions-2.0/.debug"
 
-PNBLACKLIST[gnome-disk-utility] ?= "Fails to build with RSS http://errors.yoctoproject.org/Errors/Details/132824/"
+

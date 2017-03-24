@@ -97,10 +97,12 @@ for_window [class="mpv"] fullscreen enable
 for_window [class="mpv"] focus
 for_window [class="Sublime_text"] focus
 for_window [class="Nautilus"] focus
+for_window [class="File-roller"] focus
 for_window [class="Sylpheed"] focus
 for_window [class="XChat"] focus
 for_window [class="DeadBeef"] focus
 for_window [class="Gthumb"] focus
+for_window [class="Gimp"] focus
 for_window [class="Google-chrome"] focus
 
 # assign applications to workspaces
@@ -108,14 +110,16 @@ assign [class="Google-chrome"] 2:web
 assign [class="Xchat"] 3:chat
 assign [class="Sylpheed"] 4:mail
 assign [class="Nautilus"] 5:file
+assign [class="File-roller"] 5:file
 assign [class="Sublime_text"] 6:edit
 assign [class="Meld"] 7:compare
 assign [class="DeadBeef"] 8:audio
-assign [class="Gthumb"] 9:pictures
+assign [class="Gthumb"] 9:gxf
+assign [class="Gimp"] 9:gxf
 assign [class="mpv"] 10:video
 
 # switch to workspace
-bindsym $mod+1 workspace 1:workspace
+bindsym $mod+1 workspace 1:work
 bindsym $mod+2 workspace 2:web;  exec raise_or_run.sh  class Google-chrome google-chrome-stable
 bindsym $mod+3 workspace 3:chat; exec raise_or_run.sh  class XChat xchat
 bindsym $mod+4 workspace 4:mail; exec raise_or_run.sh  class Sylpheed sylpheed
@@ -123,7 +127,7 @@ bindsym $mod+5 workspace 5:file; exec raise_or_run.sh  class Nautilus nautilus
 bindsym $mod+6 workspace 6:edit; exec raise_or_run.sh  class Sublime_text subl
 bindsym $mod+7 workspace 7:compare; exec raise_or_run.sh  class Meld meld
 bindsym $mod+8 workspace 8:audio; exec raise_or_run.sh  class DeadBeef deadbeef, exec raise_or_run.sh  class Pavucontrol pavucontrol
-bindsym $mod+9 workspace 9:pictures; exec raise_or_run.sh  class Gthumb gthumb
+bindsym $mod+9 workspace 9:gfx; exec raise_or_run.sh  class Gthumb gthumb
 bindsym $mod+0 workspace 10:video; exec raise_or_run.sh  class mpv mpv
 
 # toggle between the two workspaces used last	

@@ -146,6 +146,8 @@ IMAGE_INSTALL_append += " \
 	gvfsd-ftp \
 	gvfs-bash-completion \
 	gvfs-locale-de \
+	gnome-disk-utility \
+	gimp \
 	parcellite \
 	parcellite-locale-de \
 	networkmanager \
