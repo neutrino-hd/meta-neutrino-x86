@@ -2,8 +2,8 @@ DESCRIPTION = "An archive manager for the GNOME environment"
 LICENSE = "GPLv2 & LGPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=59530bdf33659b29e73d4adb9f9f6552"
 SECTION = "x11/gnome"
-DEPENDS="gtk+ libgnomeui gnome-common gnome-vfs libglade libbonoboui gconf-native intltool-native nautilus"
-RDEPENDS_${PN} = "unzip"
+DEPENDS="gtk+ libgnomeui gnome-common gnome-vfs libglade libbonoboui gconf-native intltool-native nautilus libarchive"
+RDEPENDS_${PN} = "unzip tar xz binutils unrar gzip bzip2"
 
 SRC_URI_append += "file://dont_build_broken_doc.patch"
 

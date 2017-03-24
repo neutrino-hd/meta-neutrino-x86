@@ -6,14 +6,12 @@ SRC_URI_append += " \
 	file://telnetd.busybox \
 	file://hostname.script \
 	file://telnet.service \
-	file://udhcpc.service \
 "
 
 inherit systemd
 
 SYSTEMD_SERVICE_${PN}-syslog = ""
 SYSTEMD_SERVICE_${PN} = "telnet.service"
-SYSTEMD_SERVICE_${PN}-udhcpd = "udhcpc.service"
 
 FILES_${PN}-syslog_remove = "${sysconfdir}/init.d/syslog* ${sysconfdir}/syslog-startup.conf* ${sysconfdir}/syslog.conf* ${systemd_unitdir}/system/syslog.service ${sysconfdir}/default/busybox-syslog"
 
@@ -34,9 +32,7 @@ do_install_append() {
 	install -d ${D}/lib/systemd/system/multi-user.target.wants ${D}/etc/systemd/system/multi-user.target.wants
 	install -m 0755 ${WORKDIR}/telnetd.busybox ${D}${sysconfdir}/telnetd.busybox
 	install -m 0644 ${WORKDIR}/telnet.service ${D}/lib/systemd/system/telnet.service
-	install -m 0644 ${WORKDIR}/udhcpc.service ${D}/etc/systemd/system/udhcpc.service
 	ln -s ../telnet.service ${D}/lib/systemd/system/multi-user.target.wants/telnet.service
-	ln -s ../udhcpc.service ${D}/etc/systemd/system/multi-user.target.wants/udhcpc.service
 	if grep "CONFIG_TELNETD=y" ${B}/.config; then
 		install -m 0755 ${WORKDIR}/telnetd.busybox ${D}${sysconfdir}/telnetd.${BPN}
 	fi
