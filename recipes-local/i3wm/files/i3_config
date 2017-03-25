@@ -149,6 +149,10 @@ bindsym $mod+Shift+0 move container to workspace 10
 for_window [title="^neutrino$"] mark "STATWIN", move scratchpad
 bindsym $mod+n [con_mark="^STATWIN$"] fullscreen enable, scratchpad show
 
+# add screenhot shortcut to print key
+bindsym Print exec screenshot.sh -w, exec i3-nagbar -t warning -m  'Screenshot done'
+bindcode $mod+107 exec i3-nagbar -t warning -m  'Choose picture cutout', exec screenshot.sh -s && exec i3-nagbar -t warning -m  'Screenshot done'
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
