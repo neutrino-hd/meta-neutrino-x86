@@ -5,6 +5,8 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=80
 # FIXME: There are many more checked libraries. All should be added or explicitly disabled to get consistent results.
 DEPENDS = "gtk+ ffmpeg jansson virtual/gettext curl libsamplerate0 libidn gnutls libmad gmp nettle intltool-native mpg123 faad2 wavpack"
 
+RDEPENDS_${PN} = "deadbeef-mpris2-plugin"
+
 SRC_URI = "git://github.com/Alexey-Yakovenko/deadbeef.git;branch=0.7 \
 "
 

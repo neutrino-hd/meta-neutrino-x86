@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=80
 
 DEPENDS = "libev libx11 libxcb xcb-util-xrm yajl xcb-util-wm xcb-util-cursor glib-2.0 libpcre pango libxkbcommon startup-notification cairo xcb-util-keysyms"
 
-RDEPENDS_${PN} = " xwininfo xdotool xev xbacklight gsimplecal unclutter"
+RDEPENDS_${PN} = " xwininfo xdotool xev xbacklight gsimplecal unclutter playerctl"
 
 SRC_URI = "http://i3wm.org/downloads/i3-${PV}.tar.bz2 \
 	   file://i3_config \

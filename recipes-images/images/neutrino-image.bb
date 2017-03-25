@@ -69,7 +69,6 @@ IMAGE_INSTALL_append += " \
 	bash \
 	nano \
 	git \
-	glib-2.0 \
 	samba \
 	cmake \
 	image-config \

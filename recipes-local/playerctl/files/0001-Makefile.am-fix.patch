@@ -1,0 +1,25 @@
+From f5581b970568ec31382e0170c8a33061dbdd75c0 Mon Sep 17 00:00:00 2001
+From: flk <f_l_k@t-online.de>
+Date: Sat, 25 Mar 2017 10:53:20 +0100
+Subject: [PATCH] Makefile.am: fix
+
+Signed-off-by: flk <f_l_k@t-online.de>
+---
+ playerctl/Makefile.am | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/playerctl/Makefile.am b/playerctl/Makefile.am
+index 72bd9e8..652840f 100644
+--- a/playerctl/Makefile.am
++++ b/playerctl/Makefile.am
+@@ -34,7 +34,6 @@ playerctl-generated.c:
+ 
+ BUILT_SOURCES += \
+ 	playerctl-generated.c \
+-	playerctl-generated.h \
+ 	$(NULL)
+ 
+ CLEANFILES += $(BUILT_SOURCES)
+-- 
+2.7.4
+
