@@ -150,8 +150,8 @@ for_window [title="^neutrino$"] mark "STATWIN", move scratchpad
 bindsym $mod+n [con_mark="^STATWIN$"] fullscreen enable, scratchpad show
 
 # add screenhot shortcut to print key
-bindsym Print exec screenshot.sh -w, exec i3-nagbar -t warning -m  'Screenshot done'
-bindcode $mod+107 exec i3-nagbar -t warning -m  'Choose picture cutout', exec screenshot.sh -s && exec i3-nagbar -t warning -m  'Screenshot done'
+bindsym Print exec --no-startup-id screenshot.sh -w, exec i3-nagbar -t warning -m  'Screenshot done'
+bindcode $mod+107 exec i3-nagbar -t warning -m 'Choose picture cutout', exec --no-startup-id screenshot.sh -s && exec i3-nagbar -t warning -m 'Screenshot done'
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -191,17 +191,17 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #d
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 # decrease screen brightness
 
 # Touchpad controls
-bindsym XF86TouchpadToggle exec /usr/bin/toggletouchpad.sh # toggle touchpad
+bindsym XF86TouchpadToggle exec --no-startup-id /usr/bin/toggletouchpad.sh # toggle touchpad
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioPause exec --no-startup-id playerctl pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # Display calender
 for_window [class="Gsimplecal"] floating enable
@@ -224,5 +224,5 @@ exec --no-startup-id dbus-launch redshift
 exec --no-startup-id dbus-launch /usr/libexec/polkit-gnome-authentification-agent-1
 
 # disable display power management signaling
-exec xset -dpms
+exec --no-startup-id xset -dpms
 
