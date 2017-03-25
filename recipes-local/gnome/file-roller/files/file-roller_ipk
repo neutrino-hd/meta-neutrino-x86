@@ -1,0 +1,13 @@
+#!/bin/bash
+if [ -z "${1##*.ipk}"  ]; then
+	for i in $1; do
+		mkdir -p /tmp/file-roller
+		cp $1 /tmp/file-roller
+		cd /tmp/file-roller
+		perl -le '($e,$f)=@ARGV;map{$o=$_;s/$e$/$f/;rename$o,$_}<*.$e>' ipk ar
+		var=$(ls)
+		file-roller $var && rm -r /tmp/file-roller/*
+	done
+else
+	file-roller $1
+fi
