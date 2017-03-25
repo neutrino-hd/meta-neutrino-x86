@@ -8,6 +8,7 @@ DEPENDS = "gtk+ ffmpeg jansson virtual/gettext curl libsamplerate0 libidn gnutls
 RDEPENDS_${PN} = "deadbeef-mpris2-plugin"
 
 SRC_URI = "git://github.com/Alexey-Yakovenko/deadbeef.git;branch=0.7 \
+	   file://config \
 "
 
 SRCREV = "${AUTOREV}"
@@ -21,6 +22,13 @@ EXTRA_OECONF += "--disable-gtk3 \
 		 --enable-gtk2 \
 "
 
-FILES_${PN} += "/usr/share"
+do_install_append() {
+	install -d ${D}/home/builder/.config/deadbeef
+	install -m 644 ${WORKDIR}/config ${D}/home/builder/.config/deadbeef/
+}
+
+FILES_${PN} += "/usr/share \
+		/home/builder/.config/deadbeef \
+"
 
 INSANE_SKIP_${PN} = "textrel"
