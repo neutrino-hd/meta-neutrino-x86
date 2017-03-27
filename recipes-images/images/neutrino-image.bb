@@ -28,7 +28,7 @@ IMAGE_FEATURES_append += "${@'' if IMAGETYPE != 'debug' else 'tools-debug eclips
 EXTRA_FEATURES_append += "${@'' if IMAGETYPE != 'debug' else 'dbg-pkgs ptest-pkgs'}"
 
 
-DEPENDS = "zip-native adduser"
+DEPENDS = "zip-native builder qemu-native"
 
 do_install_append () {
     install -D -m 0644 ${WORKDIR}/system-builder.conf ${D}${sysconfdir}/dbus-1/system.d/system-builder.conf

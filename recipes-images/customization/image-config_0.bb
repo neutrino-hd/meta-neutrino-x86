@@ -24,7 +24,7 @@ SRC_URI = " \
 	file://wallpaper.tar.gz \
 "
 
-DEPENDS += "adduser"
+DEPENDS += "builder"
 
 PR = "r1"
 

@@ -3,7 +3,7 @@ HOMEPAGE = "https://github.com/copycat-killer/awesome-copycats"
 LICENSE = "CC-BY-NC-SA-3.0"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/CC-BY-NC-SA-3.0;md5=b285975b5e439d99c95bcba5b5a8cf39"
 
-DEPENDS = "awesome lain unclutter rxvt-unicode lua5.2 adduser iproute2"
+DEPENDS = "awesome lain unclutter rxvt-unicode lua5.2 builder iproute2"
 RDEPENDS_${PN} += "make"
 
 SRC_URI = "git://github.com/copycat-killer/awesome-copycats.git \
