@@ -19,6 +19,8 @@ DEPENDS = " \
     libnewt \
     polkit \
     jansson \
+    modemmanager \
+    gnome-keyring \
 "
 
 RDEPENDS_${PN} = "dhcp-client"
@@ -43,14 +45,15 @@ EXTRA_OECONF = " \
     --with-iptables=${sbindir}/iptables \
     --with-tests \
     --with-nmtui=yes \
+    --with-ofono \
 "
 
 do_compile_prepend() {
         export GIR_EXTRA_LIBS_PATH="${B}/libnm-util/.libs"
 }
 
-PACKAGECONFIG ??= "nss ifupdown netconfig dhclient dnsmasq modemmanager concheck \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'systemd', 'consolekit', d)} \
+PACKAGECONFIG ??= "nss dhclient modemmanager concheck \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'systemd', 'polkit', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'bluetooth', '${BLUEZ}', '', d)} \
     ${@bb.utils.filter('DISTRO_FEATURES', 'wifi', d)} \
 "
