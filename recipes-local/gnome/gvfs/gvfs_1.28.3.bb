@@ -41,7 +41,6 @@ FILES_gvfsd-trash = "${libexecdir}/gvfsd-trash ${datadir}/gvfs/mounts/trash.moun
 RRECOMMENDS_gvfsd-ftp += "openssh-sftp openssh-ssh"
 RRECOMMENDS_gvfsd-fuse += "fuse"
 
- += "
 PACKAGECONFIG ?= "libgphoto2 gtk samba fuse http gcr avahi ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'systemd', '', d)}"
 
 PACKAGECONFIG[afc] = "--enable-afc, --disable-afc, libimobiledevice libplist"
