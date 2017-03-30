@@ -22,6 +22,7 @@ SRC_URI = " \
 	file://locale.conf \
 	file://locale.sh \
 	file://wallpaper.tar.gz \
+	file://settings.ini \
 "
 
 DEPENDS += "builder"
@@ -44,7 +45,7 @@ do_install() {
 	install -m 0755 -D ${S}/locale.conf ${D}${sysconfdir}
 	for i in root builder;do
 		install -d ${D}/home/$i/pictures ${D}/home/$i/movies ${D}/home/$i/audio \
-		${D}/home/$i/documents ${D}/home/$i/.wallpaper
+		${D}/home/$i/documents ${D}/home/$i/.wallpaper ${D}/home/$i/.config/gtk-3.0
 		install -m 0644 -D ${S}/bashrc        ${D}/home/$i/.bashrc
 		install -m 0644 -D ${S}/xinitrc        ${D}/home/$i/.xinitrc
 		install -m 0644 -D ${S}/bash_profile        ${D}/home/$i/.bash_profile
@@ -53,6 +54,7 @@ do_install() {
 		install -m 0644 -D ${S}/gtkrc        ${D}/home/$i/.gtkrc-2.0
 		install -m 0644 -D ${S}/*.jpg	${D}/home/$i/.wallpaper
 		install -m 0644 -D ${S}/*.png	${D}/home/$i/.wallpaper
+		install -m 0644 -D ${S}/settings.ini 	${D}/home/$i/.config/gtk-3.0
 	done
 }
 

@@ -4,7 +4,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=05df38dd77c35ec8431f212410a3329e"
 
 inherit gnome bash-completion
 
-DEPENDS += "libsecret glib-2.0 gconf intltool-native libgudev udisks2 libbluray samba"
+DEPENDS += "libsecret glib-2.0 gconf intltool-native libgudev udisks2 libbluray samba fuse libsoup"
 
 SRC_URI[archive.md5sum] = "d2399a1a217dd5030e8830c7e7c813c2"
 SRC_URI[archive.sha256sum] = "458c4cb68570f6ef4a9e152995c62d0057c3e0a07ed64d84c7200cdd22f0bd17"
@@ -34,13 +34,14 @@ RDEPENDS_${PN} = "udisks2"
 
 FILES_${PN}-dbg += "${libdir}/gio/modules/.debug/*"
 FILES_${PN}-dev += "${libdir}/gio/modules/*.la"
-
 FILES_gvfsd-ftp = "${libexecdir}/gvfsd-ftp ${datadir}/gvfs/mounts/ftp.mount"
 FILES_gvfsd-sftp = "${libexecdir}/gvfsd-sftp ${datadir}/gvfs/mounts/sftp.mount"
 FILES_gvfsd-trash = "${libexecdir}/gvfsd-trash ${datadir}/gvfs/mounts/trash.mount"
 
 RRECOMMENDS_gvfsd-ftp += "openssh-sftp openssh-ssh"
+RRECOMMENDS_gvfsd-fuse += "fuse"
 
+ += "
 PACKAGECONFIG ?= "libgphoto2 gtk samba fuse http gcr avahi ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'systemd', '', d)}"
 
 PACKAGECONFIG[afc] = "--enable-afc, --disable-afc, libimobiledevice libplist"
