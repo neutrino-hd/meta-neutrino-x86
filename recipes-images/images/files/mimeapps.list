@@ -163,6 +163,7 @@ text/x-chdr=sublime_text.desktop;
 text/x-csrc=sublime_text.desktop;
 text/x-python=sublime_text.desktop;
 video/mp4=mpv.desktop;mplayer.desktop;
+video/ts=mpv.desktop;mplayer.desktop;
 video/mpeg=mpv.desktop;mplayer.desktop;
 video/ogg=mpv.desktop;mplayer.desktop;
 video/quicktime=mpv.desktop;mplayer.desktop;
