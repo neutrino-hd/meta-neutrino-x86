@@ -1,4 +1,4 @@
-inherit core-image module-base extrausers qemu-native
+inherit core-image module-base extrausers
 
 NOHDD = "1"
 
