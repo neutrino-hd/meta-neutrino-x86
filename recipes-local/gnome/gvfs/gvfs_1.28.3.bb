@@ -4,11 +4,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=05df38dd77c35ec8431f212410a3329e"
 
 inherit gnome bash-completion
 
-<<<<<<< HEAD
 DEPENDS += "libsecret glib-2.0 gconf intltool-native libgudev udisks2 libbluray samba fuse libnfs coreutils avahi libxml2"
-=======
-DEPENDS += "libsecret glib-2.0 gconf intltool-native libgudev udisks2 libbluray samba fuse libsoup"
->>>>>>> 8a7170072da6ff9a74537ea8c06c7af4f51f4fd1
 
 SRC_URI[archive.md5sum] = "d2399a1a217dd5030e8830c7e7c813c2"
 SRC_URI[archive.sha256sum] = "458c4cb68570f6ef4a9e152995c62d0057c3e0a07ed64d84c7200cdd22f0bd17"
@@ -45,7 +41,7 @@ FILES_gvfsd-trash = "${libexecdir}/gvfsd-trash ${datadir}/gvfs/mounts/trash.moun
 
 RRECOMMENDS_gvfsd-ftp += "openssh-sftp openssh-ssh"
 
-RRECOMMENDS_gvfsd-fuse += "fuse"
+RRECOMMENDS_gvfsd-fuse += "fu
 
 PACKAGECONFIG ?= "libgphoto2 gtk samba fuse http gcr avahi ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'systemd', '', d)}"
 
