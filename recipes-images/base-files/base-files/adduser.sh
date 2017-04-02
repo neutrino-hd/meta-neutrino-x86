@@ -6,7 +6,7 @@ else
 	# add user builder with password builder
 	useradd -m -p .gLibiNXn0P12 -s /bin/bash builder
 	# add builder into groups
-	usermod -a -G users,audio,video,input,shutdown,disk,adm,plugdev,tty,systemd-journal builder
+	usermod -a -G users,audio,video,input,shutdown,disk,adm,plugdev,tty,systemd-journal builder,wheel
 	# chown directories to builder
 	chown -R builder:builder ${IMAGE_ROOTFS}/home/builder
 	chown -R builder:builder ${IMAGE_ROOTFS}/usr/share/tuxbox
