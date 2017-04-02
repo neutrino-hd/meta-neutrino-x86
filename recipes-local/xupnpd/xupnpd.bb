@@ -29,7 +29,7 @@ SRC = "main.cpp soap.cpp mem.cpp mcast.cpp luaxlib.cpp luaxcore.cpp luajson.cpp 
 
 do_compile () {
 	${CC} -O2 -c -o md5.o md5c.c
-	${CC} ${CFLAGS} ${LDFLAGS} -DWITH_URANDOM -o xupnpd ${SRC} md5.o -llua -lm -ldl -lstdc++ -lssl -lcrypto -rdynamic
+	${CC} ${CFLAGS} ${LDFLAGS} -DWITH_URANDOM -o xupnpd ${SRC} md5.o -llua -lm -ldl -lstdc++ -rdynamic  -lssl -lcrypto
 }
 
 
