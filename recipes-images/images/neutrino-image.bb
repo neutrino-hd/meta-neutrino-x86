@@ -85,6 +85,7 @@ IMAGE_INSTALL_append += " \
 	i3 \
 	i3-status \
 	dmenu \
+	gconf-editor \
 	feh \
 	rxvt-unicode \
 	sublime \
