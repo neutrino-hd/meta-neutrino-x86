@@ -15,12 +15,14 @@ S = "${WORKDIR}/git"
 
 inherit autotools-brokensep pkgconfig gtk-doc gobject-introspection
 
+EXTRA_OECONF += "--disable-introspection" 
 
 do_compile_prepend () {
     export GIR_EXTRA_LIBS_PATH="${S}/playerctl/.libs"
 }
 
 FILES_${PN} = "/usr"
+
 
 
 
