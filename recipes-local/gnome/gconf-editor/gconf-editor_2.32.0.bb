@@ -14,6 +14,10 @@ SRC_URI[archive.sha256sum] = "7a529deafc3952b78ff2cab43b50ca4d9e46966da87cfb9247
 do_configure_prepend() {
 	ln -sf ${STAGING_DATADIR_NATIVE}/aclocal/* ${S}/m4
 	rm ${S}/m4/gnome-doc-utils.m4 && touch ${S}/m4/gnome-doc-utils.m4
+	rm ${S}/gnome-doc-utils.make && touch ${S}/gnome-doc-utils.make
+	sed -i "s|GNOME_COMPILE_WARNINGS|#GNOME_COMPILE_WARNINGS|" ${S}/configure.in
+	sed -i "s|GNOME_COMMON_INIT|#GNOME_COMMON_INIT|" ${S}/configure.in
+	sed -i "s|GNOME_MAINTAINER_MODE_DEFINES|#GNOME_MAINTAINER_MODE_DEFINES|" ${S}/configure.in
 	sed -i -e s:docs::g ${S}/Makefile.am
 }
 
