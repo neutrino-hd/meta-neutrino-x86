@@ -1,4 +1,4 @@
-inherit core-image module-base extrausers
+inherit core-image module-base setuptools3
 
 NOHDD = "1"
 
