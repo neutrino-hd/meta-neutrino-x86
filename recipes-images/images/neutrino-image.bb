@@ -8,11 +8,8 @@ LIC_FILES_CHKSUM  = "file://${COREBASE}/LICENSE;md5=4d92cd373abda3937c2bc47fbc49
                     file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
 
 
-SRCREV ?= "fb1df184b96e0b5a29f330ba4fbf6555f9034eda"
-SRC_URI = "git://git.yoctoproject.org/poky;branch=master \
-	   	   file://system-builder.conf \
-	       file://mimeapps.list \
-          "
+SRCREV ?= "file://mimeapps.list \
+"
 
 FILES_${PN} = "${sysconfdir}/dbus-1/system.d/system-builder.conf"
 

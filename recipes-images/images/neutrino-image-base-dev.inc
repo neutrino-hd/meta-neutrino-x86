@@ -79,6 +79,13 @@ fakeroot do_populate_poky_src () {
 
 	# setuid Xorg
 	chmod u+s ${IMAGE_ROOTFS}/usr/libexec/Xorg
+
+	# set permissions
+	chown -R builder:users ${IMAGE_ROOTFS}/home/builder
+	chown -R builder:users ${IMAGE_ROOTFS}/usr/share/tuxbox
+	chown -R builder:users ${IMAGE_ROOTFS}/etc/neutrino
+	chown -R builder:users ${IMAGE_ROOTFS}/var/tuxbox
+	chown -R builder:users ${IMAGE_ROOTFS}/usr/local
 }
 
 IMAGE_PREPROCESS_COMMAND += "do_populate_poky_src; "
