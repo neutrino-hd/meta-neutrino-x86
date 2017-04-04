@@ -217,7 +217,8 @@ bar {
 }
 
 exec --no-startup-id dbus-launch nm-applet
-exec --no-startup-id dbus-launch pasystray --notify=all
+exec --no-startup-id dbus-launch blueman-applet
+exec --no-startup-id dbus-launch pasystray
 exec --no-startup-id dbus-launch parcellite
 exec --no-startup-id dbus-launch unclutter
 exec --no-startup-id dbus-launch redshift
