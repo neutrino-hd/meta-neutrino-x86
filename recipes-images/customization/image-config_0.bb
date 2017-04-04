@@ -23,6 +23,7 @@ SRC_URI = " \
 	file://locale.sh \
 	file://wallpaper.tar.gz \
 	file://settings.ini \
+	file://mimeapps.list \
 "
 
 DEPENDS += "builder"
@@ -45,7 +46,8 @@ do_install() {
 	install -m 0755 -D ${S}/locale.conf ${D}${sysconfdir}
 	for i in root builder;do
 		install -d ${D}/home/$i/pictures ${D}/home/$i/movies ${D}/home/$i/audio \
-		${D}/home/$i/documents ${D}/home/$i/.wallpaper ${D}/home/$i/.config/gtk-3.0
+		${D}/home/$i/documents ${D}/home/$i/.wallpaper ${D}/home/$i/.config/gtk-3.0 \
+		${D}/home/$i/.local/share/applications
 		install -m 0644 -D ${S}/bashrc        ${D}/home/$i/.bashrc
 		install -m 0644 -D ${S}/xinitrc        ${D}/home/$i/.xinitrc
 		install -m 0644 -D ${S}/bash_profile        ${D}/home/$i/.bash_profile
@@ -55,6 +57,8 @@ do_install() {
 		install -m 0644 -D ${S}/*.jpg	${D}/home/$i/.wallpaper
 		install -m 0644 -D ${S}/*.png	${D}/home/$i/.wallpaper
 		install -m 0644 -D ${S}/settings.ini 	${D}/home/$i/.config/gtk-3.0
+		install -m 0644 -D ${S}/mimeapps.list ${D}/home/$i/.config/mimeapps.list
+		ln -s /home/$i/.config/mimeapps.list ${D}/home/$i/.local/share/applications/mimeapps.list
 	done
 }
 
