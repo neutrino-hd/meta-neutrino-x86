@@ -73,6 +73,7 @@ IMAGE_INSTALL_append += " \
 	glibc-localedata-en-us \
 	glibc-localedata-translit-combining \
 	gnome-disk-utility \
+	gnome-terminal \
 	gnupg \
 	gparted \
 	gthumb \
@@ -123,8 +124,9 @@ IMAGE_INSTALL_append += " \
 	pulseaudio-module-bluez5-discover \
 	pulseaudio-server \
 	python-modules \
+	python3-modules \
+	python3-pip \
 	redshift \
-	rxvt-unicode \
 	samba \
 	screenfetch \
 	settings-daemon \
@@ -137,7 +139,6 @@ IMAGE_INSTALL_append += " \
 	tango-icon-theme \
 	texinfo \
 	tzdata \
-	udev-extraconf \
 	unclutter \
 	unrar \
 	usb-modeswitch \
@@ -154,8 +155,6 @@ IMAGE_INSTALL_append += " \
 	xf86-video-modesetting \
 	xf86-video-nouveau \
 	xf86-video-vmware \
-    python3-modules \
-    python3-pip \
 "
 
 IMAGE_INSTALL_append += " \

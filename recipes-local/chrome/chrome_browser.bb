@@ -7,11 +7,13 @@ SRC_URI = "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64
 	   file://google-chrome-stable \
 "
 
-SRC_URI[md5sum] = "94fca0b7e96f2cce5d421ecebad04cbf"
-SRC_URI[sha256sum] = "888ce70f3b1eeb90abdb53b3f81a14ca5db0bc71d611272f417238ad5cbd48e3"
+SRC_URI[md5sum] = "52a4341475511d3627a86a344c0831ce"
+SRC_URI[sha256sum] = "4a62a77b3c7960f9313d41a40f645b7178d6a8b91f9f1141d7664026692ef63d"
 
-DEPENDS = "xz-native xz"
+DEPENDS = "xz-native"
 RDEPENDS_${PN} += "cups"
+
+inherit bin_package
 
 S = "${WORKDIR}"
 

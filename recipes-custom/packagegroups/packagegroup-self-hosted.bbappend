@@ -1,3 +1,10 @@
+RDEPENDS_packagegroup-self-hosted = "\
+    packagegroup-self-hosted-debug \
+    packagegroup-self-hosted-sdk \
+    packagegroup-self-hosted-extended \
+    packagegroup-self-hosted-graphics \
+    "
+
 RDEPENDS_packagegroup-self-hosted-graphics = "\
     builder \
     libgl \
