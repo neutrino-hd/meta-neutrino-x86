@@ -55,9 +55,6 @@ BB_DISKMON_DIRS = "\
 ### Qemu configuration
 
 PACKAGECONFIG_pn-qemu-native = "sdl"
-
-ASSUME_PROVIDED += "libsdl-native"
-
 CONF_VERSION = "1"
 
 
