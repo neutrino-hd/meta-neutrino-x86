@@ -63,6 +63,7 @@ IMAGE_INSTALL_append += " \
 	evince \
 	feh \
 	file-roller \
+	firmware \
 	gcalctool \
 	gconf-editor \
 	gimp \

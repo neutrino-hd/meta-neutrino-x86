@@ -15,7 +15,8 @@ SRC_URI = "file://firmware.tar.gz \
 S = "${WORKDIR}"
 
 do_install() {
-	cp -rf ${WORKDIR}/lib ${D}/lib
+	install -d ${D}/lib/firmware
+	install -m 0644 ${WORKDIR}/firmware/* ${D}/lib/firmware
 }
 
 FILES_${PN} += "/lib/firmware"
