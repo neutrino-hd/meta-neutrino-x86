@@ -18,10 +18,9 @@ inherit autotools-brokensep pkgconfig
 S = "${WORKDIR}/git"
 
 do_configure_prepend() {
-    sed -i "s|PREFIX ?= /usr/local|PREFIX ?= /usr| ${S}/Makefile
+    sed -i "s|PREFIX ?= /usr/local|PREFIX ?= /usr|" ${S}/Makefile
     sed -i "s|pandoc|#pandoc|" ${S}/Makefile
     sed -i "s|install -m 644 youtube-dl.1|#install -m 644 youtube-dl.1|" ${S}/Makefile
-
 }
 
 FILES_${PN} = "/usr \
