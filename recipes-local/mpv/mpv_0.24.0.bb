@@ -6,6 +6,7 @@ DEPENDS = "zlib ffmpeg jpeg virtual/libx11 xsp libxv samba libxrandr mesa libdrm
            libxscrnsaver libxinerama v4l-utils libbluray pulseaudio \
 "
 
+RDEPENDS_${PN} += "youtube-dl"
 REQUIRED_DISTRO_FEATURES = "x11"
 
 LICENSE = "GPLv2+"

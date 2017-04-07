@@ -38,7 +38,7 @@ PRSERV_HOST = "localhost:0"
 
 DEFAULT_TIMEZONE = "Europe/Paris"
 
-INHERIT += "rm_work"
+#INHERIT += "rm_work"
 
 ### Disk Space Monitoring during the build
 

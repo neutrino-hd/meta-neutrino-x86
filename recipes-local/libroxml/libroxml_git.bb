@@ -7,13 +7,11 @@ LICENSE = "LGPLv2.1"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/LGPL-2.1;md5=1a6d268fd218675ffea8be556788b780"
 
 
-SRC_URI[md5sum] = "a975f91be150f7a19168a45ce15769ca"
-SRC_URI[sha256sum] = "1da8f20b530eba4409f2b217587d2f1281ff5d9ba45b24aeac71b94c6c621b78"
+SRC_URI = "git://github.com/blunderer/libroxml.git;protocol=git"
 
-SRC_URI = "http://download.libroxml.net/pool/v2.x/${P}.tar.gz"
+SRCREV = "${AUTOREV}"
 
-PR = "1"
-
+S = "${WORKDIR}/git"
 inherit cmake
 
 EXTRA_OECMAKE = " \ 

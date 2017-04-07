@@ -132,6 +132,7 @@ IMAGE_INSTALL_append += " \
 	screenfetch \
 	settings-daemon \
 	shutdown-desktop \
+	skype \
 	socat \
 	sublime \
 	subversion \
