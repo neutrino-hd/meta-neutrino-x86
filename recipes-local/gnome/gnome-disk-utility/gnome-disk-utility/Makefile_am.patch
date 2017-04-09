@@ -1,0 +1,28 @@
+--- a/data/Makefile.am	2017-04-09 07:16:27.267513980 +0200
++++ b/data/Makefile.am	2017-04-09 07:14:51.928561081 +0200
+@@ -30,25 +30,17 @@
+ 
+ @GSETTINGS_RULES@
+ 
+-appstream_in_files = org.gnome.DiskUtility.appdata.xml.in
+-appstream_XML = $(appstream_in_files:.xml.in=.xml)
+-
+-$(appstream_XML): $(appstream_in_files)
+-	$(AM_V_GEN) $(MSGFMT) --xml --template $< -d $(top_srcdir)/po -o $@
+-
+ @APPSTREAM_XML_RULES@
+ 
+ 
+ DISTCHECK_CONFIGURE_FLAGS == --enable-appdata-check
+ 
+ EXTRA_DIST = 			\
+-	$(appstream_in_files)	\
+ 	$(desktop_in_files)	\
+ 	$(gsettings_SCHEMAS)	\
+ 	$(NULL)
+ 
+ CLEANFILES = 			\
+-	$(appstream_XML)	\
+ 	$(desktop_DATA)		\
+ 	$(dbusservice_DATA)	\
+ 	$(NULL)
