@@ -9,17 +9,15 @@ SRC_URI = "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64
 SRC_URI[md5sum] = "52a4341475511d3627a86a344c0831ce"
 SRC_URI[sha256sum] = "4a62a77b3c7960f9313d41a40f645b7178d6a8b91f9f1141d7664026692ef63d"
 
-DEPENDS = "xz-native"
 RDEPENDS_${PN} += "cups"
-
-inherit bin_package
 
 S = "${WORKDIR}"
 
 do_install() {
-	install -d ${D}/usr/bin ${D}/usr/share/applications
-	cp -rf ${S}/opt/* ${D}/opt
-	cp -rf ${S}/usr/* ${D}/usr 
+	install -d ${D}/usr/bin ${D}/usr/share/applications ${D}/opt/google
+	cp -rf ${S}/opt/* ${D}/opt/
+	cp -rf ${S}/usr/* ${D}/usr/
+	cp -rf ${S}/etc/* ${D}${sysconfdir}
 	for i in 16 32 48 128 256;do
 		x='x'
 		install -d ${D}/usr/share/icons/hicolor/$i$x$i/apps
@@ -29,6 +27,7 @@ do_install() {
 
 FILES_${PN} = "/usr \
 	       /opt \
+	       /etc \
 "
 
 INSANE_SKIP_${PN}_append += "already-stripped ldflags build-deps file-rdeps"
