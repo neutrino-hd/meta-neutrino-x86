@@ -4,7 +4,6 @@ LIC_FILES_CHKSUM = "file://${WORKDIR}/license;md5=17a6b3d5436a55985b200c72576190
 
 SRC_URI = "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
 	   file://license \
-	   file://google-chrome-stable \
 "
 
 SRC_URI[md5sum] = "52a4341475511d3627a86a344c0831ce"
@@ -20,13 +19,12 @@ S = "${WORKDIR}"
 do_install() {
 	install -d ${D}/usr/bin ${D}/usr/share/applications
 	cp -rf ${S}/opt/* ${D}/opt
-	cp -rf ${S}/usr/share/applications/* ${D}/usr/share/applications 
+	cp -rf ${S}/usr/* ${D}/usr 
 	for i in 16 32 48 128 256;do
 		x='x'
 		install -d ${D}/usr/share/icons/hicolor/$i$x$i/apps
 		cp -f ${S}/opt/google/chrome/product_logo_$i.png ${D}/usr/share/icons/hicolor/$i$x$i/apps/google-chrome.png
 	done
-	install -m 755 ${WORKDIR}/google-chrome-stable ${D}/usr/bin/google-chrome-stable
 }
 
 FILES_${PN} = "/usr \

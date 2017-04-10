@@ -120,7 +120,7 @@ assign [class="mpv"] 10:video
 
 # switch to workspace
 bindsym $mod+1 workspace 1:work
-bindsym $mod+2 workspace 2:web;  exec raise_or_run.sh  class Google-chrome google-chrome-stable
+bindsym $mod+2 workspace 2:web;  exec raise_or_run.sh  class Google-chrome google-chrome
 bindsym $mod+3 workspace 3:chat; exec raise_or_run.sh  class XChat xchat
 bindsym $mod+4 workspace 4:mail; exec raise_or_run.sh  class Sylpheed sylpheed
 bindsym $mod+5 workspace 5:file; exec raise_or_run.sh  class Nautilus nautilus

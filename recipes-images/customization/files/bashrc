@@ -53,10 +53,10 @@ alias gparted='gparted_polkit'
 PS1='\[\e[0;33m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[m\] \[\e[1;32m\]\$ \[\e[m\]\[\e[1;37m\] '
 
 # Paths
-PATH=$PATH:${HOME}/bin:/usr/lib/wine/bin:/sbin:/usr/sbin
-export PATH=$PATH:/usr/local/bin
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/wine/lib:/usr/local/lib
-export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
+PATH=$PATH:${HOME}/bin:/usr/bin:/sbin:/usr/sbin
+export PATH=$PATH:/usr/local/bin:/usr/local/sbin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/lib/pkgconfig:/usr/local/lib/pkgconfig
 
 # X Terminal titles
 case "$TERM" in
@@ -140,11 +140,11 @@ fi
 
 # Locale and editor
 export EDITOR=nano
-export BROWSER="epiphany '%s' &"
+export BROWSER="google-chrome"
 
 # Language settings
 export LC_ALL=de_DE.utf8
-export BA_SRCREV=2679a347c576f5411fbe802d2f6201c94036ecb2
+export LC_LANG=de_DE.utf8
 loadkeys de-latin1-nodeadkeys
 
 # If working behind a proxy and using the provided oe-git-proxy script
