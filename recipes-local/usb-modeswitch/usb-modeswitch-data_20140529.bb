@@ -2,6 +2,8 @@ SUMMARY = "Data files for usbmodeswitch"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=94d55d512a9ba36caa9b7df079bae19f"
 
+DEPENDS = "tcl-native"
+
 inherit allarch
 
 SRC_URI = "http://www.draisberghof.de/usb_modeswitch/${BP}.tar.bz2"
