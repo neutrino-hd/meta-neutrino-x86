@@ -16,10 +16,10 @@ PR = "1"
 S = "${WORKDIR}"
 
 do_install () {
-	install -d ${D}/var/tuxbox/plugins 
-	install -m 644 ${S}/luawetterapp.lua ${D}/var/tuxbox/plugins
-	install -m 644 ${S}/luawetterapp.cfg ${D}/var/tuxbox/plugins
-	install -m 644 ${S}/luawettericon.png ${D}/var/tuxbox/plugins
+	install -d ${D}/home/builder/.config/neutrino/plugins 
+	install -m 644 ${S}/luawetterapp.lua ${D}/home/builder/.config/neutrino/plugins
+	install -m 644 ${S}/luawetterapp.cfg ${D}/home/builder/.config/neutrino/plugins
+	install -m 644 ${S}/luawettericon.png ${D}/home/builder/.config/neutrino/plugins
 }
 
 

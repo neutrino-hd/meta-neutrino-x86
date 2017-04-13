@@ -14,12 +14,12 @@ SRC_URI = "file://mytvpro.lua \
 "
 
 do_install () {
-	install -d ${D}/var/tuxbox/plugins
-	install -m 644 ${S}/mytvpro.lua ${D}/var/tuxbox/plugins
-	install -m 644 ${S}/mytvpro.cfg ${D}/var/tuxbox/plugins
-	install -m 644 ${S}/mytvpro_hint.png ${D}/var/tuxbox/plugins
+	install -d ${D}/home/builder/.config/neutrino/plugins
+	install -m 644 ${S}/mytvpro.lua ${D}/home/builder/.config/neutrino/plugins
+	install -m 644 ${S}/mytvpro.cfg ${D}/home/builder/.config/neutrino/plugins
+	install -m 644 ${S}/mytvpro_hint.png ${D}/home/builder/.config/neutrino/plugins
 }
 
 do_install_append () {
-echo "integration=2" >> ${D}/var/tuxbox/plugins/mytvpro.cfg
+echo "integration=2" >> ${D}/home/builder/.config/neutrino/plugins/mytvpro.cfg
 }

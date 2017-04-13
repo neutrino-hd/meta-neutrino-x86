@@ -24,5 +24,9 @@ EXTRA_OECONF = " \
 	--exec_prefix=/usr/bin \
 	--includedir=${prefix}/include \
 	--with-configdir=/home/builder/.config/neutrino/config \
+	--with-plugindir=/home/builder/.config/neutrino/plugins \
+	--with-plugindir_var=/home/builder/.config/neutrino/plugins \
+	--with-webtvdir_var=/home/builder/.config/neutrino/webtv \
+	--with-luaplugindir=/home/builder/.config/neutrino/luaplugin \
 "
 

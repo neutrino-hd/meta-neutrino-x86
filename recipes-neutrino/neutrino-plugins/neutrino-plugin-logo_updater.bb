@@ -15,10 +15,10 @@ SRC_URI = "file://logo-addon.sh \
 "
 
 do_install () {
-	install -d ${D}/var/tuxbox/plugins
-	install -m 755 ${S}/logo-addon.sh ${D}/var/tuxbox/plugins
-	install -m 644 ${S}/logo-addon.cfg ${D}/var/tuxbox/plugins
-	install -m 644 ${S}/logo-addon_hint.png ${D}/var/tuxbox/plugins
+	install -d ${D}/home/builder/.config/neutrino/plugins
+	install -m 755 ${S}/logo-addon.sh ${D}/home/builder/.config/neutrino/plugins
+	install -m 644 ${S}/logo-addon.cfg ${D}/home/builder/.config/neutrino/plugins
+	install -m 644 ${S}/logo-addon_hint.png ${D}/home/builder/.config/neutrino/plugins
 }
 
 SRC_URI[md5sum] = "3deaec355c83e96390558d503ab8c7f7"

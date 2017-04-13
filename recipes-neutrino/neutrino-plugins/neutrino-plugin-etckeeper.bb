@@ -14,8 +14,8 @@ SRC_URI = "file://etckeeper.lua \
 S = "${WORKDIR}/"
 
 do_install () {
-	install -d ${D}/var/tuxbox/plugins
-	install -m 644 ${S}/etckeeper.* ${D}/var/tuxbox/plugins
+	install -d ${D}/home/builder/.config/neutrino/plugins
+	install -m 644 ${S}/etckeeper.* ${D}/home/builder/.config/neutrino/plugins
 }
 
 

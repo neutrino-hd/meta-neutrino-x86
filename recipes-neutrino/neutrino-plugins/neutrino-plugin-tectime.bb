@@ -15,11 +15,11 @@ SRC_URI = "file://TecTime.lua \
 "
 
 do_install () {
-	install -d ${D}/var/tuxbox/plugins
-	install -m 644 ${S}/TecTime.lua ${D}/var/tuxbox/plugins
-	install -m 644 ${S}/TecTime.cfg ${D}/var/tuxbox/plugins
+	install -d ${D}/home/builder/.config/neutrino/plugins
+	install -m 644 ${S}/TecTime.lua ${D}/home/builder/.config/neutrino/plugins
+	install -m 644 ${S}/TecTime.cfg ${D}/home/builder/.config/neutrino/plugins
 }
 
 FILES_${PN} = "\
-    /var/tuxbox/plugins \
+   /home/builder/.config/neutrino/plugins \
 "

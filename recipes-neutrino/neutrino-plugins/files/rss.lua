@@ -141,7 +141,7 @@ function file_exists(file)
 end
 
 function links2_exists()
-	local links2 = "/var/tuxbox/plugins/links.so"
+	local links2 = "/home/builder/.config/neutrino/plugins/links.so"
 	local check = file_exists(links2)
 	if  check == false then 
 		return nil 

@@ -18,7 +18,7 @@ inherit autotools pkgconfig
 EXTRA_OECONF += " \
 	--enable-maintainer-mode \
 	--with-target=native \
-	--with-plugindir=/var/tuxbox/plugins \
+	--with-plugindir=/home/builder/.config/neutrino/plugins \
 	--with-boxtype=coolstream \
 "
 
@@ -40,13 +40,13 @@ do_install () {
 }			
 
 do_install_append() {
-	rm -f ${D}/var/tuxbox/plugins/*.la
+	rm -f ${D}/home/builder/.config/neutrino/plugins/*.la
 }
 
 FILES_${PN} += "/home \
 "
 
-FILES_${PN}-dbg += "/var/tuxbox/plugins/.debug"
+FILES_${PN}-dbg += "/home/builder/.config/neutrino/plugins/.debug"
 
 SRC_URI[md5sum] = "f04cf2dddc22af9f12685f4d4dda0067"
 SRC_URI[sha256sum] = "f3ad02f2e43afca3da474bfeccd70808ca9651858893eff0b90891067284b0b8"

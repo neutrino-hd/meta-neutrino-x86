@@ -95,7 +95,8 @@ do_install_prepend () {
 }
 
 do_install_append() {
-	install -d ${D}/share
+	install -d ${D}/share ${D}/home/builder/.config/neutrino/plugins ${D}/home/builder/.config/neutrino/luaplugins \
+		   ${D}/home/builder/.config/neutrino/webtv ${D}/home/builder/.config/neutrino/bin
 	ln -s ${datadir}/tuxbox ${D}/share/
 	ln -s ${datadir}/fonts  ${D}/share/
 	if [ -d ${WORKDIR}/icons ];then

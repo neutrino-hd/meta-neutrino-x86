@@ -16,8 +16,8 @@ SRC_URI = "git://github.com/Tischi81/BuliliveTicker.git \
 S = "${WORKDIR}/git"
 
 do_install () {
-	install -d ${D}/var/tuxbox/plugins
-	install -m 644 ${S}/bulilive* ${D}/var/tuxbox/plugins
+	install -d ${D}/home/builder/.config/neutrino/plugins
+	install -m 644 ${S}/bulilive* ${D}/home/builder/.config/neutrino/plugins
 }
 
 

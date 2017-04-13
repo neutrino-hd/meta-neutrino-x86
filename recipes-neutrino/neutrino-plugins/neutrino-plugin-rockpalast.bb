@@ -15,8 +15,8 @@ SRC_URI = "file://rockpalast.cfg \
 "
 
 do_install () {
-	install -d ${D}/var/tuxbox/plugins
-	install -m 644 ${S}/rockpalast.cfg ${D}/var/tuxbox/plugins
-	install -m 644 ${S}/rockpalast.lua ${D}/var/tuxbox/plugins
-	install -m 644 ${S}/rockpalast_hint.png ${D}/var/tuxbox/plugins
+	install -d ${D}/home/builder/.config/neutrino/plugins
+	install -m 644 ${S}/rockpalast.cfg ${D}/home/builder/.config/neutrino/plugins
+	install -m 644 ${S}/rockpalast.lua ${D}/home/builder/.config/neutrino/plugins
+	install -m 644 ${S}/rockpalast_hint.png ${D}/home/builder/.config/neutrino/plugins
 }

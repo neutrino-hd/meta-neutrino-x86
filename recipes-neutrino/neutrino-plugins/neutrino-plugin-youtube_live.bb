@@ -16,14 +16,14 @@ SRC_URI = "file://YouTubeLive.lua \
 "
 
 do_install () {
-	install -d ${D}/var/tuxbox/plugins ${D}/home/builder/.config/neutrino/config
-	install -m 644 ${S}/YouTubeLive.lua ${D}/var/tuxbox/plugins
-	install -m 644 ${S}/YouTubeLive.cfg ${D}/var/tuxbox/plugins
-	install -m 644 ${S}/YouTubeLive_hint.png ${D}/var/tuxbox/plugins
+	install -d ${D}/home/builder/.config/neutrino/plugins ${D}/home/builder/.config/neutrino/config
+	install -m 644 ${S}/YouTubeLive.lua ${D}/home/builder/.config/neutrino/plugins
+	install -m 644 ${S}/YouTubeLive.cfg ${D}/home/builder/.config/neutrino/plugins
+	install -m 644 ${S}/YouTubeLive_hint.png ${D}/home/builder/.config/neutrino/plugins
 	install -m 644 ${S}/ytlive.url ${D}/home/builder/.config/neutrino/config
 }
 
 FILES_${PN} = "\
-    /var/tuxbox/plugins \
+   /home/builder/.config/neutrino/plugins \
     /home/builder/.config/neutrino/config \
 "
