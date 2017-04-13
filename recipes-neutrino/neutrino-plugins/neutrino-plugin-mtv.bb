@@ -22,8 +22,8 @@ do_install () {
 	install -m 644 ${S}/mtv_hint.png ${D}/home/builder/.config/neutrino/plugins
 }
 
-FILES_${PN} = "\
-   /home/builder/.config/neutrino/plugins \
+FILES_${PN} += "/home \
 "
+
 SRC_URI[md5sum] = "f9b7e6c21a6b55245f84e591a2151773"
 SRC_URI[sha256sum] = "c5ed25d014a9fcc3c8b8e9fb1af47cd05269424b1ac1e416d770b9956216c29d"

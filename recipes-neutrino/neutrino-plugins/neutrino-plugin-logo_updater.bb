@@ -21,6 +21,9 @@ do_install () {
 	install -m 644 ${S}/logo-addon_hint.png ${D}/home/builder/.config/neutrino/plugins
 }
 
+FILES_${PN} += "/home \
+"
+
 SRC_URI[md5sum] = "3deaec355c83e96390558d503ab8c7f7"
 SRC_URI[sha256sum] = "007ba5db4f146d9ca443fe5f2dffa73d36a9b239848469b3abaea490f30bb881"
 

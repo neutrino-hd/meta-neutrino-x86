@@ -23,7 +23,5 @@ do_install () {
 	install -m 644 ${S}/ytlive.url ${D}/home/builder/.config/neutrino/config
 }
 
-FILES_${PN} = "\
-   /home/builder/.config/neutrino/plugins \
-    /home/builder/.config/neutrino/config \
+FILES_${PN} += "/home \
 "

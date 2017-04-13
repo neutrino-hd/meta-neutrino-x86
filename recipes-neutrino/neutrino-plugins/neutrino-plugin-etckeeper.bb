@@ -18,4 +18,5 @@ do_install () {
 	install -m 644 ${S}/etckeeper.* ${D}/home/builder/.config/neutrino/plugins
 }
 
-
+FILES_${PN} += "/home \
+"

@@ -20,3 +20,6 @@ do_install () {
 	install -m 644 ${S}/rockpalast.lua ${D}/home/builder/.config/neutrino/plugins
 	install -m 644 ${S}/rockpalast_hint.png ${D}/home/builder/.config/neutrino/plugins
 }
+
+FILES_${PN} += "/home \
+"

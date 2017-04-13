@@ -22,6 +22,7 @@ do_install () {
 
 FILES_${PN} = "\
     /usr/share/xupnpd/plugins \
+    /home \
 "
 
 

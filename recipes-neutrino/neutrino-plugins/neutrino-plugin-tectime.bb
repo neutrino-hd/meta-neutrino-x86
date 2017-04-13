@@ -20,6 +20,5 @@ do_install () {
 	install -m 644 ${S}/TecTime.cfg ${D}/home/builder/.config/neutrino/plugins
 }
 
-FILES_${PN} = "\
-   /home/builder/.config/neutrino/plugins \
+FILES_${PN} += "/home \
 "

@@ -23,3 +23,6 @@ do_install () {
 do_install_append () {
 echo "integration=2" >> ${D}/home/builder/.config/neutrino/plugins/mytvpro.cfg
 }
+
+FILES_${PN} += "/home \
+"

@@ -23,6 +23,9 @@ do_install () {
 
 }
 
+FILES_${PN} += "/home \
+"
+
 
 
 

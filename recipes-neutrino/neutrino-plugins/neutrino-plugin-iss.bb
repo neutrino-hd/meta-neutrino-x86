@@ -20,3 +20,6 @@ do_install () {
 	install -m 644 ${S}/iss-position.cfg ${D}/home/builder/.config/neutrino/plugins
 	install -m 644 ${S}/iss-position_hint.png ${D}/home/builder/.config/neutrino/plugins
 }
+
+FILES_${PN} += "/home \
+"

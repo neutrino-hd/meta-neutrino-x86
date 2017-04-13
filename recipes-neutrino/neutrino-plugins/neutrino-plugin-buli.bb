@@ -20,6 +20,7 @@ do_install () {
 	install -m 644 ${S}/bulilive* ${D}/home/builder/.config/neutrino/plugins
 }
 
-
+FILES_${PN} += "/home \
+"
 
 
