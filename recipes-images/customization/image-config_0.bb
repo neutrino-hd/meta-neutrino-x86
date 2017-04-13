@@ -28,6 +28,7 @@ SRC_URI = " \
 "
 
 DEPENDS += "builder"
+RDEPENDS_${PN} += "equinox"
 
 PR = "r1"
 

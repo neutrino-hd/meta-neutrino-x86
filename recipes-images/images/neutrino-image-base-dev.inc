@@ -50,9 +50,6 @@ fakeroot do_populate_poky_src () {
 
 	# set permissions
 	chown -R builder:builder ${IMAGE_ROOTFS}/home/builder
-	chown -R builder:builder ${IMAGE_ROOTFS}/usr/share/tuxbox
-	chown -R builder:builder ${IMAGE_ROOTFS}/etc/neutrino
-	chown -R builder:builder ${IMAGE_ROOTFS}/var/tuxbox
 	chown -R builder:builder ${IMAGE_ROOTFS}/usr/local
 }
 

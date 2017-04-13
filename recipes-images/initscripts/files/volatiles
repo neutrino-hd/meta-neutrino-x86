@@ -29,7 +29,7 @@ l root root 0755 /var/log /var/volatile/log
 l root root 0755 /var/run /run
 l root root 1777 /var/tmp /var/volatile/tmp
 l root root 1777 /tmp /var/tmp
-l root root 0644 /var/tuxbox/config /etc/neutrino/config
+l root root 0644 /var/tuxbox/config /home/builder/.config/neutrino/config
 d root root 0755 /var/etc none
 l root root 0644 /var/etc/update.urls /etc/update.urls
 d root root 0755 /var/lock/subsys none

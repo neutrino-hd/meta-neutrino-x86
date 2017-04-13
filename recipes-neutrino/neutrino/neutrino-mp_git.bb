@@ -44,7 +44,7 @@ DEPENDS += " \
 "
 
 RCONFLICTS_${PN} = "neutrino-hd neutrino-ni"
-RDEPENDS_${PN} += "libao-plugin-libalsa libao-plugin-libpulse"
+RDEPENDS_${PN} += "libao-plugin-libalsa libao-plugin-libpulse fbshot"
 
 SRCREV = "${AUTOREV}"
 PV = "${SRCPV}"
@@ -54,9 +54,6 @@ SRC_URI = "git://github.com/neutrino-mp/neutrino-mp.git;protocol=http \
 	file://timezone.xml \
 	file://custom-poweroff.init \
 	file://COPYING.GPL \
-	file://0001-uncooloff.c-add-include-stdbool.h.patch \
-	file://hardware_caps.cpp \
-	file://hardware_caps.h \
 	file://pre-wlan0.sh \
 	file://post-wlan0.sh \
 	file://mount.mdev \
@@ -82,7 +79,7 @@ do_compile () {
 
 
 do_install_prepend () {
-	install -d ${D}/${sysconfdir}/init.d ${D}${sysconfdir}/network ${D}/etc/neutrino/config
+	install -d ${D}/${sysconfdir}/init.d ${D}${sysconfdir}/network ${D}/home/builder/.config/neutrino
 	install -m 755 ${WORKDIR}/custom-poweroff.init ${D}${sysconfdir}/init.d/custom-poweroff
 	install -m 755 ${WORKDIR}/pre-wlan0.sh ${D}${sysconfdir}/network/
 	install -m 755 ${WORKDIR}/post-wlan0.sh ${D}${sysconfdir}/network/
@@ -98,7 +95,7 @@ do_install_prepend () {
 }
 
 do_install_append() {
-	install -d ${D}/share ${D}/${sysconfdir}/neutrino/bin
+	install -d ${D}/share
 	ln -s ${datadir}/tuxbox ${D}/share/
 	ln -s ${datadir}/fonts  ${D}/share/
 	if [ -d ${WORKDIR}/icons ];then
@@ -106,14 +103,14 @@ do_install_append() {
 	fi
 	if [ -d ${WORKDIR}/var ];then
 		install -d ${D}/var/tuxbox/plugins/webtv
-		install -m 644 ${WORKDIR}/var/tuxbox/config/* ${D}/etc/neutrino/config
+		install -m 644 ${WORKDIR}/var/tuxbox/config/* ${D}/home/builder/.config/neutrino
 		install -m 644 ${WORKDIR}/var/tuxbox/plugins/webtv/* ${D}/var/tuxbox/plugins/webtv
 	fi
 }
 
 FILES_${PN} += "\
 	/.version \
-	${sysconfdir} \
+	/home/builder \
 	/share \
 	/usr/share \
 	/var/cache \
@@ -123,8 +120,8 @@ FILES_${PN} += "\
 "
 
 pkg_preinst_${PN} () {
-	if [ -f /etc/neutrino/config/zapit/frontend.conf ];then
-		mv /etc/neutrino/config/zapit/frontend.conf /etc/neutrino/config/zapit/frontend.conf.orig
+	if [ -f /home/builder/.config/neutrino/config/zapit/frontend.conf ];then
+		mv /home/builder/.config/neutrino/zapit/frontend.conf /home/builder/.config/neutrino/config/zapit/frontend.conf.orig
 	fi
 }
 
@@ -138,9 +135,8 @@ pkg_postinst_${PN} () {
 		I=/usr/share/tuxbox/neutrino/icons
 		pic2m2v $I/mp3.jpg $I/radiomode.jpg $I/scan.jpg $I/shutdown.jpg $I/start.jpg
 	fi
-	if [ -f /etc/neutrino/config/zapit/frontend.conf.orig ];then 
-		mv /etc/neutrino/config/zapit/frontend.conf.orig /etc/neutrino/config/zapit/frontend.conf
+	if [ -f /home/builder/.config/neutrino/config/zapit/frontend.conf.orig ];then 
+		mv /home/builder/.config/neutrino/config/zapit/frontend.conf.orig /home/builder/.config/neutrino/config/zapit/frontend.conf
 	fi
 }
 
-INSANE_SKIP_${PN} = "host-user-contaminated"

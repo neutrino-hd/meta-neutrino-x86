@@ -61,6 +61,7 @@ IMAGE_INSTALL_append += " \
 	deadbeef \
 	dmenu \
 	evince \
+	exfat-utils \
 	feh \
 	file-roller \
 	firmware \
@@ -72,6 +73,7 @@ IMAGE_INSTALL_append += " \
 	glibc-locale \
 	glibc-localedata-de-de \
 	glibc-localedata-en-us \
+	glibc-localedata-fr-fr \
 	glibc-localedata-translit-combining \
 	gnome-disk-utility \
 	gnome-terminal \
@@ -86,10 +88,9 @@ IMAGE_INSTALL_append += " \
 	i3-status \
 	image-config \
 	imagemagick \
-	include-meta-neutrino \
 	inetutils-ftp \
 	kernel-devsrc \
-	libsdl \
+	libntfs-3g \
 	libsdl \
 	libsmbclient \
 	libxml2-python \
@@ -109,6 +110,8 @@ IMAGE_INSTALL_append += " \
 	networkmanager \
 	ni-logos \
 	notify-osd \
+	ntfs-3g \
+	ntfsprogs \
 	ntpdate \
 	parcellite \
 	parcellite-locale-de \

@@ -22,7 +22,7 @@ EXTRA_OECONF += " \
 	--with-boxtype=coolstream \
 "
 
-EXTRA_OECONF += "--with-configdir=/etc/neutrino/config"
+EXTRA_OECONF += "--with-configdir=/home/builder/.config/neutrino/config"
 
 N_CFLAGS = "-Wall -W -Wshadow -g -O2 -funsigned-char -I${STAGING_INCDIR}/freetype2"
 N_CXXFLAGS = "${N_CFLAGS}"
@@ -42,6 +42,9 @@ do_install () {
 do_install_append() {
 	rm -f ${D}/var/tuxbox/plugins/*.la
 }
+
+FILES_${PN} += "/home \
+"
 
 FILES_${PN}-dbg += "/var/tuxbox/plugins/.debug"
 

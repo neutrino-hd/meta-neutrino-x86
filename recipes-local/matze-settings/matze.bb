@@ -14,14 +14,14 @@ SRC_URI = " \
 	file://license \
 "
 do_install () {
-	install -d ${D}/etc/neutrino/config/zapit  
-        install -D -m 644 ${WORKDIR}/*.xml ${D}/etc/neutrino/config/zapit
+	install -d ${D}/home/builder/.config/neutrino/config/zapit  
+        install -D -m 644 ${WORKDIR}/*.xml ${D}/home/builder/.config/neutrino/config/zapit
 }
 
 FILES_${PN} = "\
-    /etc/neutrino/config/zapit/ubouquets.xml \
-    /etc/neutrino/config/zapit/services.xml \
-    /etc/neutrino/config/zapit/bouquets.xml \
+    /home/builder/.config/neutrino/config/zapit/ubouquets.xml \
+    /home/builder/.config/neutrino/config/zapit/services.xml \
+    /home/builder/.config/neutrino/config/zapit/bouquets.xml \
 "
 
 SRC_URI[md5sum] = "3668a887329a101e0db795a058eb330c"

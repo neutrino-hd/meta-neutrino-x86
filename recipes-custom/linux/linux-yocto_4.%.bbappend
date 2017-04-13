@@ -12,5 +12,6 @@ SRC_URI += "file://bluetooth.cfg \
 	    file://pcmcia.cfg \
 	    file://cardreader.cfg \
 	    file://rc.cfg \
+	    file://fs.cfg \
 "
 
