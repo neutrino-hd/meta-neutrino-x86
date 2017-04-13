@@ -19,7 +19,7 @@ S = "${WORKDIR}"
 do_install () {
 	install -d ${D}/home/builder/.config/neutrino/plugins ${D}/home/builder/.config/neutrino/plugins/coolithek ${D}/home/builder/.config/neutrino/plugins/coolithek/locale ${D}/usr/share/lua/5.2/
 	cp -rf ${WORKDIR}/usr ${D}
-        cp -rf ${WORKDIR}/var ${D}
+        cp -rf ${WORKDIR}/var/tuxbox/plugins/* ${D}/home/builder/.config/neutrino/plugins
 }
 
 FILES_${PN} += "/usr/share/* \
