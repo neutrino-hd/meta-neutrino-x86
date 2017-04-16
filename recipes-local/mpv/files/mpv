@@ -3,4 +3,10 @@
 # But lets just keep it simple ;)
 
 i3-msg [class=mpv] kill
-rcsim KEY_MUTEON && mpv --profile=pseudo-gui "$1" && rcsim KEY_MUTEOFF && i3-msg workspace back_and_forth
+
+if [ "$(pidof neutrino)" ] 
+then
+  rcsim KEY_MUTEON && mpv --profile=pseudo-gui "$1" && rcsim KEY_MUTEOFF 
+else
+  mpv --profile=pseudo-gui "$1" && i3-msg workspace back_and_forth
+fi

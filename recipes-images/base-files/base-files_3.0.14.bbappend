@@ -4,6 +4,7 @@ SRC_URI += "file://profile \
 	    file://inputrc \
 	    file://nsswitch.conf \
 	    file://cam.service \
+	    file://environment \
 "
 
 inherit systemd
@@ -36,11 +37,11 @@ do_custom_baseissueinstall() {
 
 
 do_install_append () {
-	install -d ${D}${localstatedir}/update ${D}${systemd_unitdir}/system/multi-user.target.wants 
+	install -d ${D}${localstatedir}/update ${D}${systemd_unitdir}/system/multi-user.target.wants
 	install -d ${D}/srv/audio ${D}/srv/movies ${D}/srv/pictures
 	install -m 644 ${S}/cam.service ${D}${systemd_unitdir}/system/cam.service
+	install -m 644 ${S}/environment ${D}${sysconfdir}/environment
 	ln -s /lib/systemd/system/cam.service ${D}${systemd_unitdir}/system/multi-user.target.wants/cam.service
 	ln -s /lib/systemd/system/adduser.service ${D}${systemd_unitdir}/system/multi-user.target.wants/adduser.service
 	rm ${D}${sysconfdir}/skel/.profile
-	rm ${D}${sysconfdir}/skel/.bashrc
 }

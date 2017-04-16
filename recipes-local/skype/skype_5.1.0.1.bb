@@ -6,6 +6,7 @@ SRC_URI = "https://repo.skype.com/deb/pool/main/s/skypeforlinux/skypeforlinux_${
 		   file://license \
 "
 
+DEPENDS = "xz-native"
 
 SRC_URI[md5sum] = "a43c8f03ad19ce9839a0576846184622"
 SRC_URI[sha256sum] = "b412a1aa8c25d624e8778c81cc276fe61015f548015d459f92020b0b7a3068a3"

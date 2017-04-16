@@ -9,6 +9,7 @@ SRC_URI = "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64
 SRC_URI[md5sum] = "52a4341475511d3627a86a344c0831ce"
 SRC_URI[sha256sum] = "4a62a77b3c7960f9313d41a40f645b7178d6a8b91f9f1141d7664026692ef63d"
 
+DEPENDS = "xz-native"
 RDEPENDS_${PN} += "cups"
 
 S = "${WORKDIR}"

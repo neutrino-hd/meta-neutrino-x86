@@ -1,19 +1,19 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
 DEPENDS_append += "rtmpdump openssl virtual/libiconv libsdl libxcb "
-
+RDEPENDS_${PN} += "libva-intel-driver"
 SRC_URI_append += " \
 		   file://0002-add-HDS-ro_new.patch \
 		   file://capture.sh \
 "
 
 PACKAGECONFIG ??= "avdevice avfilter avcodec avformat swscale swresample postproc \
-                   bzlib gpl lzma librtmp libvorbis openssl theora x264 libroxml \
+                   bzlib gpl lzma librtmp libvorbis openssl theora x264 libroxml vaapi \
 "
 
 PACKAGECONFIG[libroxml] = "--enable-libroxml,--disable-libroxml,libroxml"
 PACKAGECONFIG[librtmp] = "--enable-librtmp,--disable-librtmp,rtmpdump"
-
+PACKAGECONFIG[libva] = "--enable-vaapi,--disable-vaapi,vaapi"
 
 do_configure() {
     # We don't have TARGET_PREFIX-pkgconfig

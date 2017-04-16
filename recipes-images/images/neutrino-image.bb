@@ -50,6 +50,7 @@ IMAGE_INSTALL_append += " \
 "
 
 IMAGE_INSTALL_append += " \
+	alsa-utils \
 	bash \
 	blueman \
 	chrome \
@@ -97,6 +98,7 @@ IMAGE_INSTALL_append += " \
 	local-build \
 	localedef \
 	mc \
+	mediathekview \
 	meld \
 	minicom \
 	minidlna \
@@ -127,6 +129,7 @@ IMAGE_INSTALL_append += " \
 	pulseaudio-module-bluez5-device \
 	pulseaudio-module-bluez5-discover \
 	pulseaudio-server \
+	pulseaudio-misc \
 	python-modules \
 	python3-modules \
 	python3-pip \
