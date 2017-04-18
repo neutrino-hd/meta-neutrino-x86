@@ -53,7 +53,7 @@ SRC_URI = " \
 	file://blank_480.mpg \
 	file://blank_576.mpg \
 	file://timer-wakeup.init \
-	file://0001-xgl-threads.patch;apply=yes \
+	file://0001-fullscreen.patch;apply=yes \
 "
 
 S = "${WORKDIR}/git"
