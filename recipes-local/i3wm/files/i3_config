@@ -99,15 +99,19 @@ for_window [class="Sublime_text"] focus
 for_window [class="Nautilus"] focus
 for_window [class="File-roller"] focus
 for_window [class="Sylpheed"] focus
+for_window [class="skypeforlinux"] focus
 for_window [class="XChat"] focus
 for_window [class="DeadBeef"] focus
 for_window [class="Gthumb"] focus
 for_window [class="Gimp"] focus
 for_window [class="Google-chrome"] focus
+for_window [title="^neutrino$"] focus
+for_window [title="^neutrino$"] fullscreen enable
 
 # assign applications to workspaces
 assign [class="Google-chrome"] 2:web
 assign [class="Xchat"] 3:chat
+assign [class="skypeforlinux"] 3:chat
 assign [class="Sylpheed"] 4:mail
 assign [class="Nautilus"] 5:file
 assign [class="File-roller"] 5:file
@@ -117,11 +121,24 @@ assign [class="DeadBeef"] 8:audio
 assign [class="Gthumb"] 9:gfx
 assign [class="Gimp"] 9:gfx
 assign [class="mpv"] 10:video
+assign [title="^neutrino$"] 10:video
+
+# assign workspaces to displays
+workspace "1:work" output DP2
+workspace "2:web" output DP1
+workspace "3:chat" output DP2
+workspace "4:mail" output DP2
+workspace "5:file" output DP2
+workspace "6:edit" output DP2 
+workspace "7:compare" output DP2
+workspace "8:audio" output DP2
+workspace "9:gfx" output DP2
+workspace "10:video" output DP1
 
 # switch to workspace
 bindsym $mod+1 workspace 1:work
 bindsym $mod+2 workspace 2:web;  exec raise_or_run.sh  class Google-chrome google-chrome-stable
-bindsym $mod+3 workspace 3:chat; exec raise_or_run.sh  class XChat xchat
+bindsym $mod+3 workspace 3:chat; exec raise_or_run.sh  class skypeforlinux skypeforlinux
 bindsym $mod+4 workspace 4:mail; exec raise_or_run.sh  class Sylpheed sylpheed
 bindsym $mod+5 workspace 5:file; exec raise_or_run.sh  class Nautilus nautilus
 bindsym $mod+6 workspace 6:edit; exec raise_or_run.sh  class Sublime_text subl
@@ -145,9 +162,6 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
-# move neutrino into scratchpad and toggle using [$MOD] + n
-for_window [title="^neutrino$"] mark "STATWIN", move scratchpad
-bindsym $mod+n [con_mark="^STATWIN$"] fullscreen enable, scratchpad show
 
 # add screenhot shortcut to print key
 bindsym Print exec --no-startup-id screenshot.sh -w, exec i3-nagbar -t warning -m  'Screenshot done'
@@ -210,12 +224,16 @@ bindsym $mod+c exec --no-startup-id gsimplecal
 
 bindsym $mod+r mode "resize"
 
+#shutdown
+bindsym XF86Sleep exec poweroff
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
         status_command i3status
 }
 
+exec --no-startup-id neutrino
 exec --no-startup-id dbus-launch nm-applet
 exec --no-startup-id dbus-launch blueman-applet
 exec --no-startup-id dbus-launch pasystray
