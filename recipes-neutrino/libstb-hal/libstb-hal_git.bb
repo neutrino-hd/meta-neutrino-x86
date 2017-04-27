@@ -45,7 +45,7 @@ PV = "0.1+git${SRCPV}"
 # libstb-hal-bin package for testing binaries etc.
 PACKAGES += "${PN}-bin"
 
-LIBSTB_HAL_GIT ?= "git://github.com/neutrino-mp/libstb-hal.git;protocol=http"
+LIBSTB_HAL_GIT ?= "git://github.com/tuxbox-neutrino/library-stb-hal.git;protocol=http"
 
 SRC_URI = " \
 	${LIBSTB_HAL_GIT} \

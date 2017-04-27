@@ -242,6 +242,4 @@ exec --no-startup-id dbus-launch unclutter
 exec --no-startup-id dbus-launch redshift
 exec --no-startup-id dbus-launch /usr/libexec/polkit-gnome-authentication-agent-1
 
-# disable display power management signaling
-exec --no-startup-id xset -dpms
 
