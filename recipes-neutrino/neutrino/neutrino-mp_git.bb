@@ -50,7 +50,7 @@ SRCREV = "${AUTOREV}"
 PV = "${SRCPV}"
 PR = "3"
 
-SRC_URI = "git://github.com/neutrino-mp/neutrino-mp.git;protocol=http \
+SRC_URI = "git://github.com/tuxbox-neutrino/gui-neutrino.git;branch=pu/mp;protocol=http \
 	file://timezone.xml \
 	file://custom-poweroff.init \
 	file://COPYING.GPL \
