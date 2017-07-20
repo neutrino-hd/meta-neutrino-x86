@@ -8,9 +8,8 @@ SRC_URI = "https://repo.skype.com/deb/pool/main/s/skypeforlinux/skypeforlinux_${
 
 DEPENDS = "xz-native"
 
-SRC_URI[md5sum] = "a43c8f03ad19ce9839a0576846184622"
-SRC_URI[sha256sum] = "b412a1aa8c25d624e8778c81cc276fe61015f548015d459f92020b0b7a3068a3"
-
+SRC_URI[md5sum] = "82dd3d59fde84c4e5b62d69208d8879c"
+SRC_URI[sha256sum] = "1f31c0e9379f680f2ae2b4db3789e936627459fe0677306895a7fa096c7db2c5"
 
 
 do_install() {

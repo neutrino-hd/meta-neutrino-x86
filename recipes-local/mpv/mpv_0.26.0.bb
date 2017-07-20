@@ -16,8 +16,9 @@ SRC_URI = "https://github.com/mpv-player/mpv/archive/v${PV}.tar.gz;name=mpv \
            http://www.freehackers.org/~tnagy/release/waf-1.9.8;name=waf;subdir=${BPN}-${PV} \
 	   file://mpv \
 "
-SRC_URI[mpv.md5sum] = "5c85d1163911e49315a5bf1ca1fae13d"
-SRC_URI[mpv.sha256sum] = "a41854fa0ac35b9c309ad692aaee67c8d4495c3546f11cb4cdd0a124195d3f15"
+
+SRC_URI[mpv.md5sum] = "038d0b660de07ff645ad6a741704ecab"
+SRC_URI[mpv.sha256sum] = "daf3ef358d5f260f2269f7caabce27f446c291457ec330077152127133b71b46"
 
 SRC_URI[waf.md5sum] = "fbb646eafa430f959743010c85e269be"
 SRC_URI[waf.sha256sum] = "167dc42bab6d5bd823b798af195420319cb5c9b571e00db7d83df2a0fe1f4dbf"

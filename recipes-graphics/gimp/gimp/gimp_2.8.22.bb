@@ -27,13 +27,13 @@ DEPENDS += "${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'libxmu libxpm', '', 
 
 inherit gnome gtk-doc
 
-SRC_URI = " \
-    http://ftp.gimp.org/pub/gimp/v2.8/gimp-${PV}.tar.bz2 \
-    file://0001-configure-ac-do-not-check-for-freetype-config.patch \
-    file://bump_Babl-GEGL_versions.patch \
-"
-SRC_URI[md5sum] = "5adaa11a68bc8a42bb2c778fee4d389c"
-SRC_URI[sha256sum] = "39dd2247c678deaf5cc664397d3c6bd4fb910d3472290fd54b52b441b5815441"
+SRC_URI = "http://ftp.gimp.org/pub/gimp/v2.8/gimp-${PV}.tar.bz2 \
+           file://0001-configure-ac-do-not-check-for-freetype-config.patch \
+           file://bump_Babl-GEGL_versions.patch \
+           file://0003-Fix-use-of-gegl-API.patch \
+           "
+SRC_URI[md5sum] = "7e4fd7a53b1d3c32dff642ab1a94b44d"
+SRC_URI[sha256sum] = "9187a35cc52b110d78124d7b27b68a68ade14a794c2721314bac6134d2a5638a"
 
 EXTRA_OECONF = "--disable-python \
                 --without-webkit \

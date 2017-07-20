@@ -15,7 +15,8 @@ FILES_${PN} = "${sysconfdir}/dbus-1/system.d/system-builder.conf"
 
 include neutrino-image-base-dev.inc 
 
-DEPENDS = "zip-native python3-pip-native"
+DEPENDS = "zip-native python3-pip-native glibc-locale"
+
 
 do_install_append () {
     install -D -m 0644 ${WORKDIR}/system-builder.conf ${D}${sysconfdir}/dbus-1/system.d/system-builder.conf
@@ -71,7 +72,6 @@ IMAGE_INSTALL_append += " \
 	gimp \
 	git \
 	glibc-charmaps \
-	glibc-locale \
 	glibc-localedata-de-de \
 	glibc-localedata-en-us \
 	glibc-localedata-fr-fr \

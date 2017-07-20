@@ -51,6 +51,7 @@ PV = "${SRCPV}"
 PR = "3"
 
 SRC_URI = "git://github.com/tuxbox-neutrino/gui-neutrino.git;branch=pu/mp;protocol=http \
+	file://0001-remove_workaround_for_gcc6.x.patch \
 	file://timezone.xml \
 	file://custom-poweroff.init \
 	file://COPYING.GPL \

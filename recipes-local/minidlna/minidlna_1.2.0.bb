@@ -12,8 +12,8 @@ SRC_URI = "${SOURCEFORGE_MIRROR}/project/minidlna/minidlna/${PV}/minidlna-${PV}.
 		file://minidlna.service \
 "
 
-SRC_URI[md5sum] = "1970e553a1eb8a3e7e302e2ce292cbc4"
-SRC_URI[sha256sum] = "8477ad0416bb2af5cd8da6dde6c07ffe1a413492b7fe40a362bc8587be15ab9b"
+SRC_URI[md5sum] = "5f59700431e9f66198238deeb4e0d0de"
+SRC_URI[sha256sum] = "8d34436580c4c44be25976d5e46bc5b71af69bf441c4492774eac001164c4433"
 
 S = "${WORKDIR}/${PN}-${PV}"
 

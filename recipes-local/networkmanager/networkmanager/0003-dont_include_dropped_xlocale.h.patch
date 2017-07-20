@@ -1,0 +1,10 @@
+--- a/src/systemd/src/basic/parse-util.c	2017-07-20 13:12:32.155574775 +0200
++++ b/src/systemd/src/basic/parse-util.c	2017-07-20 13:09:52.299373795 +0200
+@@ -25,7 +25,6 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+-#include <xlocale.h>
+ 
+ #include "alloc-util.h"
+ #include "extract-word.h"

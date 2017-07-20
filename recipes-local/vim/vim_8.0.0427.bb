@@ -4,18 +4,17 @@ DEPENDS = "ncurses gettext-native"
 # vimdiff doesn't like busybox diff
 RSUGGESTS_${PN} = "diffutils"
 LICENSE = "vim"
-LIC_FILES_CHKSUM = "file://../runtime/doc/uganda.txt;md5=c74ec0ada9a68354f9461e81d3596f61"
+LIC_FILES_CHKSUM = "file://../runtime/doc/uganda.txt;md5=eea32ac1424bba14096736a494ae9045"
 
 SRC_URI = "git://github.com/vim/vim.git \
            file://disable_acl_header_check.patch;patchdir=.. \
            file://vim-add-knob-whether-elf.h-are-checked.patch;patchdir=.. \
-           file://0001-patch-7.4.1733.patch;patchdir=.. \
 "
-SRCREV = "758535a1df4c5e86b45dddf12db2a54dea28ca40"
+SRCREV = "ad4187e6fc9c8e1083a172852d958a70a689a75c"
 
 S = "${WORKDIR}/git/src"
 
-VIMDIR = "vim${@d.getVar('PV',1).split('.')[0]}${@d.getVar('PV',1).split('.')[1]}"
+VIMDIR = "vim${@d.getVar('PV').split('.')[0]}${@d.getVar('PV').split('.')[1]}"
 
 inherit autotools update-alternatives
 inherit autotools-brokensep
@@ -32,9 +31,8 @@ do_configure () {
 }
 
 #Available PACKAGECONFIG options are gtkgui, acl, x11, tiny
-PACKAGECONFIG ??= "x11 elfutils gtkgui acl"
-PACKAGECONFIG += "${@bb.utils.contains('DISTRO_FEATURES', 'acl', 'acl', '', d)}"
-PACKAGECONFIG += "${@bb.utils.contains('DISTRO_FEATURES', 'selinux', 'selinux', '', d)}"
+PACKAGECONFIG ??= ""
+PACKAGECONFIG += "${@bb.utils.filter('DISTRO_FEATURES', 'acl selinux', d)}"
 
 PACKAGECONFIG[gtkgui] = "--enable-gtk2-test --enable-gui=gtk2,--enable-gui=no,gtk+,"
 PACKAGECONFIG[acl] = "--enable-acl,--disable-acl,acl,"
@@ -98,14 +96,17 @@ FILES_${PN}-common = " \
     ${datadir}/${BPN}/${VIMDIR}/plugin \
     ${datadir}/${BPN}/${VIMDIR}/print \
     ${datadir}/${BPN}/${VIMDIR}/spell \
+    ${datadir}/icons \
 "
 
-RDEPENDS_${PN} = "ncurses-terminfo-base"
+RDEPENDS_${BPN} = "ncurses-terminfo-base"
 # Recommend that runtime data is installed along with vim
-RRECOMMENDS_${PN} = "${PN}-syntax ${PN}-help ${PN}-tutor ${PN}-vimrc ${PN}-common"
+RRECOMMENDS_${BPN} = "${PN}-syntax ${PN}-help ${PN}-tutor ${PN}-vimrc ${PN}-common"
 
 ALTERNATIVE_${PN} = "vi vim"
 ALTERNATIVE_TARGET = "${bindir}/${BPN}.${BPN}"
 ALTERNATIVE_LINK_NAME[vi] = "${base_bindir}/vi"
 ALTERNATIVE_LINK_NAME[vim] = "${bindir}/vim"
 ALTERNATIVE_PRIORITY = "100"
+
+BBCLASSEXTEND = "native"

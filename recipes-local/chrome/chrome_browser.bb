@@ -6,8 +6,8 @@ SRC_URI = "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64
 	   file://license \
 "
 
-SRC_URI[md5sum] = "52a4341475511d3627a86a344c0831ce"
-SRC_URI[sha256sum] = "4a62a77b3c7960f9313d41a40f645b7178d6a8b91f9f1141d7664026692ef63d"
+SRC_URI[md5sum] = "a32680dc081331e722fd17d2bd68fb00"
+SRC_URI[sha256sum] = "a157db73f7fa09f884e665649b51518c2b0a9441465eca294c5562040a1058d9"
 
 DEPENDS = "xz-native"
 RDEPENDS_${PN} += "cups"
