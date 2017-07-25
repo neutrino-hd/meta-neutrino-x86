@@ -33,5 +33,10 @@ do_install () {
         'oldincludedir='
 }
 
+# let termcap.h be provided by ncurses-dev
+do_install_append() {
+    rm -rf ${D}${includedir}/termcap.h
+}
+
 NATIVE_INSTALL_WORKS = "1"
 BBCLASSEXTEND += "native nativesdk"

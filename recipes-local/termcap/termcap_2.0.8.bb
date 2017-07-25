@@ -36,6 +36,7 @@ do_install () {
     install -m 0644 termcap.info* ${D}${infodir}/
     install -d ${D}${sysconfdir}
     install -m 0644 termcap.src ${D}${sysconfdir}/termcap
+    rm -rf ${D}${includedir}/termcap.h
 }
 
 NATIVE_INSTALL_WORKS = "1"
