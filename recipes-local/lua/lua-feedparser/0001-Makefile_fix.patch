@@ -35,8 +35,8 @@ index a3debda..1f69edd 100644
  	tar --create --verbose --exclude-vcs --gzip --file=../$(NAME)-$(VERSION).tar.gz ../$(NAME)
 +
 +clean:
-+	$(RM) $(DESTDIR)$(LUA_DIR)/feedparser.lua
-+	$(RM) $(DESTDIR)$(LUA_DIR)/feedparser
++	:
++	
 -- 
 2.1.4
 
