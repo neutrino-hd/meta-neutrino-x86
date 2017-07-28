@@ -18,6 +18,7 @@ do_install() {
 	install -d ${D}/usr/bin ${D}/usr/share/applications ${D}/opt/google
 	cp -rf ${S}/opt/* ${D}/opt/
 	cp -rf ${S}/usr/* ${D}/usr/
+	ln -sf ./google-chrome-stable ${D}/usr/bin/google-chrome
 	cp -rf ${S}/etc/* ${D}${sysconfdir}
 	for i in 16 32 48 128 256;do
 		x='x'
