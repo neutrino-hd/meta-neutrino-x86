@@ -15,7 +15,7 @@ FILES_${PN} = "${sysconfdir}/dbus-1/system.d/system-builder.conf"
 
 include neutrino-image-base-dev.inc 
 
-DEPENDS = "zip-native python3-pip-native glibc-locale"
+DEPENDS = "zip-native python3-pip-native glibc-locale qemuwrapper-cross"
 
 
 do_install_append () {
