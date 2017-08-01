@@ -57,7 +57,6 @@ BB_DISKMON_DIRS = "\
 PACKAGECONFIG_pn-qemu-native = "sdl"
 CONF_VERSION = "1"
 
-IMAGE_FSTYPES = "live"
 IMAGE_LINGUAS ?= "de-de fr-fr en-us"
 ENABLE_BINARY_LOCALE_GENERATION ?= "1"
 GLIBC_GENERATE_LOCALES = "de_DE.UTF-8 fr_FR.UTF-8 en_US.UTF-8"
@@ -74,10 +73,15 @@ DISTRO = "poky"
 
 ### Image Settings
 
+IMAGE_FSTYPES ?= "live"
+
+NOISO ?= "0"
+NOHDD = "1"
+USBIMAGE = "no"
+
+
 # Choose neutrino source. Possible values are "neutrino-hd" or "neutrino-mp"
 NEUTRINO_FLAVOUR = "neutrino-mp"
-
-USBIMAGE = "no"
 
 # set initial passwort for user root. Keep empty for root:
 ROOTPW = ""
