@@ -1,0 +1,20 @@
+[Unit]
+Description=Kodi service
+Requires = multi-user.target xorg.target
+After = multi-user.target xorg.target
+Conflicts=getty@tty5.service
+
+[Service]
+Type=simple
+User=root
+TTYPath=/dev/tty5
+Environment="DISPLAY=:0.0"
+ExecStartPre = /usr/bin/chvt 5
+ExecStart = /usr/bin/kodi-standalone --no-test -fs
+Restart = on-abort
+StandardInput = null
+StandardOutput = journal
+StandardError = journal
+
+[Install]
+WantedBy = graphical.target

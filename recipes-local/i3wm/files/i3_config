@@ -105,8 +105,8 @@ for_window [class="DeadBeef"] focus
 for_window [class="Gthumb"] focus
 for_window [class="Gimp"] focus
 for_window [class="Google-chrome"] focus
-for_window [title="^neutrino$"] focus
-for_window [title="^neutrino$"] fullscreen enable
+for_window [class=Kodi"] focus
+for_window [class=Kodi"] fullscreen enable
 
 # assign applications to workspaces
 assign [class="Google-chrome"] 2:web
@@ -115,13 +115,13 @@ assign [class="skypeforlinux"] 3:chat
 assign [class="Sylpheed"] 4:mail
 assign [class="Nautilus"] 5:file
 assign [class="File-roller"] 5:file
-assign [class="Sublime_text"] 6:edit
-assign [class="Meld"] 7:compare
+assign [class="Sublime_text"] 5:file
+assign [class="Meld"] 6:compare
+assign [class="mpv"] 7:video
 assign [class="DeadBeef"] 8:audio
 assign [class="Gthumb"] 9:gfx
 assign [class="Gimp"] 9:gfx
-assign [class="mpv"] 10:video
-assign [title="^neutrino$"] 10:video
+assign [class="Kodi"] 10:kodi
 
 # assign workspaces to displays
 workspace "1:work" output DP2
@@ -129,38 +129,39 @@ workspace "2:web" output DP1
 workspace "3:chat" output DP2
 workspace "4:mail" output DP2
 workspace "5:file" output DP2
-workspace "6:edit" output DP2 
-workspace "7:compare" output DP2
+workspace "6:compare" output DP2 
+workspace "7:video" output DP1
 workspace "8:audio" output DP2
 workspace "9:gfx" output DP2
-workspace "10:video" output DP1
+workspace "10:kodi" output DP1
 
 # switch to workspace
 bindsym $mod+1 workspace 1:work
 bindsym $mod+2 workspace 2:web;  exec raise_or_run.sh  class Google-chrome google-chrome-stable
 bindsym $mod+3 workspace 3:chat; exec raise_or_run.sh  class skypeforlinux skypeforlinux
 bindsym $mod+4 workspace 4:mail; exec raise_or_run.sh  class Sylpheed sylpheed
-bindsym $mod+5 workspace 5:file; exec raise_or_run.sh  class Nautilus nautilus
-bindsym $mod+6 workspace 6:edit; exec raise_or_run.sh  class Sublime_text subl
-bindsym $mod+7 workspace 7:compare; exec raise_or_run.sh  class Meld meld
+bindsym $mod+5 workspace 5:file; exec raise_or_run.sh  class Nautilus nautilus, exec raise_or_run.sh class Sublime sublime
+bindsym $mod+6 workspace 6:compare; exec raise_or_run.sh  class Meld meld
+bindsym $mod+7 workspace 7:video; exec raise_or_run.sh  class mpv mpv
 bindsym $mod+8 workspace 8:audio; exec raise_or_run.sh  class DeadBeef deadbeef, exec raise_or_run.sh  class Pavucontrol pavucontrol
 bindsym $mod+9 workspace 9:gfx; exec raise_or_run.sh  class Gthumb gthumb
-bindsym $mod+0 workspace 10:video; exec raise_or_run.sh  class mpv mpv
+bindsym $mod+0 workspace 10:kodi; exec raise_or_run.sh  class Kodi kodi
 
 # toggle between the two workspaces used last	
 bindsym $mod+Tab workspace back_and_forth
 
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace 1:work
+bindsym $mod+Shift+2 move container to workspace 2:web
+bindsym $mod+Shift+3 move container to workspace 3:chat
+bindsym $mod+Shift+4 move container to workspace 4:mail
+bindsym $mod+Shift+5 move container to workspace 5:file
+bindsym $mod+Shift+6 move container to workspace 6:compare
+bindsym $mod+Shift+7 move container to workspace 7:video
+bindsym $mod+Shift+8 move container to workspace 8:audio
+bindsym $mod+Shift+9 move container to workspace 9:gfx
+bindsym $mod+Shift+0 move container to workspace 10:kodi
 
 
 # add screenhot shortcut to print key
@@ -233,7 +234,7 @@ bar {
         status_command i3status
 }
 
-exec --no-startup-id neutrino
+exec --no-startup-id dbus-launch kodi
 exec --no-startup-id dbus-launch nm-applet
 exec --no-startup-id dbus-launch blueman-applet
 exec --no-startup-id dbus-launch pasystray

@@ -132,9 +132,9 @@ fi
 
 disk_size=$(parted ${device} unit mb print | grep '^Disk .*: .*MB' | cut -d" " -f 3 | sed -e "s/MB//")
 
-grub_version=202
+legacy_grub=0
 
-if [ $grub_version -eq 0 ] ; then
+if [ $legacy_grub -eq 1 ] ; then
     bios_boot_size=0
 else
     # For GRUB 2 we need separate parition to store stage2 grub image
@@ -166,7 +166,7 @@ if [ -n `readlink /dev/disk/by-id/usb* | grep $TARGET_DEVICE_NAME` ]; then
     rootwait="rootwait"
 fi
 
-if [ $grub_version -eq 0 ] ; then
+if [ $legacy_grub -eq 1 ] ; then
     bios_boot=''
     bootfs=${device}${part_prefix}1
     rootfs=${device}${part_prefix}2
@@ -179,7 +179,7 @@ else
 fi
 
 echo "*****************"
-[ $grub_version -ne 0 ] && echo "BIOS boot partition size: $bios_boot_size MB ($bios_boot)"
+[ $legacy_grub -ne 1 ] && echo "BIOS boot partition size: $bios_boot_size MB ($bios_boot)"
 echo "Boot partition size:   $boot_size MB ($bootfs)"
 echo "Rootfs partition size: $rootfs_size MB ($rootfs)"
 echo "Swap partition size:   $swap_size MB ($swap)"
@@ -188,7 +188,7 @@ echo "Deleting partition table on ${device} ..."
 dd if=/dev/zero of=${device} bs=512 count=35
 
 echo "Creating new partition table on ${device} ..."
-if [ $grub_version -eq 0 ] ; then
+if [ $legacy_grub -eq 1 ] ; then
     parted ${device} mktable msdos
     echo "Creating boot partition on $bootfs"
     parted ${device} mkpart primary ext3 0% $boot_size
@@ -202,11 +202,11 @@ else
 fi
 
 echo "Creating rootfs partition on $rootfs"
-[ $grub_version -eq 0 ] && pname='primary' || pname='root'
+[ $legacy_grub -eq 1 ] && pname='primary' || pname='root'
 parted ${device} mkpart $pname ext3 $rootfs_start $rootfs_end
 
 echo "Creating swap partition on $swap"
-[ $grub_version -eq 0 ] && pname='primary' || pname='swap'
+[ $legacy_grub -eq 1 ] && pname='primary' || pname='swap'
 parted ${device} mkpart $pname linux-swap $swap_start 100%
 
 parted ${device} print
@@ -230,7 +230,7 @@ mount -o rw,loop,noatime,nodiratime /run/media/$1/$2 /src_root
 echo "Copying rootfs files..."
 cp -a /src_root/* /tgt_root
 if [ -d /tgt_root/etc/ ] ; then
-    if [ $grub_version -ne 0 ] ; then
+    if [ $legacy_grub -ne 1 ] ; then
         boot_uuid=$(blkid -o value -s UUID ${bootfs})
         swap_part_uuid=$(blkid -o value -s PARTUUID ${swap})
         bootdev="UUID=$boot_uuid"
@@ -252,7 +252,7 @@ umount /src_root
 # Handling of the target boot partition
 mount $bootfs /boot
 echo "Preparing boot partition..."
-if [ -f /etc/grub.d/00_header -a $grub_version -ne 0 ] ; then
+if [ -f /etc/grub.d/00_header -a $legacy_grub -ne 1 ] ; then
     echo "Preparing custom grub2 menu..."
     root_part_uuid=$(blkid -o value -s PARTUUID ${rootfs})
     boot_uuid=$(blkid -o value -s UUID ${bootfs})
@@ -268,7 +268,7 @@ _EOF
 fi
 grub-install ${device}
 
-if [ $grub_version -eq 0 ] ; then
+if [ $legacy_grub -eq 1 ] ; then
     echo "(hd0) ${device}" > /boot/grub/device.map
     echo "Preparing custom grub menu..."
     echo "default 0" > /boot/grub/menu.lst

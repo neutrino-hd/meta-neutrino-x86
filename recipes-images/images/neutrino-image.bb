@@ -31,23 +31,11 @@ IMAGE_INSTALL += " \
 "
 
 IMAGE_INSTALL_append += " \
-	${NEUTRINO_FLAVOUR} \
-	neutrino-feed-config \
-	neutrino-plugin-buli \
-	neutrino-plugin-localtv \
-	neutrino-plugin-logo \
-	neutrino-plugin-mediathek \
-	neutrino-plugin-mtv \
-	neutrino-plugin-myspass \
-	neutrino-plugin-mytvpro \
-	neutrino-plugin-netzkino \
-	neutrino-plugin-rockpalast \
-	neutrino-plugin-rss \
-	neutrino-plugin-webtv \
-	neutrino-plugin-wetter \
-	neutrino-plugin-xupnpd \
-	neutrino-plugin-youtube \
-	neutrino-plugins \
+	vdr \
+	vdr-plugin-dvbapi \
+	vdr-plugin-vnsiserver \
+	kodi \
+	kodi-addon-vnsi \
 "
 
 IMAGE_INSTALL_append += " \
@@ -151,6 +139,7 @@ IMAGE_INSTALL_append += " \
 	unrar \
 	usb-modeswitch \
 	util-linux \
+	v86d \
 	vim \
 	vsftpd \
 	wget \
