@@ -11,13 +11,14 @@ SRCREV ?= "${AUTOREV}"
 PV = "${SRCPV}"
 PR = "1"
 
-SRC_URI = "git://github.com/itstool/itstool.git;protocol=http \
+SRC_URI = "git://github.com/itstool/itstool.git;protocol=http;branch=master \
+		   file://0001-itstool-dont-build-python-module-as-python3-is-not-s.patch \
 "
 
 S = "${WORKDIR}/git"
 
 
-inherit autotools
+inherit autotools pkgconfig
 
 BBCLASSEXTEND = "native nativesdk"
 
