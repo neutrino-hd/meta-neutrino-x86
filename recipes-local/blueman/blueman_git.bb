@@ -11,12 +11,13 @@ RDEPENDS_${PN} = "python3-dbus python3 \
 "
 
 SRC_URI = "git://github.com/blueman-project/blueman.git;protocol=https;branch=master \
+		   file://60-blueman \
 "
 SRCREV = "5aaba8219680b74673e99139c3cb5c319df85dc8"
 
 S = "${WORKDIR}/git"
 
-inherit pkgconfig autotools python3-dir gconf gobject-introspection gsettings
+inherit pkgconfig autotools python3-dir gconf gobject-introspection gsettings systemd
 
 EXTRA_OECONF += "--disable-runtime-deps-check \
 		 --enable-polkit \
@@ -24,6 +25,10 @@ EXTRA_OECONF += "--disable-runtime-deps-check \
 		 --with-systemdunitdir=${systemd_unitdir}/system/ \
 "
 
+do_install_append() {
+	install -d ${D}${sysconfdir}/polkit-1/rules.d
+	install -m 0644 ${WORKDIR}/60-blueman ${D}${sysconfdir}/polkit-1/rules.d
+}
 FILES_${PN} = "/usr \
 	       /lib \
 	       /etc \
