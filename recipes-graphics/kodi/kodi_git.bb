@@ -45,7 +45,6 @@ DEPENDS = " \
   libxslt \
   lzo \
   mpeg2dec \
-  mariadb \
   openssl \
   python \
   samba \
@@ -118,7 +117,7 @@ INSANE_SKIP_${PN} = "already-stripped"
 FILES_${PN} += "${datadir}/xsessions ${datadir}/icons ${libdir}/xbmc ${datadir}/xbmc"
 FILES_${PN}-dbg += "${libdir}/kodi/.debug ${libdir}/kodi/*/.debug ${libdir}/kodi/*/*/.debug ${libdir}/kodi/*/*/*/.debug"
 
-RDEPENDS_{PN} += "python-threading python-shell python-compression python-imaging"
+RDEPENDS_{PN} += "python-threading python-shell python-compression python-imaging upower mariadb"
 RRECOMMENDS_${PN}_append = " \
   python \
   python-ctypes \
