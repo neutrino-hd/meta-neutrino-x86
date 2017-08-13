@@ -9,12 +9,14 @@ SRC_URI = "http://ftp.heanet.ie/mirrors/funtoo/distfiles/oracle-java/jdk-8u121-l
 S = "${WORKDIR}/jdk1.8.0_121"
 
 do_install() {
-	install -d ${D}/opt/java
-	cp -rf ${S}/jre/* ${D}/opt/java/
+	install -d ${D}/usr
+	cp -rf ${S}/jre/* ${D}/usr
+
 }
 
-FILES_${PN} = "/opt \
+FILES_${PN} = "/usr \
 "
+RCONFLICTS_${PN} += "jdk"
 
 INSANE_SKIP_${PN} += "already-stripped build-deps libdir dev-so"
 
