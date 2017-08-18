@@ -9,11 +9,11 @@ SRC_URI_append += " \
 
 PACKAGECONFIG ??= "avdevice avfilter avcodec avformat swscale swresample postproc \
                    bzlib gpl lzma libvorbis openssl theora x264 libroxml vaapi \
-""
+"
 
 PACKAGECONFIG[libroxml] = "--enable-libroxml,--disable-libroxml,libroxml"
 PACKAGECONFIG[librtmp] = "--enable-librtmp,--disable-librtmp,rtmpdump"
-PACKAGECONFIG[vaapi = "--enable-vaapi,--disable-vaapi,libva"
+PACKAGECONFIG[vaapi] = "--enable-vaapi,--disable-vaapi,libva"
 
 do_configure() {
     # We don't have TARGET_PREFIX-pkgconfig
