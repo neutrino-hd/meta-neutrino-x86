@@ -105,13 +105,6 @@ def enable_glew(bb, d):
         return "glew"
     return ""
 
-do_install_append() {
-    if ${@bb.utils.contains('DISTRO_FEATURES','systemd','true','false',d)}; then
-        install -d ${D}${systemd_unitdir}/system
-        install -m 0644 ${WORKDIR}/kodi.service ${D}${systemd_unitdir}/system/kodi.service
-    fi
-}
-
 INSANE_SKIP_${PN} = "already-stripped"
 
 FILES_${PN} += "${datadir}/xsessions ${datadir}/icons ${libdir}/xbmc ${datadir}/xbmc"
@@ -134,4 +127,3 @@ RRECOMMENDS_${PN}_append = " \
 RRECOMMENDS_${PN}_append_libc-glibc = " glibc-charmap-utf-8 glibc-gconv-unicode glibc-gconv-utf-32"
 RPROVIDES_${PN} += "xbmc"
 
-SYSTEMD_SERVICE_${PN} = "kodi.service"
