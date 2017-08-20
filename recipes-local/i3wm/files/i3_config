@@ -105,8 +105,8 @@ for_window [class="DeadBeef"] focus
 for_window [class="Gthumb"] focus
 for_window [class="Gimp"] focus
 for_window [class="Google-chrome"] focus
-for_window [class=Kodi"] focus
-for_window [class=Kodi"] fullscreen enable
+for_window [class="Kodi"] focus
+for_window [class="Kodi"] fullscreen enable
 
 # assign applications to workspaces
 assign [class="Google-chrome"] 2:web
@@ -145,7 +145,7 @@ bindsym $mod+6 workspace 6:compare; exec raise_or_run.sh  class Meld meld
 bindsym $mod+7 workspace 7:video; exec raise_or_run.sh  class mpv mpv
 bindsym $mod+8 workspace 8:audio; exec raise_or_run.sh  class DeadBeef deadbeef, exec raise_or_run.sh  class Pavucontrol pavucontrol
 bindsym $mod+9 workspace 9:gfx; exec raise_or_run.sh  class Gthumb gthumb
-bindsym $mod+0 workspace 10:kodi; exec raise_or_run.sh  class Kodi kodi
+bindsym $mod+0 workspace 10:kodi; exec raise_or_run.sh class Kodi kodi
 
 # toggle between the two workspaces used last	
 bindsym $mod+Tab workspace back_and_forth
@@ -234,7 +234,6 @@ bar {
         status_command i3status
 }
 
-exec --no-startup-id dbus-launch kodi
 exec --no-startup-id dbus-launch nm-applet
 exec --no-startup-id dbus-launch blueman-applet
 exec --no-startup-id dbus-launch pasystray

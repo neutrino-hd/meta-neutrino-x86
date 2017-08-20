@@ -14,6 +14,8 @@ DEPENDS = " \
   "
 EXTRA_OECMAKE_append = " \
   -DCMAKE_MODULE_PATH=${STAGING_DATADIR}/kodi/cmake \
+  -DCMAKE_PREFIX_PATH=${STAGING_DIR_HOST}${prefix} \
+  -DKODI_INCLUDE_DIR=${STAGING_INCDIR}/kodi \
   -DBUILD_SHARED_LIBS=1 \
   "
 FILES_${PN}-dev += "${libdir}/kodiplatform/*"

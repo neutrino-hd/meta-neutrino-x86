@@ -27,5 +27,7 @@ FILES_${PN}-dbg += " \
                 ${libexecdir}/file-roller/.debug \
                "
 
+RDEPENDS_${PN} += "nautilus"
+
 SRC_URI[archive.md5sum] = "1c542e629930762bb179e3feccd1a125"
 SRC_URI[archive.sha256sum] = "f1e3c4efae8defbe33c2acc299979e0ce0d664d1e6cd282335e1f46c2f94d3d0"

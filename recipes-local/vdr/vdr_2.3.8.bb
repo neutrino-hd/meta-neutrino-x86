@@ -16,6 +16,7 @@ SRC_URI[sha256sum] = "d871170ee90ef2fc6293eefb44262b82b2e1f00f934681c721da7bd30e
 S = "${WORKDIR}/vdr-${PV}"
 
 DEPENDS = "fontconfig freetype gettext-native libcap jpeg ncurses"
+RDEPENDS_${PN} += "perl"
 
 inherit pkgconfig systemd autotools-brokensep
 

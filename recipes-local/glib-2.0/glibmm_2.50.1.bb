@@ -5,19 +5,17 @@ LICENSE = "LGPLv2.1 & GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d8045f3b8f929c1cb29a1e3fd737b499 \
                     file://COPYING.tools;md5=751419260aa954499f7abaabaa882bbe"
 
-DEPENDS = "mm-common glib-2.0 glib-2.0-native libsigc++"
+DEPENDS = "mm-common glib-2.0 libsigc++-2.0 glib-2.0-native"
 inherit autotools pkgconfig
 
-SHRT_VER = "${@d.getVar('PV',1).split('.')[0]}.${@d.getVar('PV',1).split('.')[1]}"
+SHRT_VER = "${@d.getVar('PV').split('.')[0]}.${@d.getVar('PV').split('.')[1]}"
 
 SRC_URI = " \
     ftp://ftp.gnome.org/pub/GNOME/sources/glibmm/${SHRT_VER}/glibmm-${PV}.tar.xz \
     file://remove-examples.patch \
 "
-SRC_URI[md5sum] = "32ee4150b436d097fe2506d0b0b13a75"
-SRC_URI[sha256sum] = "1b0ac0425d24895507c0e0e8088a464c7ae2d289c47afa1c11f63278fc672ea8"
-
-CPPFLAGS_append += "-std=c++11"
+SRC_URI[md5sum] = "a5b915dc42fc62983fa78ca8486f4391"
+SRC_URI[sha256sum] = "1fd85051da9cb402cc8348cec72dfe4d79f9345df4a1dbf68703a4ded45846a4"
 
 do_install_append() {
     install -d ${D}${datadir}/glibmm-2.4
@@ -30,4 +28,5 @@ do_install_append() {
 FILES_${PN} = "${libdir}/lib*.so.*"
 FILES_${PN}-dev += "${datadir}/glibmm-* ${libdir}/glibmm-2.4/include/ ${libdir}/glibmm-2.4/proc/ ${libdir}/giomm-2.4/include/"
 
-RDEPENDS_${PN}-dev = "perl"
+INSANE_SKIP_${PN}-dev += "file-rdeps"
+SECURITY_CFLAGS = "${SECURITY_NO_PIE_CFLAGS}"

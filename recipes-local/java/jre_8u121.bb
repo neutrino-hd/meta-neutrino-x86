@@ -17,6 +17,8 @@ do_install() {
 FILES_${PN} = "/usr \
 "
 RCONFLICTS_${PN} += "jdk"
+INSANE_SKIP_${PN} = "file-rdeps"
+
 
 INSANE_SKIP_${PN} += "already-stripped build-deps libdir dev-so"
 

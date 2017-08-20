@@ -21,7 +21,7 @@ USERADD_PARAM_${PN} = "--system \
 		       builder \
 "
 
-RDEPENDS_${PN} = "jre"
+RDEPENDS_${PN} = "jre bash"
 
 S= "${WORKDIR}/MediathekView-${PV}"
 

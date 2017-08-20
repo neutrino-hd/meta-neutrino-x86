@@ -121,7 +121,6 @@ IMAGE_INSTALL_append += " \
 	python-modules \
 	python3-modules \
 	python3-pip \
-	redshift \
 	samba \
 	screenfetch \
 	settings-daemon \

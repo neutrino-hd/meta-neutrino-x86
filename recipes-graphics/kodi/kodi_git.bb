@@ -11,6 +11,7 @@ OECMAKE_SOURCEPATH = "${S}/project/cmake"
 
 DEPENDS = " \
   cmake-native \
+  dbus \
   gperf-native \
   swig-native \
   texturepacker-native \
@@ -57,7 +58,7 @@ DEPENDS = " \
   "
 
 PROVIDES = "xbmc"
-PACKAGECONFIG ??= " ${@bb.utils.contains('DISTRO_FEATURES', 'x11', ' x11', '', d)} opengl dbus vaapi pulseaudio mysql vdpau"
+PACKAGECONFIG ??= " ${@bb.utils.contains('DISTRO_FEATURES', 'x11', ' x11', '', d)} opengl vaapi pulseaudio mysql vdpau"
 PACKAGECONFIG_append_ion330 = " vdpau"
 
 PACKAGECONFIG[opengl] = "-DENABLE_OPENGL=ON -DENABLE_OPENGLES=OFF,-DENABLE_OPENGL=OFF -DENABLE_OPENGLES=ON,virtual/libgl"
@@ -68,7 +69,7 @@ PACKAGECONFIG[mysql] = "-DENABLE_MYSQLCLIENT=ON,-DENABLE_MYSQLCIENT=OFF,mysql5"
 PACKAGECONFIG[x11] = "-DENABLE_X11=ON,-DENABLE_X11=OFF,libxinerama libxmu libxrandr libxtst"
 PACKAGECONFIG[pulseaudio] = "-DENABLE_PULSEAUDIO=ON,-DENABLE_PULSEAUDIO=OFF,pulseaudio"
 PACKAGECONFIG[lcms] = "-DENABLE_LCMS2=ON,-DENABLE_LCMS2=OFF,lcms"
-PACKAGECONFIG[dbus] = ",,dbus"
+
 
 
 # To find Java
@@ -78,6 +79,7 @@ OECMAKE_FIND_ROOT_PATH_MODE_PROGRAM = "BOTH"
 EXTRA_OECMAKE_append = " \
   -DNATIVEPREFIX=${STAGING_DIR_NATIVE}${prefix_native} \
   -DWITH_CPU=${TARGET_ARCH} \
+  -DENABLE_DBUS=ON \
   -DENABLE_SDL=ON \
   -DENABLE_CEC=ON \
   -DENABLE_SSH=OFF \
@@ -110,7 +112,7 @@ INSANE_SKIP_${PN} = "already-stripped"
 FILES_${PN} += "${datadir}/xsessions ${datadir}/icons ${libdir}/xbmc ${datadir}/xbmc"
 FILES_${PN}-dbg += "${libdir}/kodi/.debug ${libdir}/kodi/*/.debug ${libdir}/kodi/*/*/.debug ${libdir}/kodi/*/*/*/.debug"
 
-RDEPENDS_{PN} += "python-threading python-shell python-compression python-imaging upower mariadb"
+RDEPENDS_{PN} += "python-threading python-shell python-compression python-imaging mariadb"
 RRECOMMENDS_${PN}_append = " \
   python \
   python-ctypes \

@@ -13,7 +13,7 @@ RDEPENDS_${PN} = "python3-dbus python3 \
 SRC_URI = "git://github.com/blueman-project/blueman.git;protocol=https;branch=master \
 		   file://60-blueman \
 "
-SRCREV = "5aaba8219680b74673e99139c3cb5c319df85dc8"
+SRCREV = "${AUTOREV}"
 
 S = "${WORKDIR}/git"
 

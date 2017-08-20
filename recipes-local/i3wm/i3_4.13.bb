@@ -32,3 +32,5 @@ do_install_append() {
 FILES_${PN}_append += "/usr/share/xsessions \
 		       /home \
 "
+
+RDEPENDS_${PN} += "bash"

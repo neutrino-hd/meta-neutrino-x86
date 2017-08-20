@@ -1,12 +1,12 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
 SRC_URI_append += " \
-	file://getty@tty1.service \
+	file://getty@.service \
 	file://00-create-volatile.conf \
 "
 
 do_install_append() {
-	install -m 0644 -D ${WORKDIR}/getty@tty1.service        ${D}${sysconfdir}/systemd/system/getty.target.wants/getty@tty1.service
+	install -m0644 ${WORKDIR}/getty@.service ${D}/lib/systemd/system/getty@.service
 	sed -i "s|slave|shared|" ${D}/lib/systemd/system/systemd-udevd.service
 }
 
