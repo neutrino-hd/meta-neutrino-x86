@@ -4,21 +4,27 @@ LIC_FILES_CHKSUM = "file://${WORKDIR}/license;md5=17a6b3d5436a55985b200c72576190
 
 SRC_URI = "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
 	   file://license \
+	   file://chrome.conf \
 "
 
 SRC_URI[md5sum] = "70f90d19dcf51a87b7f6df788b5fddc7"
 SRC_URI[sha256sum] = "5c22cc312c360cf7ad84f5f75c6fc6626b59ca529f7f66f65aaab3b9ca8df196"
 
 
-DEPENDS = "xz-native"
+do_unpack[depends] += "xz-native:do_populate_sysroot \ 
+					   tar-native:do_populate_sysroot \
+					   binutils-native:do_populate_sysroot \
+"
+
 RDEPENDS_${PN} += "cups"
 
 S = "${WORKDIR}"
 
 do_install() {
-	install -d ${D}/usr/bin ${D}/usr/share/applications ${D}/opt/google
+	install -d ${D}/usr/bin ${D}/usr/share/applications ${D}/opt/google ${D}${sysconfdir}/tmpfiles.d
 	cp -rf ${S}/opt/* ${D}/opt/
 	cp -rf ${S}/usr/* ${D}/usr/
+	cp -rf ${S}/chrome.conf ${D}${sysconfdir}/tmpfiles.d/chrome.conf
 	ln -sf ./google-chrome-stable ${D}/usr/bin/google-chrome
 	cp -rf ${S}/etc/* ${D}${sysconfdir}
 	for i in 16 32 48 128 256;do
