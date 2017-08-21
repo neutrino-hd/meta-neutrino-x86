@@ -136,6 +136,7 @@ IMAGE_INSTALL_append += " \
 	tzdata \
 	unclutter \
 	unrar \
+	upower \
 	usb-modeswitch \
 	util-linux \
 	v86d \
