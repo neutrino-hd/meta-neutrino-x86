@@ -33,4 +33,4 @@ FILES_${PN}_append += "/usr/share/xsessions \
 		       /home \
 "
 
-RDEPENDS_${PN} += "bash"
+RDEPENDS_${PN} += "wmctrl"

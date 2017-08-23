@@ -137,15 +137,15 @@ workspace "10:kodi" output DP1
 
 # switch to workspace
 bindsym $mod+1 workspace 1:work
-bindsym $mod+2 workspace 2:web;  exec raise_or_run.sh  class Google-chrome google-chrome-stable
-bindsym $mod+3 workspace 3:chat; exec raise_or_run.sh  class skypeforlinux skypeforlinux
-bindsym $mod+4 workspace 4:mail; exec raise_or_run.sh  class Sylpheed sylpheed
-bindsym $mod+5 workspace 5:file; exec raise_or_run.sh  class Nautilus nautilus, exec raise_or_run.sh class Sublime sublime
-bindsym $mod+6 workspace 6:compare; exec raise_or_run.sh  class Meld meld
-bindsym $mod+7 workspace 7:video; exec raise_or_run.sh  class mpv mpv
-bindsym $mod+8 workspace 8:audio; exec raise_or_run.sh  class DeadBeef deadbeef, exec raise_or_run.sh  class Pavucontrol pavucontrol
-bindsym $mod+9 workspace 9:gfx; exec raise_or_run.sh  class Gthumb gthumb
-bindsym $mod+0 workspace 10:kodi; exec raise_or_run.sh class Kodi kodi
+bindsym $mod+2 workspace 2:web;  exec raise_or_run.sh google-chrome
+bindsym $mod+3 workspace 3:chat; exec raise_or_run.sh skypeforlinux
+bindsym $mod+4 workspace 4:mail; exec raise_or_run.sh sylpheed
+bindsym $mod+5 workspace 5:file; exec raise_or_run.sh subl, exec raise_or_run.sh nautilus
+bindsym $mod+6 workspace 6:compare; exec raise_or_run.sh meld
+bindsym $mod+7 workspace 7:video; exec raise_or_run.sh mpv
+bindsym $mod+8 workspace 8:audio; exec raise_or_run.sh deadbeef, exec raise_or_run.sh pavucontrol
+bindsym $mod+9 workspace 9:gfx; exec raise_or_run.sh  gthumb
+bindsym $mod+0 workspace 10:kodi; exec raise_or_run.sh kodi
 
 # toggle between the two workspaces used last	
 bindsym $mod+Tab workspace back_and_forth
@@ -233,7 +233,7 @@ bindsym XF86Sleep exec poweroff
 bar {
         status_command i3status
 }
-
+exec --no-startup-id i3-msg 'workspace 10:kodi';dbus-launch kodi
 exec --no-startup-id dbus-launch nm-applet
 exec --no-startup-id dbus-launch blueman-applet
 exec --no-startup-id dbus-launch pasystray
