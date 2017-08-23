@@ -209,8 +209,6 @@ IMAGE_INSTALL_append += " \
 	python3-resource \
 	python3-shell \
 	python3-sqlite3 \
-	python3-subprocess \
-	python3-textutils \
 	python3-unittest \
 	python3-unixadmin \
 	python3-xmlrpc \
