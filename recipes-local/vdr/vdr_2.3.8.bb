@@ -6,6 +6,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=892f569a555ba9c07a568a7c0c4fa63a"
 
 SRC_URI = "ftp://ftp.tvdr.de/vdr/Developer/vdr-${PV}.tar.bz2 \
   file://vdr.service \
+  file://Make.config \
   file://fix_for_gcc7.patch;apply=no \
   "
 
@@ -15,16 +16,15 @@ SRC_URI[sha256sum] = "d871170ee90ef2fc6293eefb44262b82b2e1f00f934681c721da7bd30e
 
 S = "${WORKDIR}/vdr-${PV}"
 
-DEPENDS = "fontconfig freetype gettext-native libcap jpeg ncurses"
+DEPENDS = "fontconfig freetype gettext virtual/libintl libcap jpeg ttf-bitstream-vera ncurses"
 RDEPENDS_${PN} += "perl"
 
-inherit pkgconfig systemd autotools-brokensep
+inherit pkgconfig systemd gettext
 
-EXTRA_OECONF = " \
-				PREFIX=/usr \
-				CONFDIR=/home/builder/.config/vdr \
-			    VIDEODIR=/home/builder/movies \
-"
+do_configure_append() {
+  cp ${WORKDIR}/Make.config ${S}
+}
+
 
 do_install_prepend() {
       install -d ${D}/home/builder/.config/vdr ${D}/home/builder/movies
@@ -32,12 +32,9 @@ do_install_prepend() {
 
 
 do_install () {
-  oe_runmake install DESTDIR=${D} PREFIX="/usr" CONFDIR="/home/builder/.config/vdr" VIDEODIR="/home/builder/movies"
-  sed -i 's/-fdebug-prefix-map[^ ]*//g; s#${STAGING_DIR_TARGET}##g' ${D}${libdir}/pkgconfig/*.pc
-  if ${@bb.utils.contains('DISTRO_FEATURES','systemd','true','false',d)}; then
-    install -d ${D}${systemd_unitdir}/system
-    install -m 0644 ${WORKDIR}/vdr.service ${D}${systemd_unitdir}/system/vdr.service
-  fi
+  oe_runmake 'DESTDIR=${D}' install-bin install-i18n install-includes install-pc
+  install -d ${D}${systemd_unitdir}/system
+  install -m 0644 ${WORKDIR}/vdr.service ${D}${systemd_unitdir}/system
 }
 
 PACKAGES_DYNAMIC += "^vdr-plugin-.*"
@@ -58,6 +55,5 @@ CONFFILES_${PN} += "${sysconfdir}/vdr/channels.conf \
 
 FILES_${PN} += "/home/builder"
 
-RDEPENDS_${PN} += " glibc-charmap-iso-8859-5 glibc-gconv-iso8859-5"
 SYSTEMD_SERVICE_${PN} = "vdr.service"
 

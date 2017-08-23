@@ -27,10 +27,13 @@ DEPENDS += "${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'libxmu libxpm', '', 
 
 inherit gnome gtk-doc
 
+S = "${WORKDIR}/gimp-${PV}"
+
 SRC_URI = "http://ftp.gimp.org/pub/gimp/v2.8/gimp-${PV}.tar.bz2 \
            file://0001-configure-ac-do-not-check-for-freetype-config.patch \
            file://bump_Babl-GEGL_versions.patch \
            file://0003-Fix-use-of-gegl-API.patch \
+           file://sessionrc \
            "
 SRC_URI[md5sum] = "7e4fd7a53b1d3c32dff642ab1a94b44d"
 SRC_URI[sha256sum] = "9187a35cc52b110d78124d7b27b68a68ade14a794c2721314bac6134d2a5638a"
@@ -44,7 +47,14 @@ do_configure_append() {
     find ${B} -name Makefile | xargs sed -i s:'-I/usr/include':'-I${STAGING_INCDIR}':g
 }
 
+do_install_append() {
+    install -d ${D}/home/builder/.gimp-2.8
+    install -m 0644 -D ${WORKDIR}/sessionrc ${D}/home/builder/.gimp-2.8/sessionrc
+}
+
 CFLAGS += "-fPIC"
 
 FILES_${PN}-dbg += "${libdir}/gimp/2.0/*/.debug"
-FILES_${PN}  += "${datadir}/appdata"
+FILES_${PN}  += "${datadir}/appdata \
+                 /home/builder \
+"
