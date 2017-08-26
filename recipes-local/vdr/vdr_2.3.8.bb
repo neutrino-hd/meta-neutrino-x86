@@ -7,7 +7,8 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=892f569a555ba9c07a568a7c0c4fa63a"
 SRC_URI = "ftp://ftp.tvdr.de/vdr/Developer/vdr-${PV}.tar.bz2 \
   file://vdr.service \
   file://Make.config \
-  file://fix_for_gcc7.patch;apply=no \
+  file://channels.conf \
+  file://vdr_userspace \
   "
 
 SRC_URI[md5sum] = "2afe8b899b3af1967320c216c1315f3e"
@@ -19,7 +20,7 @@ S = "${WORKDIR}/vdr-${PV}"
 DEPENDS = "fontconfig freetype gettext virtual/libintl libcap jpeg ttf-bitstream-vera ncurses"
 RDEPENDS_${PN} += "perl"
 
-inherit pkgconfig systemd gettext
+inherit pkgconfig gettext
 
 do_configure_append() {
   cp ${WORKDIR}/Make.config ${S}
@@ -33,8 +34,8 @@ do_install_prepend() {
 
 do_install () {
   oe_runmake 'DESTDIR=${D}' install-bin install-i18n install-includes install-pc
-  install -d ${D}${systemd_unitdir}/system
-  install -m 0644 ${WORKDIR}/vdr.service ${D}${systemd_unitdir}/system
+  install -m 0644 ${WORKDIR}/channels.conf ${D}/home/builder/.config/vdr/channels.conf
+  install -m 0755 ${WORKDIR}/vdr_userspace ${D}/usr/bin
 }
 
 PACKAGES_DYNAMIC += "^vdr-plugin-.*"
@@ -55,5 +56,4 @@ CONFFILES_${PN} += "${sysconfdir}/vdr/channels.conf \
 
 FILES_${PN} += "/home/builder"
 
-SYSTEMD_SERVICE_${PN} = "vdr.service"
 

@@ -34,6 +34,7 @@ IMAGE_INSTALL_append += " \
 	vdr \
 	vdr-plugin-dvbapi \
 	vdr-plugin-vnsiserver \
+	vdr-plugin-softhddevice \
 	kodi \
 	kodi-addon-vnsi \
 "
