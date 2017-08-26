@@ -3,4 +3,5 @@
 #
 # Syntax: simple "KEY=VAL" pairs on separate lines
 SHELL=/bin/bash
-JAVA_HOME=/opt/java
+JAVA_HOME=/usr
+
