@@ -1,0 +1,5 @@
+#!/bin/sh
+
+export LANG=de_DE.UTF-8
+export VDR_CHARSET_OVERRIDE="ISO-8859-15"
+/usr/bin/vdr -L/usr/lib/vdr --localedir=/usr/share/locale --video=/home/builder/movies -c /home/builder/.config/vdr -P dvbapi -P vnsiserver -P "softhddevice -v va-api -f"  --chartab UTF-8
