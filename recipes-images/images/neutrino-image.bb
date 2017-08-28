@@ -214,3 +214,8 @@ IMAGE_INSTALL_append += " \
 	python3-unixadmin \
 	python3-xmlrpc \
 "
+
+IMAGE_INSTALL_remove += "kodi-dev \
+						 kodiplatform-dev \
+						 stat \
+"
