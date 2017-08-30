@@ -1,0 +1,45 @@
+From c75a8c7cfde06dabc7a0d68105b3f1cffb279cdd Mon Sep 17 00:00:00 2001
+From: Markus Volk <f_l_k@t-online.de>
+Date: Tue, 29 Aug 2017 10:28:27 +0200
+Subject: [PATCH] fix Makefile
+
+Signed-off-by: Markus Volk <f_l_k@t-online.de>
+---
+ Makefile | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index a22169e..5d7e2e1 100644
+--- a/Makefile
++++ b/Makefile
+@@ -5,7 +5,7 @@
+ 
+ # Config
+ CONFIG := #-DDOPROFILE			        # enable profiling code
+-CONFIG += #-DDO_NOT_USE_SKININSTALLER	# disable installer in skindesigner setup
++CONFIG += -DDO_NOT_USE_SKININSTALLER	# disable installer in skindesigner setup
+ 
+ # The official name of this plugin.
+ PLUGIN = skindesigner
+@@ -45,15 +45,15 @@ SOFILE = libvdr-$(PLUGIN).so
+ 
+ ### Includes and Defines and Dependencies:
+ DEFINES += -DPLUGIN_NAME_I18N='"$(PLUGIN)"' $(CONFIG)
+-DEFINES += $(shell xml2-config --cflags)
++#DEFINES += $(shell xml2-config --cflags)
+ DEFINES += -DSCRIPTFOLDER='"$(SKINDESIGNER_SCRIPTDIR)"'
+ DEFINES += -D__STL_CONFIG_H
+ 
+ INCLUDES += $(shell pkg-config --cflags freetype2 fontconfig)
+ INCLUDES += $(shell pkg-config --cflags librsvg-2.0 cairo-png) -ljpeg
+-
++INCLUDES += -I$(SDKSTAGE)/usr/include/libxml2
+ LIBS += $(shell pkg-config --libs librsvg-2.0 cairo-png) -ljpeg
+-LIBS += $(shell xml2-config --libs)
++LIBS += -lxml2
+ LIBS += $(shell pkg-config --libs libcurl)
+ 
+ ### The object files:
+-- 
+2.13.3
+
