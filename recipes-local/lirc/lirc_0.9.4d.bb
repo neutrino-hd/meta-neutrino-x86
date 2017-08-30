@@ -19,7 +19,9 @@ SRC_URI = "http://prdownloads.sourceforge.net/lirc/lirc-${PV}.tar.bz2 \
     file://lircd.conf \
     file://lirc_options.conf \
     file://lirc.tmpfiles \
+    file://hardware.conf \
 "
+
 SRC_URI[md5sum] = "0d11679cbdd94a5a6da00a8e7231b4bf"
 SRC_URI[sha256sum] = "c68f18c35b489b865c0a741d119b136e8702191538cd3551b977a7af6c4e41ab"
 
@@ -46,7 +48,8 @@ do_install_append() {
     install -m 0755 -d ${D}${sysconfdir}/lirc
     install -m 0755 -d ${D}${systemd_unitdir}/system
     install -m 0755 -d ${D}${libdir}/tmpfiles.d
-    install -m 0644 ${WORKDIR}/lircd.conf ${D}${sysconfdir}/lirc/
+    install -m 0644 ${WORKDIR}/hardware.conf ${D}${sysconfdir}/lirc/
+	install -m 0644 ${WORKDIR}/lircd.conf ${D}${sysconfdir}/lirc/
     install -m 0644 ${WORKDIR}/lirc_options.conf ${D}${sysconfdir}/lirc/
     install -m 0644 ${WORKDIR}/lircd.service ${D}${systemd_unitdir}/system/
     install -m 0755 ${WORKDIR}/lircexec.init ${D}${systemd_unitdir}/system/
