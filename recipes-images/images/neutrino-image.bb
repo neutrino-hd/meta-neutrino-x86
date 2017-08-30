@@ -35,6 +35,8 @@ IMAGE_INSTALL_append += " \
 	vdr-plugin-dvbapi \
 	vdr-plugin-vnsiserver \
 	vdr-plugin-softhddevice \
+	vdr-plugin-neutrinoepg \
+	vdr-plugin-skindesigner \
 	kodi \
 	kodi-addon-vnsi \
 "
@@ -84,6 +86,8 @@ IMAGE_INSTALL_append += " \
 	libsdl \
 	libsmbclient \
 	libxml2-python \
+	lirc \
+	lirc-plugins \
 	local-build \
 	localedef \
 	mc \
