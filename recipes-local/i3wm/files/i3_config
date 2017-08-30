@@ -107,6 +107,8 @@ for_window [class="Gimp"] focus
 for_window [class="Google-chrome"] focus
 for_window [class="Kodi"] focus
 for_window [class="Kodi"] fullscreen enable
+for_window [title="softhddevice"] focus
+for_window [title="softhddevice"] fullscreen enable
 
 # assign applications to workspaces
 assign [class="Google-chrome"] 2:web
@@ -118,6 +120,7 @@ assign [class="File-roller"] 5:file
 assign [class="Sublime_text"] 5:file
 assign [class="Meld"] 6:compare
 assign [class="mpv"] 7:video
+assign [title="softhddevice"] 7:video
 assign [class="DeadBeef"] 8:audio
 assign [class="Gthumb"] 9:gfx
 assign [class="Gimp"] 9:gfx
@@ -142,12 +145,12 @@ bindsym $mod+3 workspace 3:chat; exec raise_or_run.sh class skypeforlinux skypef
 bindsym $mod+4 workspace 4:mail; exec raise_or_run.sh class Sylpheed sylpheed
 bindsym $mod+5 workspace 5:file; exec raise_or_run.sh class Sublime_text subl, exec raise_or_run.sh class Nautilus nautilus
 bindsym $mod+6 workspace 6:compare; exec raise_or_run.sh class Meld meld
-bindsym $mod+7 workspace 7:video; exec raise_or_run.sh class Mpv mpv
+bindsym $mod+7 workspace 7:video; exec raise_or_run.sh name softhddevice vdr_userspace
 bindsym $mod+8 workspace 8:audio; exec raise_or_run.sh class Deadbeaf deadbeef, exec raise_or_run.sh class pavucontrol pavucontrol
 bindsym $mod+9 workspace 9:gfx; exec raise_or_run.sh  class Gthumb gthumb
 bindsym $mod+0 workspace 10:kodi; exec raise_or_run.sh class Kodi kodi
 
-# toggle between the two workspaces used last	
+# toggle between the two workspaces used last   
 bindsym $mod+Tab workspace back_and_forth
 
 
@@ -233,8 +236,6 @@ bindsym XF86Sleep exec poweroff
 bar {
         status_command i3status
 }
-exec --no-startup-id i3-msg 'workspace 10:kodi';dbus-launch kodi
-exec --no-startup-id i3-msg 'workspace 7:video';vdr_userspace
 exec --no-startup-id dbus-launch nm-applet
 exec --no-startup-id dbus-launch blueman-applet
 exec --no-startup-id dbus-launch pasystray
@@ -242,5 +243,3 @@ exec --no-startup-id dbus-launch parcellite
 exec --no-startup-id dbus-launch unclutter
 exec --no-startup-id dbus-launch redshift
 exec --no-startup-id dbus-launch /usr/libexec/polkit-gnome-authentication-agent-1
-
-

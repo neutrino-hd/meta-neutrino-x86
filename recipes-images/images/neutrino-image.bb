@@ -87,6 +87,7 @@ IMAGE_INSTALL_append += " \
 	libsmbclient \
 	libxml2-python \
 	lirc \
+	lirc-exec \
 	lirc-plugins \
 	local-build \
 	localedef \
