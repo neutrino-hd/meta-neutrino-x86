@@ -12,6 +12,9 @@ SRC_URI = "http://i3wm.org/downloads/i3-${PV}.tar.bz2 \
 	   file://i3-get-window-criteria \
 	   file://raise_or_run.sh \
 	   file://toggle_touchpad.sh \
+	   file://chrome_starter.sh \
+	   file://kodi_starter.sh \
+	   file://vdr_starter.sh \
 "
 
 SRC_URI[md5sum] = "08d17dcf1fde665a15f7d411486546ae"
@@ -21,8 +24,9 @@ inherit pkgconfig autotools
 
 do_install_append() {
 	for i in root builder;do
-		install -d ${D}/home/$i/.config/i3
+		install -d ${D}/home/$i/.config/i3/scripts 
 		install -m 0644 -D ${WORKDIR}/i3_config ${D}/home/$i/.config/i3/config
+		install -m 0755 -D ${WORKDIR}/*_starter.sh ${D}/home/$i/.config/i3/config/scripts
 	done
 	install -m 0755 -D ${WORKDIR}/i3-get-window-criteria ${D}${bindir}
 	install -m 0755 -D ${WORKDIR}/raise_or_run.sh ${D}${bindir}

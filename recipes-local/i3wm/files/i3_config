@@ -110,6 +110,7 @@ for_window [class="Kodi"] fullscreen enable
 for_window [title="softhddevice"] focus
 for_window [title="softhddevice"] fullscreen enable
 
+
 # assign applications to workspaces
 assign [class="Google-chrome"] 2:web
 assign [class="Xchat"] 3:chat
@@ -140,7 +141,7 @@ workspace "10:kodi" output DP1
 
 # switch to workspace
 bindsym $mod+1 workspace 1:work
-bindsym $mod+2 workspace 2:web;  exec raise_or_run.sh class Google-chrome google-chrome
+bindsym $mod+2 workspace 2:web; exec raise_or_run.sh class Google-chrome google-chrome-stable
 bindsym $mod+3 workspace 3:chat; exec raise_or_run.sh class skypeforlinux skypeforlinux
 bindsym $mod+4 workspace 4:mail; exec raise_or_run.sh class Sylpheed sylpheed
 bindsym $mod+5 workspace 5:file; exec raise_or_run.sh class Sublime_text subl, exec raise_or_run.sh class Nautilus nautilus
@@ -149,6 +150,8 @@ bindsym $mod+7 workspace 7:video; exec raise_or_run.sh name softhddevice vdr_use
 bindsym $mod+8 workspace 8:audio; exec raise_or_run.sh class Deadbeaf deadbeef, exec raise_or_run.sh class pavucontrol pavucontrol
 bindsym $mod+9 workspace 9:gfx; exec raise_or_run.sh  class Gthumb gthumb
 bindsym $mod+0 workspace 10:kodi; exec raise_or_run.sh class Kodi kodi
+
+
 
 # toggle between the two workspaces used last   
 bindsym $mod+Tab workspace back_and_forth
@@ -236,6 +239,7 @@ bindsym XF86Sleep exec poweroff
 bar {
         status_command i3status
 }
+exec --no-startup-id irexec
 exec --no-startup-id dbus-launch nm-applet
 exec --no-startup-id dbus-launch blueman-applet
 exec --no-startup-id dbus-launch pasystray
