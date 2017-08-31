@@ -25,6 +25,7 @@ SRC_URI = " \
 	file://wallpaper.tar.gz \
 	file://settings.ini \
 	file://mimeapps.list \
+	file://lircrc \
 "
 
 DEPENDS += "builder"
@@ -52,6 +53,7 @@ do_install() {
 		${D}/home/$i/.local/share/applications
 		install -m 0644 -D ${S}/bashrc        ${D}/home/$i/.bashrc
 		install -m 0644 -D ${S}/xinitrc        ${D}/home/$i/.xinitrc
+		install -m 0644 -D ${S}/lircrc        ${D}/home/$i/.lircrc
 		install -m 0644 -D ${S}/bash_profile        ${D}/home/$i/.bash_profile
 		install -m 0644 -D ${S}/Xresources        ${D}/home/$i/.Xresources
 		install -m 0644 -D ${S}/Xdefaults        ${D}/home/$i/.Xdefaults
