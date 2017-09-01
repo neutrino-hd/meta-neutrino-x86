@@ -26,7 +26,7 @@ do_install_append() {
 	for i in root builder;do
 		install -d ${D}/home/$i/.config/i3/scripts 
 		install -m 0644 -D ${WORKDIR}/i3_config ${D}/home/$i/.config/i3/config
-		install -m 0755 -D ${WORKDIR}/*_starter.sh ${D}/home/$i/.config/i3/config/scripts
+		install -m 0755 -D ${WORKDIR}/*_starter.sh ${D}/home/$i/.config/i3/scripts
 	done
 	install -m 0755 -D ${WORKDIR}/i3-get-window-criteria ${D}${bindir}
 	install -m 0755 -D ${WORKDIR}/raise_or_run.sh ${D}${bindir}
