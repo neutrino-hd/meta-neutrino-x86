@@ -14,7 +14,7 @@ DISPLAY_2="DP2"
 POSITION="--below"
 
 xrandr --output $DISPLAY_1 --auto --output $DISPLAY_2 --auto $POSITON $DISPLAY_1
-xrandr --output $DISPLAY_2 --scale 0.7x0.7
+#xrandr --output $DISPLAY_2 --scale 0.7x0.7
 
 
 # Map mod4 to win key
