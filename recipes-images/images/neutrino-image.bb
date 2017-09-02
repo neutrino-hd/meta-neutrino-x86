@@ -80,6 +80,7 @@ IMAGE_INSTALL_append += " \
 	i3-status \
 	image-config \
 	imagemagick \
+	ir-keytable \
 	inetutils-ftp \
 	kernel-devsrc \
 	libntfs-3g \
@@ -127,6 +128,7 @@ IMAGE_INSTALL_append += " \
 	python-modules \
 	python3-modules \
 	python3-pip \
+	rc-keymaps \
 	samba \
 	screenfetch \
 	settings-daemon \
