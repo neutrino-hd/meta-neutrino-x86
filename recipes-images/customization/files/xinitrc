@@ -1,3 +1,4 @@
+
 #!/bin/sh
 #
 # User's .xinitrc file
@@ -5,17 +6,16 @@
 # Merge custom X resources
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
- 
+
 # Set screen resolution
 
 DISPLAY_1="DP1"
 DISPLAY_2="DP2"
 # Position of Display2 compared to Display1
-POSITION="--below"
+POSITION="below"
+#SCALE="scale 0.7x0.7"
 
-xrandr --output $DISPLAY_1 --auto --output $DISPLAY_2 --auto $POSITON $DISPLAY_1
-#xrandr --output $DISPLAY_2 --scale 0.7x0.7
-
+xrandr --output $DISPLAY_1 --auto --output $DISPLAY_2 --$SCALE --auto --$POSITION $DISPLAY_1
 
 # Map mod4 to win key
 xmodmap -e "keycode 115 = Super_L" -e "add mod4 = Super_L"
