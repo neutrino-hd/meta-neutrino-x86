@@ -2,8 +2,7 @@ include kodi.inc
 FILESPATH =. "${FILE_DIRNAME}/files:"
 SRC_URI_append = " file://0100-dlldvdnav-no-win32.patch \
   file://kodi.service \
-  file://remote.xml \
-  file://Lircmap.xml \
+  file://kodi.tar.gz \
   "
 
 inherit cmake gettext pythonnative systemd
@@ -110,9 +109,8 @@ def enable_glew(bb, d):
     return ""
 
 do_install_append() {
-  install -d ${D}/home/builder/.kodi/userdata/keymaps
-  install -m 0644 ${WORKDIR}/Lircmap.xml ${D}/home/builder/.kodi/userdata
-  install -m 0644 ${WORKDIR}/remote.xml ${D}/home/builder/.kodi/userdata/keymaps
+  install -d ${D}/home/builder
+  cp -rf ${WORKDIR}/.kodi ${D}/home/builder
 }
 
 INSANE_SKIP_${PN} = "already-stripped"

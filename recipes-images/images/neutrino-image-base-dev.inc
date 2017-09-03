@@ -1,7 +1,5 @@
 inherit core-image module-base setuptools3
 
-NOHDD = "1"
-
 # add default password for root
 ROOTFS_POSTPROCESS_COMMAND += "set_root_passwd;"
 set_root_passwd() {

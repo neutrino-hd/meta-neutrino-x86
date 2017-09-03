@@ -12,9 +12,7 @@ SRC_URI = "http://i3wm.org/downloads/i3-${PV}.tar.bz2 \
 	   file://i3-get-window-criteria \
 	   file://raise_or_run.sh \
 	   file://toggle_touchpad.sh \
-	   file://chrome_starter.sh \
-	   file://kodi_starter.sh \
-	   file://vdr_starter.sh \
+	   file://starter.sh \
 "
 
 SRC_URI[md5sum] = "08d17dcf1fde665a15f7d411486546ae"
