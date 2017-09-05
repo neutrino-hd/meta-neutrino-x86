@@ -10,6 +10,7 @@ SRC_URI = "ftp://ftp.tvdr.de/vdr/Developer/vdr-${PV}.tar.bz2 \
   file://channels.conf \
   file://vdr_userspace \
   file://remote.conf \
+  file://sources.conf \
   "
 
 SRC_URI[md5sum] = "2afe8b899b3af1967320c216c1315f3e"
@@ -37,6 +38,7 @@ do_install () {
   oe_runmake 'DESTDIR=${D}' install-bin install-i18n install-includes install-pc
   install -m 0644 ${WORKDIR}/channels.conf ${D}/home/builder/.config/vdr/channels.conf
   install -m 0644 ${WORKDIR}/remote.conf ${D}/home/builder/.config/vdr/remote.conf
+  install -m 0644 ${WORKDIR}/sources.conf ${D}/home/builder/.config/vdr/sources.conf
   install -m 0755 ${WORKDIR}/vdr_userspace ${D}/usr/bin
 }
 
