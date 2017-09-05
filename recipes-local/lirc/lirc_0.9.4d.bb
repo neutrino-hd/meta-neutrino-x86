@@ -43,6 +43,12 @@ PACKAGECONFIG ?= " \
 CACHED_CONFIGUREVARS = "HAVE_WORKING_POLL=yes"
 
 #EXTRA_OEMAKE = 'SUBDIRS="lib daemons tools"'
+ 
+# SH_PATH probing failes ... workaround this
+do_configure_append() {
+    sed -i "s|#define SH_PATH.*|#define SH_PATH \"/bin/sh\"|" ${B}/config.h
+}
+
 do_install_append() {
     install -m 0755 -d ${D}${sysconfdir}
     install -m 0755 -d ${D}${sysconfdir}/lirc

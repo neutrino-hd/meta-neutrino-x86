@@ -13,5 +13,5 @@ end
 begin
   prog = irexec
   button = KEY_TEXT
-  config = "/home/builder/.config/i3/scripts/starter.sh vdr"
+  config = "/home/builder/.config/i3/scripts/starter.sh vdr_userspace"
 end

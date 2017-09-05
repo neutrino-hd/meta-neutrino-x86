@@ -3,6 +3,7 @@ application/javascript=sublime_text.desktop
 application/lrf=calibre-lrfviewer.desktop
 application/msword=libreoffice-writer.desktop
 application/ogg=deadbeef.desktop
+application/pdf=evince.desktop
 application/rtf=libreoffice-writer.desktop
 application/sql=sublime_text.desktop
 application/vnd.oasis.opendocument.spreadsheet=libreoffice-calc.desktop
