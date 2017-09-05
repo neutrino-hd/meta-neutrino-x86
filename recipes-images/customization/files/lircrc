@@ -1,17 +1,17 @@
 begin
   prog = irexec
   button = KEY_MEDIA
-  config = "/home/builder/.config/i3/scripts/starter.sh google-chrome"
+  config = "/home/builder/.config/i3/scripts/starter_chrome.sh"
 end
 
 begin
   prog = irexec
   button = KEY_HELP
-  config = "/home/builder/.config/i3/scripts/starter.sh kodi"
+  config = "/home/builder/.config/i3/scripts/starter_kodi.sh"
 end
 
 begin
   prog = irexec
   button = KEY_TEXT
-  config = "/home/builder/.config/i3/scripts/starter.sh vdr_userspace"
+  config = "/home/builder/.config/i3/scripts/starter_vdr.sh"
 end

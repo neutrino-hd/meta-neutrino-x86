@@ -44,7 +44,7 @@ CACHED_CONFIGUREVARS = "HAVE_WORKING_POLL=yes"
 
 #EXTRA_OEMAKE = 'SUBDIRS="lib daemons tools"'
  
-# SH_PATH probing failes ... workaround this
+# SH_PATH probing fails ... workaround this
 do_configure_append() {
     sed -i "s|#define SH_PATH.*|#define SH_PATH \"/bin/sh\"|" ${B}/config.h
 }
