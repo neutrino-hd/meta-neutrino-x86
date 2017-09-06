@@ -1,7 +1,6 @@
 require pulseaudio.inc
 
 SRC_URI = "git://anongit.freedesktop.org/git/pulseaudio/pulseaudio.git;branch=master;protocol=http \
-           file://0001-padsp-Make-it-compile-on-musl.patch \
            file://0001-client-conf-Add-allow-autospawn-for-root.patch \
            file://volatiles.04_pulse \
 "
