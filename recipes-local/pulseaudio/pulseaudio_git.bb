@@ -6,7 +6,7 @@ SRC_URI = "git://anongit.freedesktop.org/git/pulseaudio/pulseaudio.git;branch=ma
 "
 
 SRCREV = "${AUTOREV}"
-PV = "10.99"
+PV = "11.0"
 
 S = "${WORKDIR}/git"
 
