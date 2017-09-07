@@ -7,8 +7,8 @@ SRC_URI = "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64
 	   file://chrome.conf \
 "
 
-SRC_URI[md5sum] = "6d9f78a9ac5591213d4e22797104afcb"
-SRC_URI[sha256sum] = "168f3b95c64e0caabb1b06dd88258cee024731898547981f9cfb9093204c4295"
+SRC_URI[md5sum] = "949b2e20ecfe0e77d3388f9f1c9a16ed"
+SRC_URI[sha256sum] = "dc2b9ed36b1454c90675014f719dc23f3dfdf003a2a3552d0d066cc00c681c28"
 
 
 do_unpack[depends] += "xz-native:do_populate_sysroot \ 
