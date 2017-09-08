@@ -4,9 +4,9 @@ LICENSE = "GPLv2+"
 LIC_FILES_CHKSUM = "file://src/client.h;beginline=6;endlinde=19;md5=yyy"
 
 SRC_URI = "git://github.com/kodi-pvr/pvr.hts.git;branch=Krypton"
-SRCREV = "cab43534f780758a49706cbd3597daafe874748a"
+SRCREV = "${AUTOREV}"
 PV = "3.4.22-git${SRCPV}"
-FILESPATH =. "${FILE_DIRNAME}/kodi-addon-vnsi-files:"
+FILESPATH =. "${FILE_DIRNAME}/kodi-addon-hts-files:"
 
 inherit cmake
 

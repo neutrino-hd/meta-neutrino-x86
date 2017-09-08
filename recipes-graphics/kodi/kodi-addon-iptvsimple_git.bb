@@ -5,8 +5,8 @@ LICENSE = "GPLv2+"
 LIC_FILES_CHKSUM = "file://src/client.h;beginline=9;endline=22;md5=d32239bcb673463ab874e80d47fae504"
 
 SRC_URI = "git://github.com/kodi-pvr/pvr.iptvsimple.git;branch=Krypton"
-SRCREV = "d7828163f26a0ccb175058faa9d87b1fcdc89220"
-PV = "17.1+gitr${SRCPV}"
+SRCREV = "${AUTOREV}"
+PV = "17.4"
 FILESPATH =. "${FILE_DIRNAME}/kodi-addon-iptvsimple-files:"
 
 inherit cmake

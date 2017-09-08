@@ -118,6 +118,7 @@ INSANE_SKIP_${PN} = "already-stripped"
 FILES_${PN} += "${datadir}/xsessions ${datadir}/icons ${libdir}/xbmc ${datadir}/xbmc /home/builder"
 FILES_${PN}-dbg += "${libdir}/kodi/.debug ${libdir}/kodi/*/.debug ${libdir}/kodi/*/*/.debug ${libdir}/kodi/*/*/*/.debug"
 
+
 RDEPENDS_{PN} += "python-threading python-shell python-compression python-imaging mariadb"
 RRECOMMENDS_${PN}_append = " \
   python \
@@ -134,4 +135,5 @@ RRECOMMENDS_${PN}_append = " \
   "
 RRECOMMENDS_${PN}_append_libc-glibc = " glibc-charmap-utf-8 glibc-gconv-unicode glibc-gconv-utf-32"
 RPROVIDES_${PN} += "xbmc"
+
 
