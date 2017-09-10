@@ -146,7 +146,6 @@ bindsym $mod+3 workspace 3:chat; exec raise_or_run.sh class skypeforlinux skypef
 bindsym $mod+4 workspace 4:mail; exec raise_or_run.sh class Sylpheed sylpheed
 bindsym $mod+5 workspace 5:file; exec raise_or_run.sh class Sublime_text subl, exec raise_or_run.sh class Nautilus nautilus
 bindsym $mod+6 workspace 6:compare; exec raise_or_run.sh class Meld meld
-bindsym $mod+7 workspace 7:video; exec raise_or_run.sh name softhddevice vdr_userspace
 bindsym $mod+8 workspace 8:audio; exec raise_or_run.sh class Deadbeaf deadbeef, exec raise_or_run.sh class pavucontrol pavucontrol
 bindsym $mod+9 workspace 9:gfx; exec raise_or_run.sh  class Gthumb gthumb
 bindsym $mod+0 workspace 10:kodi; exec raise_or_run.sh class Kodi kodi

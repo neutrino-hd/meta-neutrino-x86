@@ -11,6 +11,7 @@ SRC_URI = "ftp://ftp.tvdr.de/vdr/Developer/vdr-${PV}.tar.bz2 \
   file://vdr_userspace \
   file://remote.conf \
   file://sources.conf \
+  file://vdr.service \
   "
 
 SRC_URI[md5sum] = "2afe8b899b3af1967320c216c1315f3e"
@@ -36,10 +37,15 @@ do_install_prepend() {
 
 do_install () {
   oe_runmake 'DESTDIR=${D}' install-bin install-i18n install-includes install-pc
+  sed -i 's/-fdebug-prefix-map[^ ]*//g; s#${STAGING_DIR_TARGET}##g' ${D}${libdir}/pkgconfig/*.pc
   install -m 0644 ${WORKDIR}/channels.conf ${D}/home/builder/.config/vdr/channels.conf
   install -m 0644 ${WORKDIR}/remote.conf ${D}/home/builder/.config/vdr/remote.conf
   install -m 0644 ${WORKDIR}/sources.conf ${D}/home/builder/.config/vdr/sources.conf
   install -m 0755 ${WORKDIR}/vdr_userspace ${D}/usr/bin
+  if ${@bb.utils.contains('DISTRO_FEATURES','systemd','true','false',d)}; then
+  	install -d ${D}${systemd_unitdir}/system
+  	install -m 0644 ${WORKDIR}/vdr.service ${D}${systemd_unitdir}/system/vdr.service
+  	fi
 }
 
 PACKAGES_DYNAMIC += "^vdr-plugin-.*"
