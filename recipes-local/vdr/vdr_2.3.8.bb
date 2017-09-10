@@ -22,7 +22,7 @@ S = "${WORKDIR}/vdr-${PV}"
 DEPENDS = "fontconfig freetype gettext virtual/libintl libcap jpeg ttf-bitstream-vera ncurses"
 RDEPENDS_${PN} += "perl"
 
-inherit pkgconfig gettext
+inherit pkgconfig gettext systemd
 
 do_configure_append() {
   cp ${WORKDIR}/Make.config ${S}
@@ -60,4 +60,7 @@ CONFFILES_${PN} += "${sysconfdir}/vdr/channels.conf \
 
 FILES_${PN} += "/home/builder"
 
+RDEPENDS_${PN} += " glibc-charmap-iso-8859-5 glibc-gconv-iso8859-5"
+
+SYSTEMD_SERVICE_${PN} = "vdr.service"
 
