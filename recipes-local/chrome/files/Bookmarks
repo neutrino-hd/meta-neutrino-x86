@@ -1,0 +1,57 @@
+{
+   "checksum": "5519a1a559d7089aa1baf16349abf647",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "date_added": "13149565307953941",
+            "id": "6",
+            "meta_info": {
+               "last_visited_desktop": "13149565694328868"
+            },
+            "name": "Netflix",
+            "type": "url",
+            "url": "https://www.netflix.com/de/"
+         }, {
+            "date_added": "13149565344326359",
+            "id": "7",
+            "meta_info": {
+               "last_visited_desktop": "13149565344326746"
+            },
+            "name": "Prime Video",
+            "type": "url",
+            "url": "https://www.amazon.de/Prime-Video/b?ie=UTF8&node=3279204031"
+         }, {
+            "date_added": "13149565402410773",
+            "id": "8",
+            "meta_info": {
+               "last_visited_desktop": "13149565402410944"
+            },
+            "name": "Spotify",
+            "type": "url",
+            "url": "https://open.spotify.com/browse"
+         } ],
+         "date_added": "13149565271652576",
+         "date_modified": "13149565402410773",
+         "id": "1",
+         "name": "Lesezeichenleiste",
+         "type": "folder"
+      },
+      "other": {
+         "children": [  ],
+         "date_added": "13149565271652580",
+         "date_modified": "0",
+         "id": "2",
+         "name": "Weitere Lesezeichen",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13149565271652580",
+         "date_modified": "0",
+         "id": "3",
+         "name": "Mobile Lesezeichen",
+         "type": "folder"
+      }
+   },
+   "version": 1
+}
