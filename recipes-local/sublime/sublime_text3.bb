@@ -2,7 +2,7 @@ SUMMARY = "Sublime Text is a sophisticated text editor for code, markup and pros
 LICENSE = "proprietary"
 LIC_FILES_CHKSUM = "file://${WORKDIR}/license;md5=17a6b3d5436a55985b200c725761907a"
 
-SRC_URI = "https://download.sublimetext.com/sublime_text_3_build_3126_x64.tar.bz2 \
+SRC_URI = "https://download.sublimetext.com/sublime_text_3_build_3143_x64.tar.bz2 \
 	   file://license \
 	   file://subl \
 "
@@ -10,12 +10,12 @@ SRC_URI = "https://download.sublimetext.com/sublime_text_3_build_3126_x64.tar.bz
 
 RDEPENDS_${PN} = "libx11 glib-2.0"
 
-SRC_URI[md5sum] = "acc34252b0ea7dff1f581c5db1564dcb"
-SRC_URI[sha256sum] = "18db132e9a305fa3129014b608628e06f9442f48d09cfe933b3b1a84dd18727a"
-
-
+SRC_URI[md5sum] = "9c4a9d09a4463caedb49e7742bed369f"
+SRC_URI[sha256sum] = "9ce120c4f28b239d3b3860ee672d9d87e1397a4c08ee6c4e62fd6e261a296519"
 
 S = "${WORKDIR}/sublime_text_3"
+
+PV = "3143"
 
 do_install() {
 	install -d ${D}/usr/share/applications ${D}/usr/bin ${D}/opt/sublime_text
