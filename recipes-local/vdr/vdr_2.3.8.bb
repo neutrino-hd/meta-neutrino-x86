@@ -66,7 +66,7 @@ CONFFILES_${PN} += "${sysconfdir}/vdr/channels.conf \
 
 FILES_${PN} += "/home/builder"
 
-RDEPENDS_${PN} += " glibc-charmap-iso-8859-5 glibc-gconv-iso8859-5"
+RDEPENDS_${PN} += " glibc-charmap-iso-8859-15 glibc-gconv-iso8859-15"
 
 SYSTEMD_SERVICE_${PN} = "vdr.service"
 

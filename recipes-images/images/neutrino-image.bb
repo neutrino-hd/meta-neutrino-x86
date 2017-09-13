@@ -63,10 +63,8 @@ IMAGE_INSTALL_append += " \
 	gimp \
 	git \
 	glibc-charmaps \
-	glibc-localedata-de-de \
-	glibc-localedata-en-us \
-	glibc-localedata-fr-fr \
-	glibc-localedata-translit-combining \
+	glibc-gconvs \
+	glibc-localedatas \
 	gnome-disk-utility \
 	gnome-terminal \
 	gnupg \

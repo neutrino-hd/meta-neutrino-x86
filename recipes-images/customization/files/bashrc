@@ -143,8 +143,9 @@ export EDITOR=nano
 export BROWSER="google-chrome"
 
 # Language settings
-export LC_ALL=de_DE.utf8
-export LC_LANG=de_DE.utf8
+export LANG=de_DE
+export LC_ALL=de_DE
+export LC_LANG=de_DE
 loadkeys de-latin1-nodeadkeys
 
 # If working behind a proxy and using the provided oe-git-proxy script
