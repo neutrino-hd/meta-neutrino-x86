@@ -1,17 +1,30 @@
 begin
   prog = irexec
-  button = KEY_MEDIA
-  config = "/home/builder/.config/i3/scripts/starter_chrome.sh"
-end
-
-begin
-  prog = irexec
-  button = KEY_HELP
+  button = KEY_RED
   config = "/home/builder/.config/i3/scripts/starter_kodi.sh"
 end
 
 begin
   prog = irexec
-  button = KEY_TEXT
-  config = "/home/builder/.config/i3/scripts/starter_vdr.sh"
+  button = KEY_GREEN
+  config = "/home/builder/.config/i3/scripts/starter_chrome.sh"
 end
+
+begin
+  prog = irexec
+  button = KEY_YELLOW
+  config = "/home/builder/.config/i3/scripts/starter_mediathek.sh"
+end
+
+begin
+  prog = irexec
+  button = KEY_BLUE
+  config = "/home/builder/.config/i3/scripts/starter_deadbeef.sh"
+end
+
+begin
+  prog = irexec
+  button = KEY_POWER
+  config = "/home/builder/.config/i3/scripts/shutdown.sh"
+end
+

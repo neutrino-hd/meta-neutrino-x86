@@ -103,11 +103,11 @@ IMAGE_INSTALL_append += " \
 	nautilus \
 	network-manager-applet-gtk2 \
 	networkmanager \
-	ni-logos \
 	notify-osd \
 	ntfs-3g \
 	ntfsprogs \
 	ntpdate \
+	oscam \
 	parcellite \
 	parcellite-locale-de \
 	pasystray \
@@ -140,6 +140,7 @@ IMAGE_INSTALL_append += " \
 	tango-icon-theme \
 	texinfo \
 	tzdata \
+	tzdata-europe \
 	unclutter \
 	unrar \
 	upower \

@@ -8,9 +8,9 @@ SRC_URI = "ftp://ftp.tvdr.de/vdr/Developer/vdr-${PV}.tar.bz2 \
   file://vdr.service \
   file://Make.config \
   file://channels.conf \
-  file://vdr_userspace \
-  file://remote.conf \
   file://sources.conf \
+  file://svdrphosts.conf \
+  file://remote.conf \
   file://vdr.service \
   "
 
@@ -31,21 +31,21 @@ do_configure_append() {
 
 
 do_install_prepend() {
-      install -d ${D}/home/builder/.config/vdr ${D}/home/builder/movies
+      install -d ${D}${sysconfdir}/vdr ${D}/home/builder/movies
 }
 
 
 do_install () {
   oe_runmake 'DESTDIR=${D}' install-bin install-i18n install-includes install-pc
   sed -i 's/-fdebug-prefix-map[^ ]*//g; s#${STAGING_DIR_TARGET}##g' ${D}${libdir}/pkgconfig/*.pc
-  install -m 0644 ${WORKDIR}/channels.conf ${D}/home/builder/.config/vdr/channels.conf
-  install -m 0644 ${WORKDIR}/remote.conf ${D}/home/builder/.config/vdr/remote.conf
-  install -m 0644 ${WORKDIR}/sources.conf ${D}/home/builder/.config/vdr/sources.conf
-  install -m 0755 ${WORKDIR}/vdr_userspace ${D}/usr/bin
+  install -m 0644 ${WORKDIR}/channels.conf ${D}${sysconfdir}/vdr/channels.conf
+  install -m 0644 ${WORKDIR}/remote.conf ${D}${sysconfdir}/vdr/remote.conf
+  install -m 0644 ${WORKDIR}/sources.conf ${D}${sysconfdir}/vdr/sources.conf
+  install -m 0644 ${WORKDIR}/svdrphosts.conf ${D}${sysconfdir}/vdr/svdrphosts.conf 
   if ${@bb.utils.contains('DISTRO_FEATURES','systemd','true','false',d)}; then
   	install -d ${D}${systemd_unitdir}/system
   	install -m 0644 ${WORKDIR}/vdr.service ${D}${systemd_unitdir}/system/vdr.service
-  	fi
+  fi
 }
 
 PACKAGES_DYNAMIC += "^vdr-plugin-.*"
@@ -57,12 +57,13 @@ python populate_packages_prepend () {
 }
 
 CONFFILES_${PN} += "${sysconfdir}/vdr/channels.conf \
-  ${sysconfdir}/vdr/diseqc.conf \
-  ${sysconfdir}/vdr/keymacros.conf \
-  ${sysconfdir}/vdr/scr.conf \
-  ${sysconfdir}/vdr/sources.conf \
-  ${sysconfdir}/vdr/svdrphosts.conf \
-  "
+                    ${sysconfdir}/vdr/diseqc.conf \
+                    ${sysconfdir}/vdr/keymacros.conf \
+                    ${sysconfdir}/vdr/scr.conf \
+                    ${sysconfdir}/vdr/sources.conf \
+                    ${sysconfdir}/vdr/svdrphosts.conf \
+                    ${sysconfdir}/vdr/remote.conf \
+                    "
 
 FILES_${PN} += "/home/builder"
 

@@ -101,6 +101,7 @@ for_window [class="File-roller"] focus
 for_window [class="Sylpheed"] focus
 for_window [class="skypeforlinux"] focus
 for_window [class="XChat"] focus
+for_window [class="MediathekView"] focus
 for_window [class="DeadBeef"] focus
 for_window [class="Gthumb"] focus
 for_window [class="Gimp"] focus
@@ -121,7 +122,7 @@ assign [class="File-roller"] 5:file
 assign [class="Sublime_text"] 5:file
 assign [class="Meld"] 6:compare
 assign [class="mpv"] 7:video
-assign [title="softhddevice"] 7:video
+assign [class="MediathekView"] 7:video
 assign [class="DeadBeef"] 8:audio
 assign [class="Gthumb"] 9:gfx
 assign [class="Gimp"] 9:gfx
@@ -135,7 +136,7 @@ workspace "4:mail" output DP2
 workspace "5:file" output DP2
 workspace "6:compare" output DP2 
 workspace "7:video" output DP1
-workspace "8:audio" output DP2
+workspace "8:audio" output DP1
 workspace "9:gfx" output DP2
 workspace "10:kodi" output DP1
 
@@ -144,9 +145,10 @@ bindsym $mod+1 workspace 1:work
 bindsym $mod+2 workspace 2:web; exec raise_or_run.sh class Google-chrome google-chrome-stable
 bindsym $mod+3 workspace 3:chat; exec raise_or_run.sh class skypeforlinux skypeforlinux
 bindsym $mod+4 workspace 4:mail; exec raise_or_run.sh class Sylpheed sylpheed
-bindsym $mod+5 workspace 5:file; exec raise_or_run.sh class Sublime_text subl, exec raise_or_run.sh class Nautilus nautilus
+bindsym $mod+5 workspace 5:file; exec raise_or_run.sh class Nautilus nautilus
 bindsym $mod+6 workspace 6:compare; exec raise_or_run.sh class Meld meld
-bindsym $mod+8 workspace 8:audio; exec raise_or_run.sh class Deadbeaf deadbeef, exec raise_or_run.sh class pavucontrol pavucontrol
+bindsym $mod+7 workspace 7:video; exec raise_or_run.sh class MediathekView mediathek_view
+bindsym $mod+8 workspace 8:audio; exec raise_or_run.sh class Deadbeaf deadbeef
 bindsym $mod+9 workspace 9:gfx; exec raise_or_run.sh  class Gthumb gthumb
 bindsym $mod+0 workspace 10:kodi; exec raise_or_run.sh class Kodi kodi
 

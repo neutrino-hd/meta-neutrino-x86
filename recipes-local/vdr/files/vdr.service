@@ -4,7 +4,7 @@ After=oscam.service
 
 [Service]
 Environment="LANG=de_DE"
-ExecStart=/usr/bin/vdr -L/usr/lib/vdr --localedir=/usr/share/locale --video=/home/builder/movies -c /home/builder/.config/vdr -P dvbapi -P vnsiserver --no-kbd --chartab ISO-8859-15
+ExecStart=/usr/bin/vdr -L/usr/lib/vdr --localedir=/usr/share/locale --video=/home/builder/movies -c /etc/vdr -P dvbapi -P vnsiserver --no-kbd --chartab ISO-8859-15
 Restart=on-failure
 
 [Install]

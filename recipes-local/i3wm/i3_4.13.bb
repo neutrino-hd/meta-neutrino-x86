@@ -13,6 +13,7 @@ SRC_URI = "http://i3wm.org/downloads/i3-${PV}.tar.bz2 \
 	   file://raise_or_run.sh \
 	   file://toggle_touchpad.sh \
 	   file://starter_*.sh \
+	   file://shutdown.sh \
 "
 
 SRC_URI[md5sum] = "08d17dcf1fde665a15f7d411486546ae"
@@ -25,6 +26,7 @@ do_install_append() {
 		install -d ${D}/home/$i/.config/i3/scripts 
 		install -m 0644 -D ${WORKDIR}/i3_config ${D}/home/$i/.config/i3/config
 		install -m 0755 -D ${WORKDIR}/starter_*.sh ${D}/home/$i/.config/i3/scripts
+		install -m 0755 -D ${WORKDIR}/shutdown.sh ${D}/home/$i/.config/i3/scripts
 	done
 	install -m 0755 -D ${WORKDIR}/i3-get-window-criteria ${D}${bindir}
 	install -m 0755 -D ${WORKDIR}/raise_or_run.sh ${D}${bindir}

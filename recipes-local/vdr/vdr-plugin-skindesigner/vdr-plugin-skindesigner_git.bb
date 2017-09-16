@@ -35,13 +35,13 @@ do_install() {
 	oe_runmake DESTDIR=${D} PREFIX=${prefix} install	
 	install -d ${D}/usr/share/fonts
 	install -m 0755 ${S}/fonts/VDROpenSans/* ${D}/usr/share/fonts
-	install -m 0644 ${S}/skins/shady/themes/default/shady-default.theme ${D}/home/builder/.config/vdr/themes/shady-default.theme
+	install -m 0644 ${S}/skins/shady/themes/default/shady-default.theme ${D}${sysconfdir}/vdr/themes/shady-default.theme
 }
 
 FILES_${PN} = " \
+	${sysconfdir}/vdr \
 	${libdir}/libskindesignerapi* \
 	${libdir}/vdr/* \
-	/home/builder/.config \
 	${datadir}/vdr/plugins/skindesigner/* \
 	${datadir}/fonts \
 "

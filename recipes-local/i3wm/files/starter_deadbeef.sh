@@ -1,10 +1,10 @@
 #!/bin/sh
 
-process="vdr"
+process="deadbeef-gtkui"
 
-class="softhddevice"
+class="deadbeef"
 
-	workspace="7:video"
+	workspace="8:audio"
 
 if ps -e | grep -w -q "$process";then
         	if i3-msg -t get_workspaces | grep -q "\"$workspace\",\"visible\":true,\"focused\":true";then
@@ -13,5 +13,5 @@ if ps -e | grep -w -q "$process";then
                     	i3-msg workspace "$workspace"
                 fi
 else
-	i3-msg workspace $workspace; exec vdr_userspace && i3-msg "[class=$class] focus"
+	i3-msg workspace $workspace; exec deadbeef && i3-msg "[class=$class] focus"
 fi
