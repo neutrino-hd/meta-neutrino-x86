@@ -4,7 +4,7 @@ IMAGE_FEATURES += "splash package-management x11-base dev-pkgs tools-sdk"
 IMAGE_FEATURES_append += "${@'' if IMAGETYPE != 'debug' else 'tools-debug eclipse-debug tools-profile tools-testapps debug-tweaks dbg-pkgs ptest-pkgs'}"
 
 LICENSE = "MIT"
-LIC_FILES_CHKSUM  = "file://${COREBASE}/LICENSE;md5=4d92cd373abda3937c2bc47fbc49d690 \
+LIC_FILES_CHKSUM  = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302 \
                     file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
 
 
@@ -34,9 +34,6 @@ IMAGE_INSTALL_append += " \
 	vdr \
 	vdr-plugin-dvbapi \
 	vdr-plugin-vnsiserver \
-	vdr-plugin-softhddevice \
-	vdr-plugin-neutrinoepg \
-	vdr-plugin-skindesigner \
 	kodi \
 	kodi-addon-vnsi \
 "
